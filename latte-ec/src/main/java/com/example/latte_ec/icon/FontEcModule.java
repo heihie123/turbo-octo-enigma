@@ -15,6 +15,7 @@ public class FontEcModule implements IconFontDescriptor {
 
     @Override
     public Icon[] characters() {
+        // 将枚举类转变为一个枚举类型的数组
         return EcIcons.values();
     }
 }

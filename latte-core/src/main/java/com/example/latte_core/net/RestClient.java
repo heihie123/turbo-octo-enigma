@@ -1,10 +1,14 @@
 package com.example.latte_core.net;
 
+import android.content.Context;
+
 import com.example.latte_core.net.callback.IError;
 import com.example.latte_core.net.callback.IFailure;
 import com.example.latte_core.net.callback.IRequest;
 import com.example.latte_core.net.callback.ISuccess;
 import com.example.latte_core.net.callback.RequestCallbacks;
+import com.example.latte_core.ui.LatteLoader;
+import com.example.latte_core.ui.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -24,8 +28,11 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final LoaderStyle LOADER_STYLE;
+    private final Context CONTEXT;
 
-    public RestClient(String url, Map<String, Object> params, IRequest request, ISuccess success, IFailure failure, IError error, RequestBody body) {
+    public RestClient(String url, Map<String, Object> params, IRequest request, ISuccess success,
+                      IFailure failure, IError error, RequestBody body, LoaderStyle loaderStyle, Context context) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -33,6 +40,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.LOADER_STYLE = loaderStyle;
+        this.CONTEXT = context;
     }
 
     public static RestClientBuilder builder() {
@@ -44,6 +53,9 @@ public class RestClient {
         Call<String> call = null;
         if (REQUEST != null) {
             REQUEST.onRequestStart();
+        }
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
         switch (method) {
             case GET:
@@ -68,7 +80,7 @@ public class RestClient {
     }
 
     private Callback<String> getRequestCallback() {
-        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR);
+        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR, LOADER_STYLE);
     }
 
     public final void get() {

@@ -1,7 +1,7 @@
 package com.example.latte_core.activitys;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
@@ -26,14 +26,14 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     public abstract LatteDelegate setRootDelegate();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         DELEGATE.onCreate(savedInstanceState);
-        Toast.makeText(this, "价值", Toast.LENGTH_SHORT).show();
         initContainer(savedInstanceState);
     }
 
     private void initContainer(@Nullable Bundle savedInstanceState) {
+        @SuppressLint("RestrictedApi")
         final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container);
         setContentView(container);

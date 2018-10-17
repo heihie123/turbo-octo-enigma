@@ -7,8 +7,11 @@ import com.wang.avi.Indicator;
 
 import java.util.WeakHashMap;
 
+/**
+ * 获取loader对象
+ */
 public class LoaderCreator {
-
+    // 用于缓存indicator（不用每次都通过反射获取）
     private static final WeakHashMap<String, Indicator> LOADING_MAP = new WeakHashMap<>();
 
     static AVLoadingIndicatorView create(String type, Context context) {
@@ -34,6 +37,7 @@ public class LoaderCreator {
         }
         drawableClassName.append(name);
         try {
+            // 通过反射创建实例
             final Class<?> drawableClass = Class.forName(drawableClassName.toString());
             return (Indicator) drawableClass.newInstance();
         } catch (Exception e) {

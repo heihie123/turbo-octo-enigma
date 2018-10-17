@@ -25,10 +25,11 @@ public class MainFragment extends LatteDelegate {
     private void testRequestCilent() {
         RestClient.builder()
                 .url("http://www.12345678g.com/KS/sb/14717.html")
+                .loader(getActivity())
                 .sucess(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .failure(new IFailure() {
