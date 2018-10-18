@@ -29,7 +29,7 @@ public class MainFragment extends LatteDelegate {
                 .sucess(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-//                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .failure(new IFailure() {
