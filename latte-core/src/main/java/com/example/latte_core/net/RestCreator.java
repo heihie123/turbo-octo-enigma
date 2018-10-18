@@ -3,6 +3,8 @@ package com.example.latte_core.net;
 
 import com.example.latte_core.app.ConfigKeys;
 import com.example.latte_core.app.Latte;
+import com.example.latte_core.net.rx.RxRestService;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;
 import java.util.WeakHashMap;
@@ -26,12 +28,22 @@ public class RestCreator {
         private static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     }
 
+    // 获取RestService
     public static RestService getRestService() {
         return RestServiceHolder.REST_SERVICE;
     }
 
     private static final class RestServiceHolder {
         private static final RestService REST_SERVICE = RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);
+    }
+
+    // 获取RxRestService
+    public static RxRestService getRxRestService() {
+        return RxRestServiceHolder.RX_REST_SERVICE;
+    }
+
+    private static final class RxRestServiceHolder {
+        private static final RxRestService RX_REST_SERVICE = RetrofitHolder.RETROFIT_CLIENT.create(RxRestService.class);
     }
 
     private static final class RetrofitHolder {
@@ -41,6 +53,7 @@ public class RestCreator {
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
                 .addConverterFactory(ScalarsConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
