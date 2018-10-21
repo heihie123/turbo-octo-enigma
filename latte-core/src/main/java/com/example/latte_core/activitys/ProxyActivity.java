@@ -43,6 +43,15 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     }
 
     @Override
+    protected void onDestroy() {
+        DELEGATE.onDestroy();
+        super.onDestroy();
+        System.gc();
+        System.runFinalization();
+    }
+
+    //------------------ support部分 ----------------------
+    @Override
     public SupportActivityDelegate getSupportDelegate() {
         return DELEGATE;
     }
@@ -75,13 +84,5 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
         return DELEGATE.onCreateFragmentAnimator();
-    }
-
-    @Override
-    protected void onDestroy() {
-        DELEGATE.onDestroy();
-        super.onDestroy();
-        System.gc();
-        System.runFinalization();
     }
 }

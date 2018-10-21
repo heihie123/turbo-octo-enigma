@@ -1,5 +1,7 @@
 package com.example.latte_core.detegates;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -9,12 +11,14 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+
+import com.example.latte_core.activitys.ProxyActivity;
 
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
-import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 // 使用abstract修饰防止该基类被new出来
 public abstract class BaseDelegate extends Fragment implements ISupportFragment {
@@ -35,6 +39,25 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         throw new NullPointerException("rootview is null");
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        DELEGATE.onAttach((Activity) context);
+        _mActivity = DELEGATE.getActivity();
+    }
+
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        DELEGATE.onCreate(savedInstanceState);
+//    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        DELEGATE.onActivityCreated(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,6 +72,52 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         mRootView = rootView;
         onBindView(savedInstanceState, rootView);
         return rootView;
+    }
+
+//    @Override
+//    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+//        return DELEGATE.onCreateAnimation(transit, enter, nextAnim);
+//    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        DELEGATE.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DELEGATE.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        DELEGATE.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        DELEGATE.onDestroy();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        DELEGATE.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        DELEGATE.setUserVisibleHint(isVisibleToUser);
+    }
+
+    //------------------ support部分 ----------------------
+    public final ProxyActivity getProxyActivity() {
+        return (ProxyActivity) _mActivity;
     }
 
     @Override
@@ -135,4 +204,12 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     public boolean onBackPressedSupport() {
         return DELEGATE.onBackPressedSupport();
     }
+
+//    public void start(ISupportFragment toFragment){
+//        DELEGATE.start(toFragment);
+//    }
+
+//    public void start(final ISupportFragment toFragment, @LanchMOde int lanchMode){
+//        DELEGATE.start(toFragment, lanchMode);
+//    }
 }
