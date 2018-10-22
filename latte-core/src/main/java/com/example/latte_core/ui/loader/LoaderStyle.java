@@ -1,4 +1,4 @@
-package com.example.latte_core.ui;
+package com.example.latte_core.ui.loader;
 
 /**
  * 加载loading类型枚举

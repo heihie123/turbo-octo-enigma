@@ -1,4 +1,4 @@
-package com.example.latte_core.ui;
+package com.example.latte_core.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;

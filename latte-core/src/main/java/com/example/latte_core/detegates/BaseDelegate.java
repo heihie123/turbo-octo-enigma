@@ -25,6 +25,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
     protected FragmentActivity _mActivity;
+    protected Context mContext;
     private View mRootView = null;
 
     public abstract Object setLayout();
@@ -44,6 +45,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         super.onAttach(context);
         DELEGATE.onAttach((Activity) context);
         _mActivity = DELEGATE.getActivity();
+        mContext = _mActivity;
     }
 
 //    @Override
@@ -113,6 +115,10 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         DELEGATE.setUserVisibleHint(isVisibleToUser);
+    }
+
+    public final Context getActivityContext() {
+        return mContext;
     }
 
     //------------------ support部分 ----------------------

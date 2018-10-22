@@ -13,6 +13,9 @@ import com.example.latte_ec.R;
 import java.text.MessageFormat;
 import java.util.Timer;
 
+/**
+ * 启动页
+ */
 public class LauncherDelegate extends LatteDelegate implements ITimerListener, View.OnClickListener {
 
     private AppCompatTextView mLancherTimerTxt = null;
