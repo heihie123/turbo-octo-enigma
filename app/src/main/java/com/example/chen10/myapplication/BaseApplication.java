@@ -4,7 +4,9 @@ import android.app.Application;
 
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.net.Interceptor.DebugInterceptor;
+import com.example.latte_ec.database.DatabaseManager;
 import com.example.latte_ec.icon.FontEcModule;
+import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 public class BaseApplication extends Application {
@@ -18,5 +20,20 @@ public class BaseApplication extends Application {
                 .withApiHost("http://127.0.1/")
                 .withInterceptor(new DebugInterceptor("14717", R.raw.text))
                 .configure();
+        initStetho();
+        initDatabase();
+    }
+
+    private void initStetho() {
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .build()
+        );
+    }
+
+    private void initDatabase() {
+        DatabaseManager.getInstance().init(this);
     }
 }

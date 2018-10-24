@@ -1,5 +1,6 @@
 package com.example.latte_ec.sign;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -7,7 +8,6 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
@@ -24,6 +24,15 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     private AppCompatTextView mLinkSignUpTxt;
 
     Handler handler = new Handler();
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ISignListener) {
+            mISignListener = (ISignListener) context;
+        }
+    }
 
     @Override
     public Object setLayout() {
@@ -66,7 +75,10 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
             @Override
             public void run() {
                 if (checkForm()) {
-                    Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
+                    String userJson = "{\"data\":{\"userId\":\"1\",\"name\" : " + mPhoneEdit.getText().toString()
+                            + ",\"avatar\" :" + mPwdEdit.getText().toString()
+                            + ",\"gender\":\"gender\",\"address\":\"address\"}}";
+                    SignHandler.onSignIn(userJson, mISignListener);
                 }
                 LatteLoader.stopLoading();
             }

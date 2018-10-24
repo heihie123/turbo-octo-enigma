@@ -7,9 +7,12 @@ import android.view.View;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.example.latte_core.app.AccountManager;
+import com.example.latte_core.app.IUserChecker;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.LaucherHoldCreator;
+import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_core.ui.Laucher.ScrollLaucherTag;
 import com.example.latte_core.util.storage.LattePreference;
 import com.example.latte_ec.R;
@@ -41,7 +44,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof ILaucherListener){
+        if (context instanceof ILaucherListener) {
             mILaucherListener = (ILaucherListener) context;
         }
     }
@@ -59,8 +62,23 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     @Override
     public void onItemClick(int position) {
-        if(position == BANNER_IDS.size() -1){
+        if (position == BANNER_IDS.size() - 1) {
             LattePreference.setAppFlag(ScrollLaucherTag.HAS_FIRST_LAUCHER_APP.name(), true);
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILaucherListener != null) {
+                        mILaucherListener.onLaucherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILaucherListener != null) {
+                        mILaucherListener.onLaucherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
         }
     }
 }

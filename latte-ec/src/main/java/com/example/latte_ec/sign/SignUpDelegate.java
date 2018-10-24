@@ -1,5 +1,6 @@
 package com.example.latte_ec.sign;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,7 +9,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
@@ -19,15 +19,24 @@ import com.example.latte_ec.R;
  */
 public class SignUpDelegate extends LatteDelegate implements View.OnClickListener {
 
-    private TextInputEditText mNameEdit;
-    private TextInputEditText mEmailEdit;
-    private TextInputEditText mPhoneEdit;
-    private TextInputEditText mPwdEdit;
-    private TextInputEditText mConfirmPwdEdit;
-    private AppCompatButton mSignUpBen;
-    private AppCompatTextView mLinkSignInTxt;
+    private TextInputEditText mNameEdit = null;
+    private TextInputEditText mEmailEdit = null;
+    private TextInputEditText mPhoneEdit = null;
+    private TextInputEditText mPwdEdit = null;
+    private TextInputEditText mConfirmPwdEdit = null;
+    private AppCompatButton mSignUpBen = null;
+    private AppCompatTextView mLinkSignInTxt = null;
 
     Handler handler = new Handler();
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ISignListener) {
+            mISignListener = (ISignListener) context;
+        }
+    }
 
     @Override
     public Object setLayout() {
@@ -73,7 +82,10 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
             @Override
             public void run() {
                 if (checkForm()) {
-                    Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
+                    String userJson = "{\"data\":{\"userId\":\"1\",\"name\" : " + mPhoneEdit.getText().toString()
+                            + ",\"avatar\" :" + mConfirmPwdEdit.getText().toString()
+                            + ",\"gender\":\"gender\",\"address\":\"address\"}}";
+                    SignHandler.onSignUp(userJson, mISignListener);
                 }
                 LatteLoader.stopLoading();
             }

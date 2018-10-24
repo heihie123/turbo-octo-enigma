@@ -59,4 +59,9 @@ dependencies {
     // 数据库
     api 'org.greenrobot:greendao-generator:3.2.2'
     api 'org.greenrobot:greendao:3.2.2'
+    // log
+    api 'com.orhanobut:logger:2.2.0'
+    // 数据库调试工具
+    api 'com.facebook.stetho:stetho:1.5.0'
+    api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }
