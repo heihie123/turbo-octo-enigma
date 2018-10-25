@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 //    greendao {             // greendao配置
 //        schemaVersion 1    // 每次数据库升级+1
 //        daoPackage 'com.example.latte_ec'

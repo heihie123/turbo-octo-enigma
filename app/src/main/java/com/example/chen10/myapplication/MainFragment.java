@@ -6,16 +6,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.latte_core.detegates.LatteDelegate;
-import com.example.latte_core.net.RestClient;
-import com.example.latte_core.net.callback.IError;
-import com.example.latte_core.net.callback.IFailure;
-import com.example.latte_core.net.callback.ISuccess;
 import com.example.latte_core.net.rx.RxRestClient;
-import com.example.latte_core.ui.LoaderStyle;
+import com.example.latte_core.ui.loader.LoaderStyle;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
