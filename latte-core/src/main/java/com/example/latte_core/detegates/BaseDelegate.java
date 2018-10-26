@@ -48,11 +48,11 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         mContext = _mActivity;
     }
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        DELEGATE.onCreate(savedInstanceState);
-//    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DELEGATE.onCreate(savedInstanceState);
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -76,10 +76,10 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return rootView;
     }
 
-//    @Override
-//    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-//        return DELEGATE.onCreateAnimation(transit, enter, nextAnim);
-//    }
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return DELEGATE.onCreateAnimation(transit, enter, nextAnim);
+    }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {

@@ -6,22 +6,23 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
+import com.example.latte_core.wechat.LatteWeChat;
+import com.example.latte_core.wechat.callback.IWeChatSignInCallback;
 import com.example.latte_ec.R;
 
 /**
- * 登录
+ * 登录Fragment
  */
 public class SignInDelegate extends LatteDelegate implements View.OnClickListener {
 
-    private TextInputEditText mPhoneEdit;
-    private TextInputEditText mPwdEdit;
-    private AppCompatButton mSignInBen;
-    private AppCompatTextView mLinkSignUpTxt;
+    private TextInputEditText mPhoneEdit = null;
+    private TextInputEditText mPwdEdit = null;
+    private AppCompatButton mSignInBen = null;
 
     Handler handler = new Handler();
     private ISignListener mISignListener = null;
@@ -49,12 +50,12 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
         mPhoneEdit = $(R.id.edit_sign_in_phone);
         mPwdEdit = $(R.id.edit_sign_in_pwd);
         mSignInBen = $(R.id.btn_sign_in);
-        mLinkSignUpTxt = $(R.id.txt_link_sign_up);
     }
 
     private void initEvent() {
         mSignInBen.setOnClickListener(this);
-        mLinkSignUpTxt.setOnClickListener(this);
+        $(R.id.txt_link_sign_up).setOnClickListener(this);
+        $(R.id.txt_weixin_sign_in).setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +67,10 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
         if (i == R.id.txt_link_sign_up) {
             onClickLink();
+        }
+
+        if (i == R.id.txt_weixin_sign_in) {
+            onClickWeiChat();
         }
     }
 
@@ -107,5 +112,16 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
     private void onClickLink() {
         getSupportDelegate().start(new SignUpDelegate());
+    }
+
+    private void onClickWeiChat() {
+        LatteWeChat.getInstance()
+                .onSignSuccess(new IWeChatSignInCallback() {
+                    @Override
+                    public void onSignInSuccess(String userInfo) {
+                        Toast.makeText(getActivity(), userInfo, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .signIn();
     }
 }

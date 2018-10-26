@@ -20,7 +20,7 @@ import com.example.latte_ec.R;
 import java.util.ArrayList;
 
 /**
- * 滑动页
+ * 滑动页Fragment
  */
 public class LauncherScrollDelegate extends LatteDelegate implements OnItemClickListener {
 

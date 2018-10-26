@@ -21,7 +21,7 @@ import java.text.MessageFormat;
 import java.util.Timer;
 
 /**
- * 启动页
+ * 启动页Fragment
  */
 public class LauncherDelegate extends LatteDelegate implements ITimerListener, View.OnClickListener {
 

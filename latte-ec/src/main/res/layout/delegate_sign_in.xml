@@ -97,6 +97,7 @@
                 android:textSize="@dimen/_16sp" />
 
             <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/txt_weixin_sign_in"
                 android:layout_width="@dimen/_100dp"
                 android:layout_height="@dimen/_100dp"
                 android:layout_gravity="center_horizontal"

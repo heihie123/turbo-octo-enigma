@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.Patterns;
 import android.view.View;
 
@@ -15,7 +13,7 @@ import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_ec.R;
 
 /**
- * 注册
+ * 注册Fragment
  */
 public class SignUpDelegate extends LatteDelegate implements View.OnClickListener {
 
@@ -24,8 +22,6 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
     private TextInputEditText mPhoneEdit = null;
     private TextInputEditText mPwdEdit = null;
     private TextInputEditText mConfirmPwdEdit = null;
-    private AppCompatButton mSignUpBen = null;
-    private AppCompatTextView mLinkSignInTxt = null;
 
     Handler handler = new Handler();
     private ISignListener mISignListener = null;
@@ -55,13 +51,11 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
         mPhoneEdit = $(R.id.edit_sign_up_phone);
         mPwdEdit = $(R.id.edit_sign_up_pwd);
         mConfirmPwdEdit = $(R.id.edit_sign_up_confirm_pwd);
-        mSignUpBen = $(R.id.btn_sign_up);
-        mLinkSignInTxt = $(R.id.txt_link_sign_in);
     }
 
     private void initEvent() {
-        mSignUpBen.setOnClickListener(this);
-        mLinkSignInTxt.setOnClickListener(this);
+        $(R.id.btn_sign_up).setOnClickListener(this);
+        $(R.id.txt_link_sign_in).setOnClickListener(this);
     }
 
     @Override

@@ -1,16 +1,38 @@
 package com.example.latte_core.wechat.templates;
 
-import com.example.latte_core.activitys.ProxyActivity;
-import com.example.latte_core.detegates.LatteDelegate;
+import android.widget.Toast;
 
-public class WXPayEntryTemplate extends ProxyActivity {
+import com.example.latte_core.wechat.BaseWXPayEntryActivity;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+
+/**
+ * 微信支付回调Activity
+ */
+public class WXPayEntryTemplate extends BaseWXPayEntryActivity {
+
     @Override
-    public LatteDelegate setRootDelegate() {
-        return null;
+    protected void onPaySuccess() {
+        Toast.makeText(this, "支付成功", Toast.LENGTH_SHORT).show();
+        finish();
+        overridePendingTransition(0, 0);
     }
 
     @Override
-    public void post(Runnable runnable) {
+    protected void onPayFail() {
+        Toast.makeText(this, "支付失败", Toast.LENGTH_SHORT).show();
+        finish();
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    protected void onPayCancel() {
+        Toast.makeText(this, "支付取消", Toast.LENGTH_SHORT).show();
+        finish();
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onReq(BaseReq baseReq) {
 
     }
 }

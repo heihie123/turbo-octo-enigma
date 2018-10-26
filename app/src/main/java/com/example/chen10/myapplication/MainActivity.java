@@ -6,13 +6,13 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.example.latte_core.activitys.ProxyActivity;
+import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
+import com.example.latte_ec.launcher.LauncherDelegate;
 import com.example.latte_ec.sign.ISignListener;
 import com.example.latte_ec.sign.SignInDelegate;
-
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends ProxyActivity implements ISignListener, ILaucherListener {
 
@@ -23,16 +23,12 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
         if (actionBar != null) {
             actionBar.hide();
         }
+        Latte.getConfigurator().withActivity(this);
     }
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new SignInDelegate();
-    }
-
-    @Override
-    public FragmentAnimator onCreateFragmentAnimator() {
-        return null;
+        return new LauncherDelegate();
     }
 
     @Override

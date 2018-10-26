@@ -19,6 +19,8 @@ public class BaseApplication extends Application {
                 .withIcon(new FontEcModule())
                 .withApiHost("http://127.0.1/")
                 .withInterceptor(new DebugInterceptor("14717", R.raw.text))
+                .withWeChatAppId("wxfb12312312312312")
+                .withWeChatAppSecret("1231239b9b4657123123f52957123123")
                 .configure();
         initStetho();
         initDatabase();
