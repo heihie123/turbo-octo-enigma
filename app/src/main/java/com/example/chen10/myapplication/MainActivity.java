@@ -11,6 +11,7 @@ import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_ec.launcher.LauncherDelegate;
+import com.example.latte_ec.main.EcBottomDelegate;
 import com.example.latte_ec.sign.ISignListener;
 import com.example.latte_ec.sign.SignInDelegate;
 
@@ -58,10 +59,10 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
     public void onLaucherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-//                getSupportDelegate().startWithPop(new maina());
+                // start的同时把栈中上一个fragment清除
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                // start的同时把栈中上一个fragment清除
                 getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
         }
