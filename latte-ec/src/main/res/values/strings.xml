@@ -12,4 +12,7 @@
     <string name="sign_in_notice">已经注册了？请登录</string>
     <string name="sign_up_notice">还没有账户？现在注册吧</string>
     <string name="weixin_logo">{fa-weixin}</string>
+    <string name="edit_index_search">搜索</string>
+    <string name="icon_msg">{fa-bullhorn}</string>
+    <string name="icon_scan">{icon-scan}</string>
 </resources>

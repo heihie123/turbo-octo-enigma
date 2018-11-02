@@ -41,6 +41,7 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
     public void onSignIn(boolean isSuccess) {
         if (isSuccess) {
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            getSupportDelegate().startWithPop(new EcBottomDelegate());
         } else {
             Toast.makeText(this, "登录失败！请重新登录", Toast.LENGTH_SHORT).show();
         }
@@ -50,6 +51,7 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
     public void onSignUp(boolean isSuccess) {
         if (isSuccess) {
             Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+            getSupportDelegate().startWithPop(new SignInDelegate());
         } else {
             Toast.makeText(this, "该账号已存在", Toast.LENGTH_SHORT).show();
         }
