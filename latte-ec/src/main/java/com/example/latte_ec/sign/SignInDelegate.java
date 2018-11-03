@@ -2,13 +2,13 @@ package com.example.latte_ec.sign;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.wechat.LatteWeChat;
@@ -24,7 +24,6 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     private TextInputEditText mPwdEdit = null;
     private AppCompatButton mSignInBen = null;
 
-    Handler handler = new Handler();
     private ISignListener mISignListener = null;
 
     @Override
@@ -76,7 +75,7 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
     private void onClickSignIn() {
         LatteLoader.showLoading(mContext);
-        handler.postDelayed(new Runnable() {
+        Latte.getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (checkForm()) {

@@ -2,12 +2,12 @@ package com.example.latte_ec.sign;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
 
+import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_ec.R;
@@ -23,7 +23,6 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
     private TextInputEditText mPwdEdit = null;
     private TextInputEditText mConfirmPwdEdit = null;
 
-    Handler handler = new Handler();
     private ISignListener mISignListener = null;
 
     @Override
@@ -72,7 +71,7 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
 
     private void onClickSignUp() {
         LatteLoader.showLoading(mContext);
-        handler.postDelayed(new Runnable() {
+        Latte.getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (checkForm()) {

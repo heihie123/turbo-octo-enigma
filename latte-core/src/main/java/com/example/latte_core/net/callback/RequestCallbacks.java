@@ -1,7 +1,7 @@
 package com.example.latte_core.net.callback;
 
-import android.os.Handler;
 
+import com.example.latte_core.app.Latte;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.ui.loader.LoaderStyle;
 
@@ -18,7 +18,6 @@ public class RequestCallbacks implements Callback<String> {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final LoaderStyle LOADER_STYLE;
-    private static final Handler HANDLER = new Handler();
 
     public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error, LoaderStyle loaderStyle) {
         this.REQUEST = request;
@@ -55,9 +54,9 @@ public class RequestCallbacks implements Callback<String> {
         stopLoading();
     }
 
-    private void stopLoading(){
+    private void stopLoading() {
         if (LOADER_STYLE != null) {
-            HANDLER.postDelayed(new Runnable() {
+            Latte.getHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     LatteLoader.stopLoading();
