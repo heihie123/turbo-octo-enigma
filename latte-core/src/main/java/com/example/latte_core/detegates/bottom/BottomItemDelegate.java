@@ -6,8 +6,9 @@ import android.widget.Toast;
 
 import com.example.latte_core.R;
 import com.example.latte_core.detegates.BaseDelegate;
+import com.example.latte_core.detegates.LatteDelegate;
 
-public abstract class BottomItemDelegate extends BaseDelegate implements View.OnKeyListener {
+public abstract class BottomItemDelegate extends LatteDelegate implements View.OnKeyListener {
 
     private long mExitTime = 0;
     private static final int EXIT_TIME = 2000;

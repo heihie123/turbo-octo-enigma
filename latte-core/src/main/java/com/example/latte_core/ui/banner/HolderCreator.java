@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
+import com.example.latte_core.R;
 
 public class HolderCreator implements CBViewHolderCreator {
 
@@ -21,6 +22,6 @@ public class HolderCreator implements CBViewHolderCreator {
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.image_laucher_scroll;
     }
 }

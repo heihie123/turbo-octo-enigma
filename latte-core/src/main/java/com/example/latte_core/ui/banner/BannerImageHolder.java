@@ -6,11 +6,17 @@ import android.view.View;
 
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 public class BannerImageHolder extends Holder<String> {
 
     private Context mContext;
     private AppCompatImageView mAppCompatImageView = null;
+    private static final RequestOptions BANNER_OPTIONS = new RequestOptions()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .dontAnimate()
+            .centerCrop();
 
     public BannerImageHolder(Context context, View itemView) {
         super(itemView);
@@ -26,6 +32,7 @@ public class BannerImageHolder extends Holder<String> {
     public void updateUI(String data) {
         Glide.with(mContext)
                 .load(data)
+                .apply(BANNER_OPTIONS)
                 .into(mAppCompatImageView);
     }
 }

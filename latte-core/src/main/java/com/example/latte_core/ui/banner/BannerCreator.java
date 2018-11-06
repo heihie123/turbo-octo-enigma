@@ -8,12 +8,15 @@ import com.example.latte_core.R;
 
 import java.util.ArrayList;
 
-public class BannerCteator {
+/**
+ * 首页banner的Creator
+ */
+public class BannerCreator {
 
     public static void setDefault(Context context, ConvenientBanner<String> convenientBanner, ArrayList<String> banners,
                                   OnItemClickListener clickListener){
         convenientBanner.setPages(new HolderCreator(context), banners)
-//                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
+                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .setOnItemClickListener(clickListener)
                 .startTurning(3000)

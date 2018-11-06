@@ -7,10 +7,12 @@ import android.widget.ImageView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte_core.R;
-import com.example.latte_core.ui.banner.BannerCteator;
+import com.example.latte_core.ui.banner.BannerCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +22,14 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
 
     private boolean mIsInitBanner = false;
 
+    private static final RequestOptions GLIDE_OPTIONS = new RequestOptions()
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .dontAnimate();
+
     private MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
         init();
-    }
-
-    public static MultipleRecyclerAdapter create(List<MultipleItemEntity> data) {
-        return new MultipleRecyclerAdapter(data);
-    }
-
-    public static MultipleRecyclerAdapter create(BaseDataConverter converter) {
-        return new MultipleRecyclerAdapter(converter.convert());
     }
 
     private void init() {
@@ -44,6 +43,14 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
         openLoadAnimation();
         // 多次执行动画
         isFirstOnly(false);
+    }
+
+    public static MultipleRecyclerAdapter create(List<MultipleItemEntity> data) {
+        return new MultipleRecyclerAdapter(data);
+    }
+
+    public static MultipleRecyclerAdapter create(BaseDataConverter converter) {
+        return new MultipleRecyclerAdapter(converter.convert());
     }
 
     @Override
@@ -60,6 +67,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
                 Glide.with(mContext)
                         .load(imageUrl)
+                        .apply(GLIDE_OPTIONS)
                         .into((ImageView) holder.getView(R.id.img_single));
                 break;
             case ItemType.TEXT_IMAGE:
@@ -68,15 +76,16 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
                 Glide.with(mContext)
                         .load(imageUrl)
+                        .apply(GLIDE_OPTIONS)
                         .into((ImageView) holder.getView(R.id.img_multiple));
                 break;
             case ItemType.BANNER:
                 if (!mIsInitBanner) {
                     bannerImages = item.getField(MultipleFields.BANNERS);
                     final ConvenientBanner<String> convenientBanner = holder.getView(R.id.banner_single);
-                    BannerCteator.setDefault(mContext, convenientBanner, bannerImages, this);
+                    BannerCreator.setDefault(mContext, convenientBanner, bannerImages, this);
+                    mIsInitBanner = true;
                 }
-
                 break;
         }
     }
@@ -94,5 +103,11 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
     @Override
     public void onItemClick(int position) {
 
+    }
+
+    public void refresh(List<MultipleItemEntity> data){
+        getData().clear();
+        setNewData(data);
+        notifyDataSetChanged();
     }
 }
