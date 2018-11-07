@@ -23,6 +23,12 @@ public final class LatteLogger {
         }
     }
 
+    public static void v(String message) {
+        if (LEVEL <= VERBOSE) {
+            Logger.v(message);
+        }
+    }
+
     public static void d(String tag, Object message) {
         if (LEVEL <= DEBUG) {
             Logger.t(tag).d(message);
@@ -41,9 +47,33 @@ public final class LatteLogger {
         }
     }
 
+    public static void i(String message) {
+        if (LEVEL <= INFO) {
+            Logger.i(message);
+        }
+    }
+
     public static void w(String tag, String message) {
         if (LEVEL <= WARN) {
             Logger.t(tag).w(message);
+        }
+    }
+
+    public static void w(String message) {
+        if (LEVEL <= WARN) {
+            Logger.w(message);
+        }
+    }
+
+    public static void e(String tag, String message) {
+        if (LEVEL <= ERROR) {
+            Logger.t(tag).e(message);
+        }
+    }
+
+    public static void e(String message) {
+        if (LEVEL <= ERROR) {
+            Logger.e(message);
         }
     }
 
@@ -53,9 +83,9 @@ public final class LatteLogger {
         }
     }
 
-    public static void e(String tag, String message) {
-        if (LEVEL <= ERROR) {
-            Logger.t(tag).e(message);
+    public static void json(String message) {
+        if (LEVEL <= WARN) {
+            Logger.json(message);
         }
     }
 }

@@ -16,6 +16,7 @@ import com.example.latte_core.ui.recycler.MultipleRecyclerAdapter;
  */
 public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
+    // 尽量让成员变量在构造方法中赋值，如果不能，设为null
     private final SwipeRefreshLayout REFRESH_LAYOUT;
     private final RecyclerView INDEX_LIST;
     private final IndexPageBean BEAN;
