@@ -2,13 +2,6 @@ package com.example.latte_ec.main.index;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.latte_core.detegates.bottom.BottomItemDelegate;
@@ -16,6 +9,14 @@ import com.example.latte_core.ui.recycler.BaseDescription;
 import com.example.latte_core.ui.refresh.RefreshHandler;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.EcBottomDelegate;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * 首页底部按钮delegate
@@ -77,10 +78,10 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 4);
         mIndexList.setLayoutManager(gridLayoutManager);
         if (context != null) {
-            mIndexList.addItemDecoration(BaseDescription.create(ContextCompat.getColor(context, R.color._divide_color),3));
+            mIndexList.addItemDecoration(BaseDescription.create(ContextCompat.getColor(context, R.color._divide_color), 3));
         }
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
-//        mIndexList.addOnItemTouchListener(ecBottomDelegate);
+        mIndexList.addOnItemTouchListener(new IndexItemClickListener(ecBottomDelegate));
     }
 
     @Override

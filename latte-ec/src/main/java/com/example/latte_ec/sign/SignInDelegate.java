@@ -2,9 +2,9 @@ package com.example.latte_ec.sign;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.widget.AppCompatButton;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.widget.AppCompatButton;
 import android.view.View;
 import android.widget.Toast;
 

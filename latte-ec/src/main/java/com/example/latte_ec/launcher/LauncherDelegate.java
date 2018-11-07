@@ -2,8 +2,8 @@ package com.example.latte_ec.launcher;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.view.View;
 
 import com.example.latte_core.app.AccountManager;

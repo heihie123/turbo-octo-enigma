@@ -28,4 +28,5 @@
     <dimen name="_40sp">40sp</dimen>
 
     <dimen name="_actionbar">?attr/actionBarSize</dimen>
+    <dimen name="_toolbar_height">80dp</dimen>
 </resources>

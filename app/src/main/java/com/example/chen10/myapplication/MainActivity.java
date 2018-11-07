@@ -1,8 +1,6 @@
 package com.example.chen10.myapplication;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.example.latte_core.activitys.ProxyActivity;
@@ -15,6 +13,10 @@ import com.example.latte_ec.main.EcBottomDelegate;
 import com.example.latte_ec.sign.ISignListener;
 import com.example.latte_ec.sign.SignInDelegate;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import qiu.niorgai.StatusBarCompat;
+
 public class MainActivity extends ProxyActivity implements ISignListener, ILaucherListener {
 
     @Override
@@ -25,6 +27,8 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
+        // 状态栏透明
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

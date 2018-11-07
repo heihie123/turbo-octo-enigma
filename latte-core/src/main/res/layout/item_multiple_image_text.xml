@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_multiple"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
         android:layout_weight="4"
         android:gravity="center" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_multiple"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,4 +21,4 @@
         android:textColor="@android:color/black"
         android:textSize="@dimen/_18sp"
         android:textStyle="bold" />
-</android.support.v7.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
