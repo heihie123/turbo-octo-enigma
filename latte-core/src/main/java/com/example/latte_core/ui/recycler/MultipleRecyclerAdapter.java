@@ -17,6 +17,9 @@ import com.example.latte_core.ui.banner.BannerCreator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 首页list适配器
+ */
 public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, MultipleViewHolder>
         implements BaseQuickAdapter.SpanSizeLookup, OnItemClickListener {
 
@@ -54,6 +57,16 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
     }
 
     @Override
+    protected MultipleViewHolder createBaseViewHolder(View view) {
+        return MultipleViewHolder.create(view);
+    }
+
+    @Override
+    public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
+        return getData().get(position).getField(MultipleFields.SPAN_SIZE);
+    }
+
+    @Override
     protected void convert(MultipleViewHolder holder, MultipleItemEntity item) {
         final String text;
         final String imageUrl;
@@ -72,7 +85,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 break;
             case ItemType.TEXT_IMAGE:
                 text = item.getField(MultipleFields.TEXT);
-                holder.setText(R.id.text_single, text);
+                holder.setText(R.id.text_multiple, text);
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
                 Glide.with(mContext)
                         .load(imageUrl)
@@ -88,16 +101,6 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 }
                 break;
         }
-    }
-
-    @Override
-    protected MultipleViewHolder createBaseViewHolder(View view) {
-        return MultipleViewHolder.create(view);
-    }
-
-    @Override
-    public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
-        return getData().get(position).getField(MultipleFields.SPAN_SIZE);
     }
 
     @Override

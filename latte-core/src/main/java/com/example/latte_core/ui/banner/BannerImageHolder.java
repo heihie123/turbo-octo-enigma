@@ -12,7 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 public class BannerImageHolder extends Holder<String> {
 
     private Context mContext;
-    private AppCompatImageView mAppCompatImageView = null;
+    private AppCompatImageView mAppCompatImageView;
     private static final RequestOptions BANNER_OPTIONS = new RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate()

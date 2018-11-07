@@ -40,7 +40,7 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
         initView();
-        mRefreshHandler = RefreshHandler.create(mSwipeRefreshLayout, mIndexList, new IndexDataConverter());
+        mRefreshHandler = RefreshHandler.create(getActivityContext(), mSwipeRefreshLayout, mIndexList, new IndexDataConverter());
     }
 
     private void initView() {

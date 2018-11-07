@@ -7,7 +7,7 @@ import com.bigkoo.convenientbanner.holder.Holder;
 
 public class LaucherHold extends Holder<Integer> {
 
-    private AppCompatImageView mAppCompatImageView = null;
+    private AppCompatImageView mAppCompatImageView;
 
     public LaucherHold(View itemView) {
         super(itemView);
