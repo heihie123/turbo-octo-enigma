@@ -26,7 +26,7 @@ public class IndexPageBean {
         return this;
     }
 
-    public int getmPageSize() {
+    public int getPageSize() {
         return mPageSize;
     }
 

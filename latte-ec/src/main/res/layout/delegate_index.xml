@@ -22,9 +22,9 @@
         android:id="@+id/tb_index"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_toolbar_height"
-        app:layout_behavior="com.example.latte_ec.main.index.TransluncentBehavior"
-        android:background="@android:color/transparent"
-        app:contentInsetStart="@dimen/_0dp">
+        android:background="@android:color/holo_orange_light"
+        app:contentInsetStart="@dimen/_0dp"
+        app:layout_behavior="com.example.latte_ec.main.index.TranslucentBehavior">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

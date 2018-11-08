@@ -18,6 +18,7 @@ import com.example.latte_core.activitys.ProxyActivity;
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 // 使用abstract修饰防止该基类被new出来
@@ -173,7 +174,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
-        return DELEGATE.onCreateFragmentAnimator();
+        return new DefaultHorizontalAnimator();
     }
 
     @Override

@@ -47,7 +47,7 @@ public class IndexDataConverter extends BaseDataConverter {
                 type = ItemType.TEXT;
             } else if (jsonArray != null && jsonArray.size() > 0) {
                 type = ItemType.BANNER;
-                for(int j = 0; j < size; j++){
+                for (int j = 0; j < size; j++) {
                     bannerImages.add(jsonArray.getJSONObject(i).getString("imageUrl"));
                 }
             }
@@ -119,12 +119,67 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"4\"\n" +
             "            }\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"item\": {\n" +
+            "                \"banners\": [\n" +
+            "                    \n" +
+            "                ],\n" +
+            "                \"imageUrl\": \"http://bpic.ooopic.com/16/81/22/16812205-afe75bedf7e5c3eee4fa0e2c6eaf11f7-1.jpg\",\n" +
+            "                \"text\": \"特购特购\",\n" +
+            "                \"spanSize\": 4,\n" +
+            "                \"goodsId\": \"2\"\n" +
+            "            }\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"item\": {\n" +
+            "                \"banners\": [\n" +
+            "                    \n" +
+            "                ],\n" +
+            "                \"imageUrl\": \"\",\n" +
+            "                \"text\": \"降价秒杀\",\n" +
+            "                \"spanSize\": 4,\n" +
+            "                \"goodsId\": \"3\"\n" +
+            "            }\n" +
             "        }\n" +
             "    ]\n" +
             "}";
 
     private String json2 = "{\n" +
             "    \"data\": [\n" +
+            "        {\n" +
+            "            \"item\": {\n" +
+            "                \"banners\": [\n" +
+            "                    \n" +
+            "                ],\n" +
+            "                \"imageUrl\": \"http://bpic.wotucdn.com/15/80/92/15809238-b364f6f73498d3a562937247f8a9db60.jpg\",\n" +
+            "                \"text\": \"特购特购\",\n" +
+            "                \"spanSize\": 4,\n" +
+            "                \"goodsId\": \"2\"\n" +
+            "            }\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"item\": {\n" +
+            "                \"banners\": [\n" +
+            "                    \n" +
+            "                ],\n" +
+            "                \"imageUrl\": \"\",\n" +
+            "                \"text\": \"降价秒杀\",\n" +
+            "                \"spanSize\": 4,\n" +
+            "                \"goodsId\": \"3\"\n" +
+            "            }\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"item\": {\n" +
+            "                \"banners\": [\n" +
+            "                    \n" +
+            "                ],\n" +
+            "                \"imageUrl\": \"http://bpic.ooopic.com/15/86/63/15866358-068952855554356e62d92685ac4d1e4f-1.jpg\",\n" +
+            "                \"text\": \"\",\n" +
+            "                \"spanSize\": 4,\n" +
+            "                \"goodsId\": \"4\"\n" +
+            "            }\n" +
+            "        },\n" +
             "        {\n" +
             "            \"item\": {\n" +
             "                \"banners\": [\n" +
