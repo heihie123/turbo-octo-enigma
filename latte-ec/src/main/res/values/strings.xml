@@ -15,4 +15,5 @@
     <string name="edit_index_search">搜索</string>
     <string name="icon_msg">{fa-bullhorn}</string>
     <string name="icon_scan">{icon-scan}</string>
+    <string name="index_sort">分类</string>
 </resources>

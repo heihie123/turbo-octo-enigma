@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
- * 首页底部按钮delegate
+ * 首页delegate
  */
 public class IndexDelagate extends BottomItemDelegate implements View.OnClickListener, View.OnFocusChangeListener {
 

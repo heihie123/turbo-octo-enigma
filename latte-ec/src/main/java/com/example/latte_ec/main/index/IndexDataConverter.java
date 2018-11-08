@@ -13,7 +13,7 @@ import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import java.util.ArrayList;
 
 /**
- * item json数据转换
+ * 首页-json数据转换
  */
 public class IndexDataConverter extends BaseDataConverter {
 
@@ -66,7 +66,7 @@ public class IndexDataConverter extends BaseDataConverter {
         return ENTITYS;
     }
 
-    private String json1 = "{\n" +
+    private static final String json1 = "{\n" +
             "    \"data\": [\n" +
             "        {\n" +
             "            \"item\": {\n" +
@@ -145,7 +145,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "    ]\n" +
             "}";
 
-    private String json2 = "{\n" +
+    private static final String json2 = "{\n" +
             "    \"data\": [\n" +
             "        {\n" +
             "            \"item\": {\n" +

@@ -1,6 +1,5 @@
 package com.example.latte_core.ui.recycler;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,6 +16,8 @@ import com.example.latte_core.ui.banner.BannerCreator;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+
 /**
  * 首页list适配器
  */
@@ -30,7 +31,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate();
 
-    private MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
+    protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
         init();
     }
@@ -108,7 +109,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
 
     }
 
-    public void refresh(List<MultipleItemEntity> data){
+    public void refresh(List<MultipleItemEntity> data) {
         getData().clear();
         setNewData(data);
         notifyDataSetChanged();

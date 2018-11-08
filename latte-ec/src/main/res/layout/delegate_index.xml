@@ -5,24 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srl_index"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_index"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_index"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_toolbar_height"
-        android:background="@android:color/holo_orange_light"
+        android:background="@android:color/holo_orange_dark"
         app:contentInsetStart="@dimen/_0dp"
         app:layout_behavior="com.example.latte_ec.main.index.TranslucentBehavior">
 
@@ -70,5 +57,18 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.Toolbar>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_index"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_index"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

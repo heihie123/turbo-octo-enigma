@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 具体尺码 -->
     <dimen name="_0dp">0dp</dimen>
+    <dimen name="_3dp">3dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_6dp">6dp</dimen>
     <dimen name="_8dp">8dp</dimen>
@@ -11,6 +13,7 @@
     <dimen name="_24dp">24dp</dimen>
     <dimen name="_25dp">25dp</dimen>
     <dimen name="_40dp">40dp</dimen>
+    <dimen name="_48dp">48dp</dimen>
     <dimen name="_56dp">56dp</dimen>
     <dimen name="_60dp">60dp</dimen>
     <dimen name="_70dp">70dp</dimen>
@@ -21,12 +24,15 @@
     <dimen name="_150dp">150dp</dimen>
     <dimen name="_260dp">260dp</dimen>
 
+    <!-- 字体尺码 -->
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_18sp">18sp</dimen>
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_25sp">25sp</dimen>
     <dimen name="_40sp">40sp</dimen>
 
+    <!-- 功能尺码 -->
     <dimen name="_actionbar">?attr/actionBarSize</dimen>
+    <dimen name="_line_height">0.5dp</dimen>
     <dimen name="_toolbar_height">80dp</dimen>
 </resources>
