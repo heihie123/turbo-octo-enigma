@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/_15dp"
         android:background="@drawable/border_circle_timer"
         android:gravity="center"
-        android:textColor="@color/_fff"
+        android:textColor="@color/_FFF"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

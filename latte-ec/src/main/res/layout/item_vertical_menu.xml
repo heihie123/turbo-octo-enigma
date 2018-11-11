@@ -6,15 +6,23 @@
     android:orientation="vertical">
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_8dp"
+        android:id="@+id/v_line"
+        android:layout_width="@dimen/_3dp"
+        android:layout_height="match_parent"
         android:visibility="invisible" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_aa"
+        android:id="@+id/txt_vertiacl_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black" />
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_8dp"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="match_parent"

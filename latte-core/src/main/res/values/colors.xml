@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="_fff">#fff</color>
+    <color name="_FFF">#fff</color>
     <color name="_55000000">#55000000</color>
     <color name="_AAFFFFFF">#aaffffff</color>
     <color name="_64FFFFFF">#64ffffff</color>
     <color name="_04B00f">#04b00f</color>
+    <color name="_323232">#323232</color>
+    <color name="_F1F1F1">#f1f1f1</color>
 
     <color name="_divide_color">#eeeeee</color>
+    <color name="orange_dark">@android:color/holo_orange_dark</color>
 </resources>

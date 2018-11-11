@@ -4,7 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.latte_core.detegates.LatteDelegate;
+import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import com.example.latte_ec.R;
+import com.example.latte_ec.main.sort.SortDelegate;
+
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,12 +41,11 @@ public class VerticalListDelegate extends LatteDelegate {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-//        LatteLoader.showLoading(getActivityContext(), LoaderStyle.PacmanIndicator);
-//        Latte.getHandler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                LatteLoader.stopLoading();
-//            }
-//        }, 1000);
+        List<MultipleItemEntity> multipleItemEntityList = new VerticalListDataConverter()
+                .setJsonData("")
+                .convert();
+        final SortDelegate sortDelegate = getParentDelegate();
+        final VerticalListAdapter verticalListAdapter = new VerticalListAdapter(multipleItemEntityList, sortDelegate);
+        mRecyclerView.setAdapter(verticalListAdapter);
     }
 }

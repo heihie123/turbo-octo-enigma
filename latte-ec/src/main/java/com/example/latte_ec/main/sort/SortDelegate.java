@@ -17,7 +17,7 @@ public class SortDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_sort_content;
+        return R.layout.delegate_sort;
     }
 
     @Override
