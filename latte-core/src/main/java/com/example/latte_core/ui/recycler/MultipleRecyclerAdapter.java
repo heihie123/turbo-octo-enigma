@@ -5,13 +5,11 @@ import android.widget.ImageView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte_core.R;
 import com.example.latte_core.ui.banner.BannerCreator;
+import com.example.latte_core.util.image.GlideUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +23,6 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
         implements BaseQuickAdapter.SpanSizeLookup, OnItemClickListener {
 
     private boolean mIsInitBanner = false;
-
-    private static final RequestOptions GLIDE_OPTIONS = new RequestOptions()
-            .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .dontAnimate();
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
@@ -79,19 +72,13 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 break;
             case ItemType.IMAGE:
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext)
-                        .load(imageUrl)
-                        .apply(GLIDE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.img_single));
+                GlideUtils.loagNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_single));
                 break;
             case ItemType.TEXT_IMAGE:
                 text = item.getField(MultipleFields.TEXT);
                 holder.setText(R.id.text_multiple, text);
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext)
-                        .load(imageUrl)
-                        .apply(GLIDE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.img_multiple));
+                GlideUtils.loagNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_multiple));
                 break;
             case ItemType.BANNER:
                 if (!mIsInitBanner) {

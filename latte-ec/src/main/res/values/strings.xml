@@ -16,4 +16,5 @@
     <string name="icon_msg">{fa-bullhorn}</string>
     <string name="icon_scan">{icon-scan}</string>
     <string name="index_sort">分类</string>
+    <string name="item_more_btn"><![CDATA[more >]]></string>
 </resources>

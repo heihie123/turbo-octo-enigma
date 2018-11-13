@@ -1,18 +1,47 @@
 package com.example.latte_ec.main.sort.content;
 
-import com.example.latte_core.ui.recycler.BaseDataConverter;
-import com.example.latte_core.ui.recycler.MultipleItemEntity;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ContentDataConverter extends BaseDataConverter {
+/**
+ * 分类内容列表-json数据转换
+ */
+public class ContentDataConverter {
 
-    @Override
-    public ArrayList<MultipleItemEntity> convert() {
-        return null;
+    final List<ContentBean> convert(String json) {
+        final List<ContentBean> contentBeans = new ArrayList<>();
+        final JSONArray jsonArray = JSON.parseObject(json1).getJSONArray("data");
+        final int size = jsonArray.size();
+        for (int i = 0; i < size; i++) {
+            final JSONObject jsonObject = jsonArray.getJSONObject(i);
+            final int id = jsonObject.getInteger("id");
+            final String title = jsonObject.getString("section");
+            final ContentBean contentBean = new ContentBean(true, title);
+            contentBean.setId(id);
+            contentBean.setIsMore(true);
+            contentBeans.add(contentBean);
+            final JSONArray goodsArray = jsonObject.getJSONArray("goods");
+            final int goodSize = goodsArray.size();
+            for (int j = 0; j < goodSize; j++) {
+                JSONObject goodObject = goodsArray.getJSONObject(j);
+                int goodId = goodObject.getInteger("goods_id");
+                String goodImg = goodObject.getString("goods_img");
+                String goodName = goodObject.getString("goods_name");
+                final ContentItemEntity contentItemEntity = new ContentItemEntity();
+                contentItemEntity.setGoodsId(goodId);
+                contentItemEntity.setGoodsThumb(goodImg);
+                contentItemEntity.setGoodsName(goodName);
+                contentBeans.add(new ContentBean(contentItemEntity));
+            }
+        }
+        return contentBeans;
     }
 
-    private static final String json = "{\n" +
+    private static final String json1 = "{\n" +
             "    \"data\": [\n" +
             "        {\n" +
             "            \"id\": 1,\n" +

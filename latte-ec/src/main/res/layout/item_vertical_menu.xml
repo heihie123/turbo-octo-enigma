@@ -7,9 +7,11 @@
 
     <View
         android:id="@+id/v_line"
-        android:layout_width="@dimen/_3dp"
+        android:layout_width="@dimen/_5dp"
         android:layout_height="match_parent"
-        android:visibility="invisible" />
+        android:background="@color/orange_dark"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_vertiacl_item_name"
@@ -17,8 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8dp"
         android:layout_marginEnd="@dimen/_8dp"
-        android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

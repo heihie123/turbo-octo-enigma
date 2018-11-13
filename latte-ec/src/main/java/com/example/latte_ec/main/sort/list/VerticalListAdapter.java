@@ -14,7 +14,6 @@ import com.example.latte_ec.main.sort.content.ContentDelegate;
 
 import java.util.List;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import me.yokeyword.fragmentation.SupportHelper;
 
@@ -40,9 +39,20 @@ public class VerticalListAdapter extends MultipleRecyclerAdapter {
             case ItemType.VERTICAL_MENU_LIST:
                 final String text = item.getField(MultipleFields.TEXT);
                 final boolean isClicked = item.getField(MultipleFields.TAG);
-                final AppCompatTextView name = holder.getView(R.id.txt_vertiacl_item_name);
                 final View line = holder.getView(R.id.v_line);
                 final View itemView = holder.itemView;
+                if (isClicked) {
+                    line.setVisibility(View.VISIBLE);
+                    // 使用ContextCompat兼容老机型
+                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color.orange_dark))
+                            .setText(R.id.txt_vertiacl_item_name, text);
+                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._FFF));
+                } else {
+                    line.setVisibility(View.INVISIBLE);
+                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color._323232))
+                            .setText(R.id.txt_vertiacl_item_name, text);
+                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._F1F1F1));
+                }
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -58,19 +68,6 @@ public class VerticalListAdapter extends MultipleRecyclerAdapter {
                         }
                     }
                 });
-
-                if (!isClicked) {
-                    line.setVisibility(View.VISIBLE);
-                    // 使用ContextCompat兼容老机型
-                    name.setBackgroundColor(ContextCompat.getColor(mContext, R.color.orange_dark));
-                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._FFF));
-
-                } else {
-                    line.setVisibility(View.INVISIBLE);
-                    name.setTextColor(ContextCompat.getColor(mContext, R.color._323232));
-                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._F1F1F1));
-                }
-                holder.setText(R.id.txt_vertiacl_item_name, text);
                 break;
         }
     }

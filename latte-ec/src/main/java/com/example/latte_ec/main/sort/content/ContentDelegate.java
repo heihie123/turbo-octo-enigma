@@ -9,6 +9,8 @@ import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.ui.loader.LoaderStyle;
 import com.example.latte_ec.R;
 
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -21,7 +23,9 @@ public class ContentDelegate extends LatteDelegate {
     private RecyclerView mRecyclerView = null;
 
     private static final String ARG_CONTENT_ID = "CONTENT_ID";
+    // 通过该id去后台查询数据
     private int mContentId = -1;
+    private List<ContentBean> contentBeanList = null;
 
     public static ContentDelegate newInstance(int contentId) {
         final Bundle args = new Bundle();
@@ -63,6 +67,10 @@ public class ContentDelegate extends LatteDelegate {
         Latte.getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                contentBeanList = new ContentDataConverter().convert("");
+                ContentAdapter contentAdapter = new ContentAdapter(R.layout.item_content,
+                        R.layout.item_content_header, contentBeanList);
+                mRecyclerView.setAdapter(contentAdapter);
                 LatteLoader.stopLoading();
             }
         }, 1000);

@@ -35,7 +35,6 @@ public class VerticalListDelegate extends LatteDelegate {
         mRecyclerView = $(R.id.rv_vertical_menu_list);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivityContext());
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setItemAnimator(null);
     }
 
     @Override
