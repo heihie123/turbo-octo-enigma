@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:paddingStart="@dimen/_10dp"
-        android:textColor="@color/_323232"
+        android:textColor="@color/TEXT_COLOR_DARK"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:ignore="RtlSymmetry" />
 
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/item_more_btn"
-        android:textColor="@color/_323232"
+        android:textColor="@color/TEXT_COLOR_DARK"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="RtlHardcoded" />
 

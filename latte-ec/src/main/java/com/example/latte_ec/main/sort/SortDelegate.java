@@ -9,6 +9,7 @@ import com.example.latte_ec.main.sort.content.ContentDelegate;
 import com.example.latte_ec.main.sort.list.VerticalListDelegate;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 分类delegate
@@ -22,7 +23,11 @@ public class SortDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
+        initView();
+    }
 
+    private void initView() {
+        ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText(R.string.index_sort);
     }
 
     @Override

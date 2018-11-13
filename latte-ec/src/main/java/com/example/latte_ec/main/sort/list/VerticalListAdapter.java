@@ -44,14 +44,14 @@ public class VerticalListAdapter extends MultipleRecyclerAdapter {
                 if (isClicked) {
                     line.setVisibility(View.VISIBLE);
                     // 使用ContextCompat兼容老机型
-                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color.orange_dark))
+                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color.APPBG_DARK))
                             .setText(R.id.txt_vertiacl_item_name, text);
-                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._FFF));
+                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.APP_WHITE));
                 } else {
                     line.setVisibility(View.INVISIBLE);
-                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color._323232))
+                    holder.setTextColor(R.id.txt_vertiacl_item_name, ContextCompat.getColor(mContext, R.color.TEXT_COLOR_DARK))
                             .setText(R.id.txt_vertiacl_item_name, text);
-                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color._F1F1F1));
+                    itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.BACKGROUND_GRAY_DARK));
                 }
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

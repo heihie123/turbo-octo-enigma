@@ -2,8 +2,6 @@ package com.example.latte_ec.sign;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
 
@@ -11,6 +9,10 @@ import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_ec.R;
+import com.google.android.material.textfield.TextInputEditText;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 注册Fragment
@@ -50,6 +52,7 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
         mPhoneEdit = $(R.id.edit_sign_up_phone);
         mPwdEdit = $(R.id.edit_sign_up_pwd);
         mConfirmPwdEdit = $(R.id.edit_sign_up_confirm_pwd);
+        ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText(R.string.app_sign_up);
     }
 
     private void initEvent() {

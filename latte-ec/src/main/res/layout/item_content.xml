@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_1dp"
-    android:background="@color/_FFF"
+    android:background="@color/APP_WHITE"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -18,7 +18,7 @@
         android:id="@+id/text_content_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/_323232"
+        android:textColor="@color/TEXT_COLOR_DARK"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

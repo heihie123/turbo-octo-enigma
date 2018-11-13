@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/sort_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_toolbar_height"
-        android:background="@android:color/holo_orange_dark"
-        app:contentInsetStart="@dimen/_0dp">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingTop="6dp"
-            android:text="@string/index_sort"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_20sp" />
-
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/base_toolbar" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

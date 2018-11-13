@@ -78,7 +78,7 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 4);
         mIndexList.setLayoutManager(gridLayoutManager);
         if (context != null) {
-            mIndexList.addItemDecoration(BaseDescription.create(ContextCompat.getColor(context, R.color._divide_color), 3));
+            mIndexList.addItemDecoration(BaseDescription.create(ContextCompat.getColor(context, R.color.BACKGROUND_GRAY_LIGHT), 3));
         }
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mIndexList.addOnItemTouchListener(new IndexItemClickListener(ecBottomDelegate));
