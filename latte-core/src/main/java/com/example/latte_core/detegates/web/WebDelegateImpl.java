@@ -53,11 +53,16 @@ public class WebDelegateImpl extends WebDelegate {
     @Override
     public WebViewClient initWebViewClient() {
         WebViewClientImpl webViewClient = new WebViewClientImpl(this);
+        webViewClient.setIPageLoadListener(mIPageLoadListener);
         return webViewClient;
     }
 
     @Override
     public WebChromeClient initWebChromeClient() {
         return new WebChromeClientImpl();
+    }
+
+    public void setIPageLoadListener(IPageLoadListener listener) {
+        this.mIPageLoadListener = listener;
     }
 }

@@ -11,6 +11,7 @@ import com.orhanobut.logger.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import androidx.annotation.NonNull;
 import okhttp3.Interceptor;
 
 /**
@@ -95,6 +96,11 @@ public class Configurator {
 
     public final Configurator withActivity(Activity activity) {
         LATTE_CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        return this;
+    }
+
+    public Configurator withJavascriptInterface(@NonNull String name) {
+        LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
         return this;
     }
 

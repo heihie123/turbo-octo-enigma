@@ -17,4 +17,5 @@
     <string name="icon_scan">{icon-scan}</string>
     <string name="index_sort">分类</string>
     <string name="item_more_btn"><![CDATA[more >]]></string>
+    <string name="index_discover">发现</string>
 </resources>

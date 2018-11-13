@@ -21,6 +21,7 @@ public class BaseApplication extends Application {
                 .withInterceptor(new DebugInterceptor("14717", R.raw.text))
                 .withWeChatAppId("wxfb12312312312312")
                 .withWeChatAppSecret("1231239b9b4657123123f52957123123")
+                .withJavascriptInterface("latte")
                 .configure();
         initStetho();
         initDatabase();

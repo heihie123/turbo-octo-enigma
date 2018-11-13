@@ -12,6 +12,9 @@ import com.example.latte_core.detegates.web.WebDelegateImpl;
 
 import androidx.core.content.ContextCompat;
 
+/**
+ * 处理url
+ */
 public class Router {
 
     private Router() {
@@ -27,18 +30,14 @@ public class Router {
     }
 
     // false：webview处理，true：自己处理
-    public final boolean handleWebview(WebDelegate delegate, String url) {
+    public final boolean handleWebUrl(WebDelegate delegate, String url) {
         if (url.contains("tel:")) {
             callphone(delegate.getActivityContext(), url);
             return true;
         }
-        final LatteDelegate parentDelegate = delegate.getParentDelegate();
-        final WebDelegateImpl webDelegate = WebDelegateImpl.cteate(url);
-        if (parentDelegate == null) {
-            delegate.getSupportDelegate().start(webDelegate);
-        } else {
-            parentDelegate.getSupportDelegate().start(webDelegate);
-        }
+        final LatteDelegate topDelegate = delegate.getTopDelegate();
+        final WebDelegateImpl webDelegate = WebDelegateImpl.create(url);
+        topDelegate.getSupportDelegate().start(webDelegate);
         return true;
     }
 
@@ -54,7 +53,7 @@ public class Router {
     }
 
     private void loadPage(WebView webView, String url) {
-        if (URLUtil.isNetworkUrl(url) || !URLUtil.isAssetUrl(url)) {
+        if (URLUtil.isNetworkUrl(url) || URLUtil.isAssetUrl(url)) {
             loadWebPage(webView, url);
         } else {
             loadLocalPage(webView, url);
@@ -69,7 +68,7 @@ public class Router {
         if (webView != null) {
             webView.loadUrl(url);
         } else {
-            throw new NullPointerException("Webview IS NULL!");
+            throw new NullPointerException("WebView IS NULL!");
         }
     }
 }
