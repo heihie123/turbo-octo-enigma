@@ -15,7 +15,10 @@
     <string name="edit_index_search">搜索</string>
     <string name="icon_msg">{fa-bullhorn}</string>
     <string name="icon_scan">{icon-scan}</string>
+    <string name="index_main">首页</string>
     <string name="index_sort">分类</string>
     <string name="item_more_btn"><![CDATA[more >]]></string>
     <string name="index_discover">发现</string>
+    <string name="index_cart">购物车</string>
+    <string name="index_personal">个人</string>
 </resources>

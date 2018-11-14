@@ -19,7 +19,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.deleagte_discover;
+        return R.layout.delegate_discover;
     }
 
     @Override
