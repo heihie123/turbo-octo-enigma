@@ -147,6 +147,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         DELEGATE.post(runnable);
     }
 
+    // 可以再动画结束后处理复杂的业务逻辑，防止卡顿
     @Override
     public void onEnterAnimationEnd(@Nullable Bundle savedInstanceState) {
         DELEGATE.onEnterAnimationEnd(savedInstanceState);
@@ -172,6 +173,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return DELEGATE.isSupportVisible();
     }
 
+    // 出场消失动画
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
         return new DefaultHorizontalAnimator();
@@ -192,6 +194,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         DELEGATE.setFragmentResult(resultCode, bundle);
     }
 
+    // startForResul
     @Override
     public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
         DELEGATE.onFragmentResult(requestCode, resultCode, data);
@@ -207,6 +210,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         DELEGATE.putNewBundle(newBundle);
     }
 
+    // 返回键要实现的功能
     @Override
     public boolean onBackPressedSupport() {
         return DELEGATE.onBackPressedSupport();

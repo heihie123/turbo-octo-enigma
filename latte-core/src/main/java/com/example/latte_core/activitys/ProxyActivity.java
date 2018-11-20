@@ -75,11 +75,13 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         DELEGATE.onBackPressedSupport();
     }
 
+    // 返回键要实现的功能
     @Override
     public void onBackPressed() {
         DELEGATE.onBackPressed();
     }
 
+    // 出场消失动画
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
         return DELEGATE.onCreateFragmentAnimator();
