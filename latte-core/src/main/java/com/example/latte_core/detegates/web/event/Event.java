@@ -5,6 +5,9 @@ import android.webkit.WebView;
 
 import com.example.latte_core.detegates.web.WebDelegate;
 
+/**
+ * js事件的bean
+ */
 public abstract class Event implements IEvent {
 
     private Context mContext = null;

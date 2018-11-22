@@ -21,4 +21,6 @@
     <string name="index_discover">发现</string>
     <string name="index_cart">购物车</string>
     <string name="index_personal">个人</string>
+    <string name="text_cart_title">商品标题</string>
+    <string name="text_cart_desc">商品描述</string>
 </resources>
