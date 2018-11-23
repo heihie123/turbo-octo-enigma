@@ -27,8 +27,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
             final double price = entity.getField(ShopCartItemFields.PRICE);
             final int count = entity.getField(ShopCartItemFields.COUNT);
             final double total = price * count;
-            addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart
-            );
+            addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.latte_core.app;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.example.latte_core.detegates.web.event.Event;
+import com.example.latte_core.detegates.web.event.EventManager;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -101,6 +103,17 @@ public class Configurator {
 
     public Configurator withJavascriptInterface(@NonNull String name) {
         LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
+        return this;
+    }
+
+    public Configurator withWebHost(String host) {
+        LATTE_CONFIGS.put(ConfigKeys.WEB_HOST, host);
+        return this;
+    }
+
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
         return this;
     }
 

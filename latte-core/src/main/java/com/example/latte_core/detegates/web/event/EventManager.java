@@ -20,6 +20,11 @@ public class EventManager {
         private static final EventManager INSTANCE = new EventManager();
     }
 
+    public EventManager addEvent(@NonNull String name, @NonNull Event event) {
+        EVENTS.put(name, event);
+        return this;
+    }
+
     public Event createEvent(@NonNull String action) {
         final Event event = EVENTS.get(action);
         if (event == null) {

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100dp"
         android:gravity="center"
-        android:padding="@dimen/_10dp" />
+        app:layout_constraintBottom_toTopOf="@id/text_content_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_content_name"

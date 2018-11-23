@@ -57,7 +57,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
         final Context context = Latte.getApplication();
         final int startOffset = 0;
         final int endOffset = context.getResources().getDimensionPixelOffset(R.dimen._toolbar_height) + MORE;
-        mOffset += -dy;
+        mOffset += dy;
         // 顶部
         if (mOffset <= startOffset) {
             child.getBackground().setAlpha(0);
