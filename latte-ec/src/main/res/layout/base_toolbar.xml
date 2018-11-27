@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/_toolbar_height"
     android:background="@color/APPBG_DARK"
     app:contentInsetStart="@dimen/_0dp">
 
@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:paddingTop="@dimen/_20dp"
         android:textColor="@color/APP_WHITE"
         android:textSize="@dimen/_20sp" />
 

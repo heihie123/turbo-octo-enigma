@@ -32,7 +32,7 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Toolbar toolbar = view.findViewById(R.id.tb_index);
-        toolbar.getBackground().setAlpha(0);
+        toolbar.setAlpha(0);
     }
 
     @Override

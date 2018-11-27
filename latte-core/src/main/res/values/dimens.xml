@@ -36,5 +36,5 @@
     <!-- 功能尺码 -->
     <dimen name="_actionbar">?attr/actionBarSize</dimen>
     <dimen name="_line_height">0.5dp</dimen>
-    <dimen name="_toolbar_height">60dp</dimen>
+    <dimen name="_toolbar_height">80dp</dimen>
 </resources>
