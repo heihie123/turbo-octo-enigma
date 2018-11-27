@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 /**
  * 购物车delegate
  */
-public class CartDelegate extends BottomItemDelegate {
+public class ShopCartDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
@@ -21,6 +21,13 @@ public class CartDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
+        initView();
+
+    }
+
+    private void initView() {
+        ((AppCompatTextView) $(R.id.txt_toolbar_left)).setText(R.string.index_cart_empty);
         ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText(R.string.index_cart);
+        ((AppCompatTextView) $(R.id.txt_toolbar_right)).setText(R.string.index_cart_delete);
     }
 }

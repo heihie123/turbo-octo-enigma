@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_toolbar_height"
+    android:background="@color/APPBG_DARK"
+    app:contentInsetStart="@dimen/_0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_20dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_toolbar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_20dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/APP_WHITE"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_20dp"
+            android:layout_marginEnd="@dimen/_20dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/APP_WHITE"
+            android:textSize="@dimen/_20sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@id/txt_toolbar_right"
+            app:layout_constraintStart_toEndOf="@id/txt_toolbar_left" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_toolbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_20dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/APP_WHITE"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.appcompat.widget.Toolbar>

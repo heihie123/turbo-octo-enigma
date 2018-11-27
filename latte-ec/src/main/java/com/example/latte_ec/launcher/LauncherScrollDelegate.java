@@ -31,6 +31,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     private void initBanner() {
         BANNER_IDS.add(R.mipmap.launcher_11);
         BANNER_IDS.add(R.mipmap.launcher_22);
+        BANNER_IDS.add(R.mipmap.launcher_33);
         // 业务代码中能用图片代替代码的就用图片（简单/快速迭代）
         // 框架中能用代码代替图片的就用代码(占用空间少，代码可控)
         mConvenienBanner

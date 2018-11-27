@@ -9,7 +9,7 @@
         android:id="@+id/txt_lancher_timer"
         android:layout_width="@dimen/_70dp"
         android:layout_height="@dimen/_70dp"
-        android:layout_marginTop="@dimen/_15dp"
+        android:layout_marginTop="@dimen/_40dp"
         android:layout_marginEnd="@dimen/_15dp"
         android:background="@drawable/border_circle_timer"
         android:gravity="center"

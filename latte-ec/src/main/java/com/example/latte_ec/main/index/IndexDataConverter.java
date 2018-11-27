@@ -47,8 +47,9 @@ public class IndexDataConverter extends BaseDataConverter {
                 type = ItemType.TEXT;
             } else if (jsonArray != null && jsonArray.size() > 0) {
                 type = ItemType.BANNER;
-                for (int j = 0; j < size; j++) {
-                    bannerImages.add(jsonArray.getJSONObject(i).getString("imageUrl"));
+                int bannerSize = jsonArray.size();
+                for (int j = 0; j < bannerSize; j++) {
+                    bannerImages.add(jsonArray.getJSONObject(j).getString("imageUrl"));
                 }
             }
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 首页 -->
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tb_index"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_toolbar_height"
+    android:background="@color/APPBG_DARK"
+    android:paddingTop="@dimen/_20dp"
+    app:contentInsetStart="@dimen/_0dp"
+    app:layout_behavior="com.example.latte_ec.main.index.TranslucentBehavior">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/icon_index_scan"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingEnd="@dimen/_10dp"
+            android:text="@string/icon_scan"
+            android:textColor="@color/APP_WHITE"
+            android:textSize="@dimen/_25sp"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_search_view"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:background="@color/APP_WHITE"
+            android:gravity="center_vertical"
+            android:hint="@string/edit_index_search"
+            android:padding="@dimen/_20dp" />
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/icon_index_message"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10dp"
+            android:text="@string/icon_msg"
+            android:textColor="@color/APP_WHITE"
+            android:textSize="@dimen/_25sp"
+            tools:ignore="RtlSymmetry" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.Toolbar>
