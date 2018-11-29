@@ -1,13 +1,13 @@
 package com.example.chen10.myapplication;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.latte_core.activitys.ProxyActivity;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
+import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.launcher.LauncherDelegate;
 import com.example.latte_ec.main.EcBottomDelegate;
 import com.example.latte_ec.sign.ISignListener;
@@ -44,20 +44,20 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
     @Override
     public void onSignIn(boolean isSuccess) {
         if (isSuccess) {
-            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShotToast("登录成功");
             getSupportDelegate().startWithPop(new EcBottomDelegate());
         } else {
-            Toast.makeText(this, "登录失败！请重新登录", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShotToast("登录失败！请重新登录");
         }
     }
 
     @Override
     public void onSignUp(boolean isSuccess) {
         if (isSuccess) {
-            Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShotToast("注册成功");
             getSupportDelegate().startWithPop(new SignInDelegate());
         } else {
-            Toast.makeText(this, "该账号已存在", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShotToast("该账号已存在");
         }
     }
 

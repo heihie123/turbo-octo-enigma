@@ -36,4 +36,5 @@
     <string name="text_cart_desc">商品描述</string>
     <string name="text_shop_cart_total">合计:</string>
     <string name="text_shop_cart_all">全选</string>
+    <string name="text_gobuy">去购物</string>
 </resources>

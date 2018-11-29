@@ -1,14 +1,14 @@
 package com.example.chen10.myapplication;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.net.rx.RxRestClient;
 import com.example.latte_core.ui.loader.LoaderStyle;
+import com.example.latte_core.util.ToastUtils;
 
+import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -43,7 +43,7 @@ public class MainFragment extends LatteDelegate {
 
                     @Override
                     public void onNext(String s) {
-                        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                        ToastUtils.showShotToast(s);
                     }
 
                     @Override

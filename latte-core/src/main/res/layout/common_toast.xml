@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llayout_toast"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="30dp"
+    android:background="@drawable/bg_toast"
+    android:paddingLeft="@dimen/_15dp"
+    android:paddingTop="@dimen/_5dp"
+    android:paddingRight="@dimen/_15dp"
+    android:paddingBottom="@dimen/_5dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/APP_WHITE"
+        android:textSize="@dimen/_13sp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -21,10 +21,12 @@
 
     <!-- 无数据页 -->
     <ViewStub
+        android:id="@+id/stub_nodata"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
         android:layout_marginTop="@dimen/_toolbar_height"
         android:background="@color/APP_WHITE"
+        android:layout="@layout/stub_nodata_item"
         app:layout_constraintBottom_toTopOf="@id/txt_pay"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="8" />

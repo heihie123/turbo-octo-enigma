@@ -2,11 +2,10 @@ package com.example.latte_core.detegates.bottom;
 
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte_core.R;
-import com.example.latte_core.detegates.BaseDelegate;
 import com.example.latte_core.detegates.LatteDelegate;
+import com.example.latte_core.util.ToastUtils;
 
 public abstract class BottomItemDelegate extends LatteDelegate implements View.OnKeyListener {
 
@@ -28,7 +27,7 @@ public abstract class BottomItemDelegate extends LatteDelegate implements View.O
     public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
         if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
             if (System.currentTimeMillis() - mExitTime > mExitTime) {
-                Toast.makeText(getActivityContext(), "双击退出" + getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+                ToastUtils.showShotToast("双击退出" + getString(R.string.app_name));
                 mExitTime = System.currentTimeMillis();
             } else {
                 _mActivity.finish();

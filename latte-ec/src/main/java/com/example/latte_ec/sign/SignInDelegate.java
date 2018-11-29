@@ -3,11 +3,11 @@ package com.example.latte_ec.sign;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
+import com.example.latte_core.util.ToastUtils;
 import com.example.latte_core.wechat.LatteWeChat;
 import com.example.latte_core.wechat.callback.IWeChatSignInCallback;
 import com.example.latte_ec.R;
@@ -121,7 +121,7 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
                 .onSignSuccess(new IWeChatSignInCallback() {
                     @Override
                     public void onSignInSuccess(String userInfo) {
-                        Toast.makeText(getActivity(), userInfo, Toast.LENGTH_SHORT).show();
+                        ToastUtils.showShotToast(userInfo);
                     }
                 })
                 .signIn();
