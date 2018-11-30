@@ -2,11 +2,6 @@ package com.example.latte_core.detegates.bottom;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -19,6 +14,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import me.yokeyword.fragmentation.ISupportFragment;
 
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener {
@@ -27,7 +27,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     private LayoutInflater inflate = null;
 
     private final List<BottomTabBean> TAB_BEAN = new ArrayList<>();
-    private final List<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();
+    private final ArrayList<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
     private int mIndexDelegate = 0;
     private int mCurrentDelegate = 0;
@@ -39,6 +39,10 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     public abstract int setClickedColor();
 
     public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
+
+    public ArrayList<BottomItemDelegate> getItemDelegates() {
+        return ITEM_DELEGATE;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,7 +107,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         mCurrentDelegate = tabIndex;
     }
 
-    private void changeColor(int tabIndex) {
+    public void changeColor(int tabIndex) {
         resetColor();
         final ConstraintLayout item = (ConstraintLayout) mBottomBar.getChildAt(tabIndex);
         final IconTextView itemIcon = (IconTextView) item.getChildAt(0);

@@ -1,6 +1,5 @@
 package com.example.latte_ec.main.cart;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
@@ -13,7 +12,6 @@ import com.joanzapata.iconify.widget.IconTextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.ViewStubCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,9 +83,14 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
                     ToastUtils.showShotToast("您该购物了！");
                     final int indexTab = 0;
                     final EcBottomDelegate ecBottomDelegate = getParentDelegate();
-//                    final BottomItemDelegate indexDelegate = ecBottomDelegate.
+                    final BottomItemDelegate indexDelegate = ecBottomDelegate.getItemDelegates().get(indexTab);
+                    ecBottomDelegate.getSupportDelegate().showHideFragment(indexDelegate, ShopCartDelegate.this);
+                    ecBottomDelegate.changeColor(indexTab);
                 }
             });
+            mCartList.setVisibility(View.GONE);
+        } else{
+            mCartList.setVisibility(View.VISIBLE);
         }
     }
 
