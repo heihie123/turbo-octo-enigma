@@ -5,13 +5,18 @@ import android.view.View;
 import android.view.ViewStub;
 
 import com.example.latte_core.detegates.bottom.BottomItemDelegate;
+import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.EcBottomDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -89,7 +94,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
                 }
             });
             mCartList.setVisibility(View.GONE);
-        } else{
+        } else {
             mCartList.setVisibility(View.VISIBLE);
         }
     }
@@ -122,14 +127,50 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     }
 
     private void onClickClear() {
-
+        mShopCartAdapter.getData().clear();
+        mShopCartAdapter.notifyDataSetChanged();
+        checkItemCount();
     }
 
     private void onClickRemoveSelected() {
-
+        final List<MultipleItemEntity> data = mShopCartAdapter.getData();
+        final List<MultipleItemEntity> deleteEntities = new ArrayList<>();
+        for (MultipleItemEntity entity : data) {
+            final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
+            if (isSelected) {
+                deleteEntities.add(entity);
+            }
+        }
+        for (MultipleItemEntity entity : deleteEntities) {
+            int removePosition;
+            final int entityPosition = entity.getField(ShopCartItemFields.POSITION);
+            if(entityPosition > mCurrentCount -1){
+                removePosition = entityPosition - (mTotalCount - mCurrentCount);
+            } else{
+                removePosition = entityPosition;
+            }
+            if(removePosition <= mShopCartAdapter.getItemCount()){
+                mShopCartAdapter.remove(removePosition);
+                mCurrentCount = mShopCartAdapter.getItemCount();
+                mShopCartAdapter.notifyItemRangeChanged(removePosition, mShopCartAdapter.getItemCount());
+            }
+        }
+        checkItemCount();
     }
 
     private void onClickSelectAll() {
+        final int tag = (int) mSelectAllIcon.getTag();
+        if (tag == 0) {
+            mSelectAllIcon.setTextColor(ContextCompat.getColor(mContext, R.color.APPBG_DARK));
+            mSelectAllIcon.setTag(1);
+            mShopCartAdapter.setIsSelectAll(true);
 
+        } else {
+            mSelectAllIcon.setTextColor(ContextCompat.getColor(mContext, R.color.TEXT_CART_DARK_GRAY));
+            mSelectAllIcon.setTag(0);
+            mShopCartAdapter.setIsSelectAll(false);
+        }
+        // 更新recycyleview显示状态
+        mShopCartAdapter.notifyItemRangeChanged(0, mShopCartAdapter.getItemCount());
     }
 }
