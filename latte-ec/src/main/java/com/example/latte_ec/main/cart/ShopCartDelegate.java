@@ -1,10 +1,11 @@
 package com.example.latte_ec.main.cart;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewStub;
 
 import com.example.latte_core.detegates.bottom.BottomItemDelegate;
+import com.example.latte_core.net.rx.RxRestClient;
 import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.R;
@@ -13,12 +14,18 @@ import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.ViewStubCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 购物车delegate
@@ -27,7 +34,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
 
     private RecyclerView mCartList = null;
     private IconTextView mSelectAllIcon = null;
-    private ViewStub mNoDataItem = null;
+    private ViewStubCompat mNoDataItem = null;
     private AppCompatTextView mTotalPriceTxt = null;
 
     private int mCurrentCount = 0;
@@ -43,7 +50,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
         initView();
-
+        mSelectAllIcon.setTag(0);
     }
 
     private void initView() {
@@ -80,7 +87,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     private void checkItemCount() {
         final int count = mShopCartAdapter.getItemCount();
         if (count == 0) {
-            final View stubView = mNoDataItem.inflate();
+            @SuppressLint("RestrictedApi") final View stubView = mNoDataItem.inflate();
             final AppCompatTextView gobuyTxt = stubView.findViewById(R.id.txt_gobuy);
             gobuyTxt.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,7 +130,42 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     }
 
     private void onClickCreateOrder() {
+        final String url = "";
+        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+        orderParams.put("userid", 1);
+        orderParams.put("amount", mTotalPrice);
+        orderParams.put("comment", "支付");
+        orderParams.put("type", 1);
+        orderParams.put("ordertype", 1);
 
+        RxRestClient.builder()
+                .url(url)
+                .params(orderParams)
+                .build()
+                .post()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ToastUtils.showShotToast("onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        ToastUtils.showShotToast("onNext"+s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        ToastUtils.showShotToast("onError"+e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ToastUtils.showShotToast("onComplete");
+                    }
+                });
     }
 
     private void onClickClear() {
@@ -144,12 +186,12 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
         for (MultipleItemEntity entity : deleteEntities) {
             int removePosition;
             final int entityPosition = entity.getField(ShopCartItemFields.POSITION);
-            if(entityPosition > mCurrentCount -1){
+            if (entityPosition > mCurrentCount - 1) {
                 removePosition = entityPosition - (mTotalCount - mCurrentCount);
-            } else{
+            } else {
                 removePosition = entityPosition;
             }
-            if(removePosition <= mShopCartAdapter.getItemCount()){
+            if (removePosition <= mShopCartAdapter.getItemCount()) {
                 mShopCartAdapter.remove(removePosition);
                 mCurrentCount = mShopCartAdapter.getItemCount();
                 mShopCartAdapter.notifyItemRangeChanged(removePosition, mShopCartAdapter.getItemCount());
@@ -164,7 +206,6 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
             mSelectAllIcon.setTextColor(ContextCompat.getColor(mContext, R.color.APPBG_DARK));
             mSelectAllIcon.setTag(1);
             mShopCartAdapter.setIsSelectAll(true);
-
         } else {
             mSelectAllIcon.setTextColor(ContextCompat.getColor(mContext, R.color.TEXT_CART_DARK_GRAY));
             mSelectAllIcon.setTag(0);

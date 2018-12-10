@@ -20,62 +20,51 @@ public class ToastUtils {
     private static Toast mToast;
 
     @SuppressLint("InflateParams")
-    private static View initToast(int gravity, int xOffset, int yOffset, int duration) {
+    private static void initToast(int gravity, int xOffset, int yOffset, int duration, String msg) {
         Context context = Latte.getApplication();
         View toastView = LayoutInflater.from(context).inflate(R.layout.common_toast, null);
+        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
+        msgTxt.setText(msg);
         if (mToast == null) {
             mToast = new Toast(context);
-            mToast.setView(toastView);
         }
         mToast.setGravity(gravity, xOffset, yOffset);
         mToast.setDuration(duration);
-        return toastView;
+        mToast.setView(toastView);
     }
 
     public static void showShotToast(String msg) {
-        View toastView = initToast(Gravity.CENTER, 0, 0, Toast.LENGTH_SHORT);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.CENTER, 0, 0, Toast.LENGTH_SHORT, msg);
         mToast.show();
     }
 
     public static void showLongToast(String msg) {
-        View toastView = initToast(Gravity.CENTER, 0, 0, Toast.LENGTH_LONG);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.CENTER, 0, 0, Toast.LENGTH_LONG, msg);
         mToast.show();
     }
 
     public static void showTopShotToast(String msg) {
-        View toastView = initToast(Gravity.TOP, 0, 0, Toast.LENGTH_SHORT);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.TOP, 0, 0, Toast.LENGTH_SHORT, msg);
         mToast.show();
     }
 
     public static void showTopLongToast(String msg) {
-        View toastView = initToast(Gravity.TOP, 0, 0, Toast.LENGTH_LONG);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.TOP, 0, 0, Toast.LENGTH_LONG, msg);
         mToast.show();
     }
 
     private static void showBottomShotToast(String msg) {
-        View toastView = initToast(Gravity.BOTTOM, 0, 0, Toast.LENGTH_SHORT);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.BOTTOM, 0, 0, Toast.LENGTH_SHORT, msg);
         mToast.show();
     }
 
     public static void showBottomLongToast(String msg) {
-        View toastView = initToast(Gravity.BOTTOM, 0, 0, Toast.LENGTH_LONG);
-        AppCompatTextView msgTxt = toastView.findViewById(R.id.txt_msg);
-        msgTxt.setText(msg);
+        initToast(Gravity.BOTTOM, 0, 0, Toast.LENGTH_LONG, msg);
         mToast.show();
     }
 
-    public static void cancleToast(){
-        if(mToast != null){
+    public static void cancleToast() {
+        if (mToast != null) {
             mToast.cancel();
         }
     }

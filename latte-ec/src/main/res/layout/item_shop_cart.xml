@@ -6,7 +6,7 @@
     android:background="@color/APP_WHITE">
 
     <com.joanzapata.iconify.widget.IconTextView
-        android:id="@+id/img_item_shop_cart"
+        android:id="@+id/icon_item_shop_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icon_item_shop_cart"
+        android:id="@+id/img_item_shop_cart"
         android:layout_width="@dimen/_80dp"
         android:layout_height="@dimen/_80dp"
         android:layout_marginStart="@dimen/_10dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_item_shop_cart"
+        app:layout_constraintStart_toEndOf="@+id/icon_item_shop_cart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 商品详情指示线 -->

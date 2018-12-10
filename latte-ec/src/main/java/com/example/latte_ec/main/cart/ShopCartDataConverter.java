@@ -14,7 +14,7 @@ public class ShopCartDataConverter extends BaseDataConverter {
     @Override
     public ArrayList<MultipleItemEntity> convert() {
         ArrayList<MultipleItemEntity> dataList = new ArrayList<>();
-        JSONArray jsonArray = JSON.parseArray(json);
+        JSONArray jsonArray = JSON.parseObject(json).getJSONArray("data");
         int size = jsonArray.size();
         for (int i = 0; i < size; i++) {
             final JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -22,10 +22,10 @@ public class ShopCartDataConverter extends BaseDataConverter {
                     .setField(MultipleFields.ITEM_TYPE, ShopCartItemType.SHOP_CART_ITEM)
                     .setField(MultipleFields.ID, jsonObject.getInteger("id"))
                     .setField(MultipleFields.IMAGE_URL, jsonObject.getString("thumb"))
-                    .setField(ShopCartItemFields.TITLE, jsonObject.getInteger("title"))
-                    .setField(ShopCartItemFields.DESC, jsonObject.getInteger("desc"))
+                    .setField(ShopCartItemFields.TITLE, jsonObject.getString("title"))
+                    .setField(ShopCartItemFields.DESC, jsonObject.getString("desc"))
                     .setField(ShopCartItemFields.COUNT, jsonObject.getInteger("count"))
-                    .setField(ShopCartItemFields.PRICE, jsonObject.getInteger("price"))
+                    .setField(ShopCartItemFields.PRICE, jsonObject.getDouble("price"))
                     .setField(ShopCartItemFields.IS_SELECTED, false)
                     .setField(ShopCartItemFields.POSITION, i)
                     .build();
@@ -42,7 +42,7 @@ public class ShopCartDataConverter extends BaseDataConverter {
             "            \"title\": \"iphonx\",\n" +
             "            \"desc\": \"iphonex的描述\",\n" +
             "            \"count\": \"2\",\n" +
-            "            \"price\": \"￥6999\"\n" +
+            "            \"price\": \"6999\"\n" +
             "        },\n" +
             "        {\n" +
             "            \"id\": \"1\",\n" +
@@ -50,7 +50,7 @@ public class ShopCartDataConverter extends BaseDataConverter {
             "            \"title\": \"switch\",\n" +
             "            \"desc\": \"switch皮卡丘版本\",\n" +
             "            \"count\": \"3\",\n" +
-            "            \"price\": \"￥2999\"\n" +
+            "            \"price\": \"2999\"\n" +
             "        },\n" +
             "        {\n" +
             "            \"id\": \"2\",\n" +
@@ -58,7 +58,7 @@ public class ShopCartDataConverter extends BaseDataConverter {
             "            \"title\": \"马里奥\",\n" +
             "            \"desc\": \"马里奥赛车等等等\",\n" +
             "            \"count\": \"1\",\n" +
-            "            \"price\": \"￥399\"\n" +
+            "            \"price\": \"399\"\n" +
             "        },\n" +
             "        {\n" +
             "            \"id\": \"3\",\n" +
@@ -66,7 +66,7 @@ public class ShopCartDataConverter extends BaseDataConverter {
             "            \"title\": \"华为mate20\",\n" +
             "            \"desc\": \"华为mate20限时促销的活动\",\n" +
             "            \"count\": \"4\",\n" +
-            "            \"price\": \"￥4999\"\n" +
+            "            \"price\": \"4999\"\n" +
             "        }\n" +
             "    ]\n" +
             "}";

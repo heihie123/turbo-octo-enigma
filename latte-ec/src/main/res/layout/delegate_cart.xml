@@ -20,7 +20,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <!-- 无数据页 -->
-    <ViewStub
+    <androidx.appcompat.widget.ViewStubCompat
         android:id="@+id/stub_nodata"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
