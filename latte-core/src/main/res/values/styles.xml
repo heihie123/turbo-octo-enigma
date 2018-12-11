@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="dialog" parent="Theme.AppCompat.Dialog">
-        <!-- 去除边框 -->
+        <item name="android:windowFrame">@null</item>           <!-- 去除边框 -->
+        <item name="android:windowIsFloating">true</item>       <!-- 悬浮 -->
+        <item name="android:windowIsTranslucent">false</item>   <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>          <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item><!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>   <!-- 允许模糊 -->
+        <item name="android:windowFullscreen">true</item>       <!-- 全屏 -->
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
-        <!-- 悬浮 -->
         <item name="android:windowIsFloating">true</item>
-        <!-- 半透明 -->
         <item name="android:windowIsTranslucent">false</item>
-        <!-- 无标题 -->
         <item name="android:windowNoTitle">true</item>
-        <!-- 背景透明 -->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <!-- 允许模糊 -->
-        <item name="android:backgroundDimEnabled">true</item>
-        <!-- 全屏 -->
-        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
     </style>
 </resources>

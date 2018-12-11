@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/APP_WHITE">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_comment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#454545"
+        android:gravity="center"
+        android:text="假装这是输入框"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_25dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
