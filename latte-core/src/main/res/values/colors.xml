@@ -9,6 +9,7 @@
     <color name="APPBG_DARK">@android:color/holo_orange_dark</color>
     <color name="APPBG_LIGHT">@android:color/holo_orange_light</color>
     <color name="WECHAT_GREEN">#04b00f</color>
+    <color name="ALIBB_BLUE">@android:color/holo_blue_bright</color>
     <color name="BACKGROUND_GRAY_LIGHT">#eeeeee</color>
     <color name="BACKGROUND_GRAY_DARK">#f1f1f1</color>
     <color name="TEXT_COLOR_DARK">#323232</color>

@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.latte_core.detegates.bottom.BottomItemDelegate;
-import com.example.latte_core.net.rx.RxRestClient;
 import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.EcBottomDelegate;
+import com.example.latte_ec.pay.FastPay;
+import com.example.latte_ec.pay.IAlPayResultListener;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.WeakHashMap;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -22,15 +22,11 @@ import androidx.appcompat.widget.ViewStubCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * 购物车delegate
  */
-public class ShopCartDelegate extends BottomItemDelegate implements ICartItemListener, View.OnClickListener {
+public class ShopCartDelegate extends BottomItemDelegate implements ICartItemListener, View.OnClickListener, IAlPayResultListener {
 
     private RecyclerView mCartList = null;
     private IconTextView mSelectAllIcon = null;
@@ -130,42 +126,44 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     }
 
     private void onClickCreateOrder() {
-        final String url = "";
-        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
-        orderParams.put("userid", 1);
-        orderParams.put("amount", mTotalPrice);
-        orderParams.put("comment", "支付");
-        orderParams.put("type", 1);
-        orderParams.put("ordertype", 1);
-
-        RxRestClient.builder()
-                .url(url)
-                .params(orderParams)
-                .build()
-                .post()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        ToastUtils.showShotToast("onSubscribe");
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        ToastUtils.showShotToast("onNext"+s);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        ToastUtils.showShotToast("onError"+e.toString());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ToastUtils.showShotToast("onComplete");
-                    }
-                });
+//        final String url = "";
+//        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+//        orderParams.put("userid", 1);
+//        orderParams.put("amount", mTotalPrice);
+//        orderParams.put("comment", "支付");
+//        orderParams.put("type", 1);
+//        orderParams.put("ordertype", 1);
+//
+//        RxRestClient.builder()
+//                .url(url)
+//                .params(orderParams)
+//                .build()
+//                .post()
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        ToastUtils.showShotToast("onSubscribe");
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        ToastUtils.showShotToast("onNext"+s);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        ToastUtils.showShotToast("onError"+e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        ToastUtils.showShotToast("onComplete");
+//                    }
+//                });
+        FastPay fastPay = FastPay.create(this).setOrderId(1).setPayResultListener(this);
+        fastPay.beginPayDialog();
     }
 
     private void onClickClear() {
@@ -213,5 +211,30 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
         }
         // 更新recycyleview显示状态
         mShopCartAdapter.notifyItemRangeChanged(0, mShopCartAdapter.getItemCount());
+    }
+
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
     }
 }

@@ -21,4 +21,9 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
     </style>
+
+    <style name="anim_panel_up_from_bottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
 </resources>
