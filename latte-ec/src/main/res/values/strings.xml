@@ -24,6 +24,10 @@
     <string name="icon_select_all">{fa-check-circle}</string>
     <string name="icon_ali_pay">{icon-ali-pay}</string>
     <string name="icon_weixin_pay">{fa-weixin}</string>
+    <string name="icon_evaluate">{fa-clone}</string>
+    <string name="icon_after_market">{fa-comments-o}</string>
+    <string name="icon_receive">{fa-truck}</string>
+    <string name="icon_pay">{fa-credit-card}</string>
 
     <string name="index_main">首页</string>
     <string name="index_sort">分类</string>
@@ -39,5 +43,8 @@
     <string name="text_shop_cart_total">合计:</string>
     <string name="text_shop_cart_all">全选</string>
     <string name="text_gobuy">去购物</string>
+    <string name="user_name">十二月青</string>
+    <string name="text_my_account">我的订单</string>
+    <string name="text_all_account">全部订单</string>
 
 </resources>

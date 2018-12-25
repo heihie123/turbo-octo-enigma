@@ -33,4 +33,5 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api project(':latte-core')
     implementation files('libs/alipaySdk-20180601.jar')
+    api 'de.hdodenhof:circleimageview:2.2.0'
 }

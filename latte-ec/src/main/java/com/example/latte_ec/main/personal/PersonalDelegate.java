@@ -14,6 +14,10 @@ import androidx.appcompat.widget.AppCompatTextView;
  */
 public class PersonalDelegate extends BottomItemDelegate {
 
+    public static final String ORDER_TYPE = "ORDER_TYPE";
+    private Bundle mArgs = null;
+
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_personal;
@@ -21,6 +25,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
-        ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText(R.string.index_personal);
+
     }
 }

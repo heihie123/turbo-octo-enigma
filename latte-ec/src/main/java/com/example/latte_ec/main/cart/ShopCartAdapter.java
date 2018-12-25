@@ -80,10 +80,10 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 minusIcon.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        int currentCount = entity.getField(ShopCartItemFields.COUNT);
+                        int currentCount = Integer.parseInt(countTxt.getText().toString());
                         if (Integer.parseInt(countTxt.getText().toString()) > 1) {
                             currentCount--;
-                            countTxt.setText(String.valueOf(countTxt));
+                            countTxt.setText(String.valueOf(currentCount));
                             if (mICartItemListener != null) {
                                 mTotalPrice = mTotalPrice - price;
                                 final double itemTotal = currentCount * price;
@@ -95,9 +95,9 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 iconPlusIcon.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        int currentCount = entity.getField(ShopCartItemFields.COUNT);
+                        int currentCount = Integer.parseInt(countTxt.getText().toString());
                         currentCount++;
-                        countTxt.setText(String.valueOf(countTxt));
+                        countTxt.setText(String.valueOf(currentCount));
                         if (mICartItemListener != null) {
                             mTotalPrice = mTotalPrice + price;
                             final double itemTotal = currentCount * price;

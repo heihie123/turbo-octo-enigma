@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="icon_item_shop_cart" />
+        app:constraint_referenced_ids="img_item_shop_cart" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_item_shop_cart_title"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@id/txt_item_shop_cart_desc"
         app:layout_constraintEnd_toEndOf="@id/txt_item_shop_cart_desc"
         app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="@id/barrier_goods"
+        app:layout_constraintStart_toEndOf="@id/img_item_shop_cart"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -93,8 +93,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_item_shop_cart_count"
-        android:layout_width="@dimen/_20dp"
-        android:layout_height="@dimen/_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/_20dp"
         android:gravity="center"
         android:textSize="@dimen/_18sp"
         app:layout_constraintBottom_toBottomOf="@+id/icon_item_minus"
