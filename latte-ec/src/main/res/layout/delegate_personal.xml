@@ -43,7 +43,8 @@
         <!-- 订单模块 -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50dp">
+            android:layout_height="@dimen/_50dp"
+            android:background="@color/APP_WHITE">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_my_account"
@@ -79,7 +80,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_80dp">
+            android:layout_height="@dimen/_80dp"
+            android:layout_marginTop="@dimen/_5dp"
+            android:background="@color/APP_WHITE">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llayout_pay"
@@ -197,7 +200,7 @@
             android:id="@+id/rv_personal_setting"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_20dp">
+            android:layout_marginTop="@dimen/_10dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

@@ -46,5 +46,6 @@
     <string name="user_name">十二月青</string>
     <string name="text_my_account">我的订单</string>
     <string name="text_all_account">全部订单</string>
+    <string name="text_arrow_value">未设置</string>
 
 </resources>
