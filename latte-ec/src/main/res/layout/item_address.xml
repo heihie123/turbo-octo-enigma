@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_140dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/APP_WHITE"
+    app:cardCornerRadius="@dimen/_6dp"
+    app:cardElevation="@dimen/_3dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20dp"
+            android:text="@string/input_name"
+            android:textColor="@color/TEXT_COLOR_DARK"
+            app:layout_constraintBottom_toTopOf="@id/v_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_address_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/input_mobile_num"
+            android:textColor="@color/TEXT_COLOR_DARK"
+            app:layout_constraintEnd_toStartOf="@+id/txt_address_delete"
+            app:layout_constraintStart_toEndOf="@+id/txt_address_name"
+            app:layout_constraintTop_toTopOf="@id/txt_address_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_address_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20dp"
+            android:text="@string/index_cart_delete"
+            android:textColor="@color/TEXT_COLOR_DARK"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_address_name" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_44dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:background="@color/APP_BACKGROUND"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_address_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/TEXT_COLOR_DARK"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
