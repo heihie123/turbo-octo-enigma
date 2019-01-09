@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * 地址delegate
+ */
 public class AddressDelegate extends LatteDelegate {
 
     private RecyclerView mRecyclerView = null;

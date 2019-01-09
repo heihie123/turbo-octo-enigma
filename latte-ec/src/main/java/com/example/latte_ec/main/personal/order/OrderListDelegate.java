@@ -7,6 +7,9 @@ import com.example.latte_core.detegates.LatteDelegate;
 
 import androidx.annotation.Nullable;
 
+/**
+ * 订单列表delegate
+ */
 public class OrderListDelegate extends LatteDelegate {
     @Override
     public Object setLayout() {

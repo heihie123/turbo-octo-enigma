@@ -25,6 +25,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * 个人信息item点击事件
+ */
 public class UserProfileClickListener extends SimpleClickListener {
 
     private final UserProfileDelegate DELEGATE;

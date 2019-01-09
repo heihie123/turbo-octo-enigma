@@ -6,6 +6,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.latte_core.detegates.LatteDelegate;
 
+/**
+ * 订单列表item点击事件
+ */
 public class OrderListClickListener extends SimpleClickListener {
 
     private LatteDelegate DELEGATE;

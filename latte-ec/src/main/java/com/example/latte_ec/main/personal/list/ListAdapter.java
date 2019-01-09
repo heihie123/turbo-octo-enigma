@@ -10,6 +10,9 @@ import java.util.List;
 import androidx.appcompat.widget.SwitchCompat;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ *
+ */
 public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHolder> {
 
     public ListAdapter(List<ListBean> data) {
