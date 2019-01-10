@@ -8,6 +8,7 @@
     <color name="APP_WHITE">#ffffff</color>
     <color name="APP_BLACK">#000000</color>
     <color name="APP_BACKGROUND">#11111111</color>
+    <color name="APP_TRANSPARENT">@android:color/transparent</color>
     <color name="APPBG_DARK">@android:color/holo_orange_dark</color>
     <color name="APPBG_LIGHT">@android:color/holo_orange_light</color>
     <color name="WECHAT_GREEN">#04b00f</color>
