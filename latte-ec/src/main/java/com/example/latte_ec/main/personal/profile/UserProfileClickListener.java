@@ -48,7 +48,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                     @Override
                     public void executeCallback(Uri args) {
                         final ImageView avatar = view.findViewById(R.id.img_arrow_avatar);
-                        GlideUtils.loagNormalImg(DELEGATE.getContext(), args, avatar);
+                        GlideUtils.loadNormalImg(DELEGATE.getContext(), args, avatar);
 
                     }
                 });

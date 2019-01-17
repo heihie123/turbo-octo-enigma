@@ -26,7 +26,7 @@ public class OrderListDataConverter extends BaseDataConverter {
                     .setItemType(OrderListItemType.ITEM_ORDER_LIST)
                     .setField(MultipleFields.ID, i)
                     .setField(MultipleFields.IMAGE_URL, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546952324924&di=a79d3a43832aa9a0dad5d8b62a9b8528&imgtype=0&src=http%3A%2F%2Fimg1.mydrivers.com%2Fimg%2F20160908%2Fc34985e26e5e45d89cd9a2a421c373fe.jpg")
-                    .setField(MultipleFields.TEXT, "iphone n0" + i)
+                    .setField(MultipleFields.TITLE, "iphone n0" + i)
                     .setField(OrderItemFields.PRICE, 10)
                     .setField(OrderItemFields.TIME, "2019-1-1 17:00")
                     .build();

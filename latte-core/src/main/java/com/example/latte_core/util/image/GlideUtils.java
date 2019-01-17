@@ -2,7 +2,6 @@ package com.example.latte_core.util.image;
 
 import android.content.Context;
 import android.net.Uri;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -19,17 +18,21 @@ public class GlideUtils {
             .dontAnimate()
             .centerCrop();
 
-    public static void loagNormalImg(Context context, String url, ImageView imageView) {
+    private static final RequestOptions NO_CACHE_OPPTIONS = new RequestOptions()
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.NONE);
+
+    public static void loadNormalImg(Context context, String url, ImageView imageView) {
         Glide.with(context)
                 .load(url)
                 .apply(BANNER_OPTIONS)
                 .into(imageView);
     }
 
-    public static void loagNormalImg(Context context, Uri uri, ImageView imageView) {
+    public static void loadNoCacheImg(Context context, Uri uri, ImageView imageView) {
         Glide.with(context)
                 .load(uri)
-                .apply(BANNER_OPTIONS)
+                .apply(NO_CACHE_OPPTIONS)
                 .into(imageView);
     }
 }

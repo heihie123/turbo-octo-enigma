@@ -25,6 +25,6 @@ public class BannerImageHolder extends Holder<String> {
 
     @Override
     public void updateUI(String data) {
-        GlideUtils.loagNormalImg(mContext, data, mAppCompatImageView);
+        GlideUtils.loadNormalImg(mContext, data, mAppCompatImageView);
     }
 }

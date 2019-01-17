@@ -32,6 +32,6 @@ public class ContentAdapter extends BaseSectionQuickAdapter<ContentBean, BaseVie
         final String goodsName = item.t.getGoodsName();
         final ContentItemEntity itemEntity = item.t;
         helper.setText(R.id.text_content_name, goodsName);
-        GlideUtils.loagNormalImg(mContext, goodsThumb, (AppCompatImageView) helper.getView(R.id.img_content));
+        GlideUtils.loadNormalImg(mContext, goodsThumb, (AppCompatImageView) helper.getView(R.id.img_content));
     }
 }

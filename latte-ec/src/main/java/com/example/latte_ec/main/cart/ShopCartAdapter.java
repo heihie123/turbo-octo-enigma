@@ -62,7 +62,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 descTxt.setText(desc);
                 priceTxt.setText(String.valueOf(price));
                 countTxt.setText(String.valueOf(count));
-                GlideUtils.loagNormalImg(mContext, thumb, thumbImg);
+                GlideUtils.loadNormalImg(mContext, thumb, thumbImg);
                 // 在左侧勾勾渲染之前改变全选与否状态
                 entity.setField(ShopCartItemFields.IS_SELECTED, mIsSelectAll);
                 final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);

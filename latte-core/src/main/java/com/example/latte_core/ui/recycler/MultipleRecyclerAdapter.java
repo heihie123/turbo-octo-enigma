@@ -72,13 +72,13 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
                 break;
             case ItemType.IMAGE:
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
-                GlideUtils.loagNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_single));
+                GlideUtils.loadNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_single));
                 break;
             case ItemType.TEXT_IMAGE:
                 text = item.getField(MultipleFields.TEXT);
                 holder.setText(R.id.text_multiple, text);
                 imageUrl = item.getField(MultipleFields.IMAGE_URL);
-                GlideUtils.loagNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_multiple));
+                GlideUtils.loadNormalImg(mContext, imageUrl, (ImageView) holder.getView(R.id.img_multiple));
                 break;
             case ItemType.BANNER:
                 if (!mIsInitBanner) {

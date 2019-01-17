@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80dp"
+    android:layout_marginBottom="@dimen/_2dp"
+    android:background="@color/APP_WHITE">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_order"
+        android:layout_width="@dimen/_70dp"
+        android:layout_height="@dimen/_70dp"
+        android:layout_marginStart="@dimen/_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txt_order_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_order_title"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_8dp"
+        android:gravity="center_vertical"
+        android:text="Title"
+        app:layout_constraintBottom_toTopOf="@id/txt_order_price"
+        app:layout_constraintEnd_toStartOf="@+id/icon_order_right"
+        app:layout_constraintStart_toEndOf="@id/img_order"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_order_price"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:gravity="center_vertical"
+        android:text="price"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txt_order_time"
+        app:layout_constraintStart_toStartOf="@id/txt_order_title"
+        app:layout_constraintTop_toBottomOf="@id/txt_order_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_order_time"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:gravity="center_vertical"
+        android:text="time"
+        app:layout_constraintBottom_toBottomOf="@id/txt_order_price"
+        app:layout_constraintEnd_toEndOf="@id/txt_order_title"
+        app:layout_constraintStart_toEndOf="@id/txt_order_price"
+        app:layout_constraintTop_toTopOf="@id/txt_order_price" />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_order_right"
+        android:layout_width="@dimen/_70dp"
+        android:layout_height="@dimen/_70dp"
+        android:layout_marginEnd="@dimen/_8dp"
+        android:gravity="center"
+        android:text="{fa-chevron-right}"
+        android:textSize="@dimen/_18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txt_order_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

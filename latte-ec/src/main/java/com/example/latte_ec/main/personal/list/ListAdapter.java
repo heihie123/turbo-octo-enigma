@@ -31,7 +31,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                 break;
             case ListItemType.ITEM_AVATAR:
                 final CircleImageView circleImageView = helper.getView(R.id.img_arrow_avatar);
-                GlideUtils.loagNormalImg(mContext, item.getImageUrl(), circleImageView);
+                GlideUtils.loadNormalImg(mContext, item.getImageUrl(), circleImageView);
                 break;
             case ListItemType.ITEM_SWITCH:
                 helper.setText(R.id.txt_arrow_switch_text, item.getText());

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/_10dp"
+    android:layout_marginEnd="@dimen/_10dp"
+    android:background="@color/APP_TRANSPARENT"
+    android:paddingBottom="@dimen/_10dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dialog_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/TEXT_COLOR_DARK" />
+
+    <View
+        android:id="@+id/v_dialog_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/APP_TRANSPARENT"
+        app:layout_constraintTop_toBottomOf="@id/btn_dialog_delete" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dialog_undetermined"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:gravity="center"
+        android:text="待定"
+        android:textColor="@color/TEXT_COLOR_DARK"
+        app:layout_constraintTop_toBottomOf="@id/v_dialog_delete" />
+
+    <View
+        android:id="@+id/v_dialog_undetermined"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10dp"
+        android:background="@color/APP_TRANSPARENT"
+        app:layout_constraintTop_toBottomOf="@id/btn_dialog_undetermined" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dialog_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/TEXT_COLOR_DARK"
+        app:layout_constraintTop_toBottomOf="@id/v_dialog_undetermined" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
