@@ -1,5 +1,6 @@
 package com.example.latte_ec.main.personal.order;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -32,9 +33,9 @@ public class OrderCommentDelegate extends LatteDelegate {
         mAutoPhotoLayout.setDelegate(this);
         ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText("晒单评价");
         ((AppCompatTextView) $(R.id.txt_toolbar_title)).setText("提交");
-        CallbackManager.getInstance().addCallbacks(CallbackType.ON_CROP, new IGlobalCallback() {
+        CallbackManager.getInstance().addCallbacks(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
             @Override
-            public void executeCallback(Object args) {
+            public void executeCallback(@Nullable Uri args) {
                 mAutoPhotoLayout.onCropTarget(args);
             }
         });

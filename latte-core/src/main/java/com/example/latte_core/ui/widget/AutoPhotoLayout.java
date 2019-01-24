@@ -205,11 +205,11 @@ public class AutoPhotoLayout extends LinearLayoutCompat {
         mAddIcon.setText(ICON_TEXT);
         mAddIcon.setGravity(Gravity.CENTER);
         mAddIcon.setTextSize(mIconSize);
-//        mAddIcon.setBackgroundResource(R.drawable.border_text);
+        mAddIcon.setBackgroundResource(R.drawable.border_text);
         mAddIcon.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mDelegate.startCameraWithCheck();
+                mDelegate.startCameraWithCheck();
             }
         });
         this.addView(mAddIcon);
