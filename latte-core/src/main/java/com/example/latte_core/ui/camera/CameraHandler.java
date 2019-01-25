@@ -20,6 +20,9 @@ import java.io.File;
 
 import androidx.appcompat.app.AlertDialog;
 
+/**
+ * 获取图片的handler
+ */
 public class CameraHandler implements View.OnClickListener {
 
     private final AlertDialog DIALOG;

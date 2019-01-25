@@ -3,6 +3,7 @@ package com.example.latte_core.app;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.blankj.utilcode.util.Utils;
 import com.example.latte_core.detegates.web.event.Event;
 import com.example.latte_core.detegates.web.event.EventManager;
 import com.joanzapata.iconify.IconFontDescriptor;
@@ -46,6 +47,7 @@ public class Configurator {
 
     public final void configure() {
         // 通用的东西在初始化的时候就应该初始化好
+        Utils.init(Latte.getApplication());
         initIcons();
         Logger.addLogAdapter(new AndroidLogAdapter());
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);

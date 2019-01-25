@@ -2,7 +2,10 @@ package com.example.latte_core.ui.camera;
 
 import android.net.Uri;
 
-public class CameraImageBean {
+/**
+ * 图片Uri的bean
+ */
+public final class CameraImageBean {
 
     private Uri mPath = null;
 
