@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.net.rx.RxRestClient;
 import com.example.latte_core.ui.picker.DataDialogPicker;
+import com.example.latte_core.util.ToastUtils;
 import com.example.latte_core.util.callback.CallbackManager;
 import com.example.latte_core.util.callback.CallbackType;
 import com.example.latte_core.util.callback.IGlobalCallback;
@@ -46,12 +47,14 @@ public class UserProfileClickListener extends SimpleClickListener {
             case 1:
                 CallbackManager.getInstance().addCallbacks(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
                     @Override
-                    public void executeCallback(Uri args) {
+                    public void executeCallback(Uri uri) {
                         final ImageView avatar = view.findViewById(R.id.img_arrow_avatar);
-                        GlideUtils.loadNormalImg(DELEGATE.getContext(), args, avatar);
-
+                        GlideUtils.loadNoCacheImg(DELEGATE.getContext(), uri, avatar);
+                        requestUpload(uri);
+                        requestUpdata("");
                     }
                 });
+                DELEGATE.startCameraWithCheck();
                 break;
             case 2:
                 final LatteDelegate nameDelegate = bean.getDelegate();
@@ -83,11 +86,11 @@ public class UserProfileClickListener extends SimpleClickListener {
         }
     }
 
-    private void requestUpload(Uri args) {
+    private void requestUpload(Uri uri) {
         RxRestClient.builder()
                 .url(UploadConfig.UPLOAD_IMG)
                 .loader(DELEGATE.getContext())
-                .file(args.getPath())
+                .file(uri.getPath())
                 .build()
                 .post()
                 .observeOn(Schedulers.io())
@@ -135,7 +138,7 @@ public class UserProfileClickListener extends SimpleClickListener {
 
                     @Override
                     public void onNext(String s) {
-
+                        ToastUtils.showShotToast("上传成功");
                     }
 
                     @Override

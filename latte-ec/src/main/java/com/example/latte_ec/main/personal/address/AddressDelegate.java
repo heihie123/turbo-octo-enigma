@@ -27,6 +27,7 @@ public class AddressDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
+        mRecyclerView = $(R.id.rv_address);
         final LinearLayoutManager manager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(manager);
         final List<MultipleItemEntity> data = new AddressDataConverter().setJsonData("").convert();

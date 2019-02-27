@@ -10,7 +10,7 @@
         android:id="@+id/txt_about_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_actionbar"
+        android:layout_marginTop="@dimen/_toolbar_height"
         android:padding="@dimen/_20dp"
         android:textColor="@color/TEXT_CART_DARK_GRAY"
         android:textSize="@dimen/_18sp"

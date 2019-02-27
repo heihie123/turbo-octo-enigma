@@ -4,10 +4,15 @@ import android.app.Application;
 
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.net.Interceptor.DebugInterceptor;
+import com.example.latte_core.util.callback.CallbackManager;
+import com.example.latte_core.util.callback.CallbackType;
+import com.example.latte_core.util.callback.IGlobalCallback;
 import com.example.latte_ec.database.DatabaseManager;
 import com.example.latte_ec.icon.FontEcModule;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class BaseApplication extends Application {
 
@@ -28,6 +33,7 @@ public class BaseApplication extends Application {
                 .configure();
         initStetho();
         initDatabase();
+        initJPush();
     }
 
     private void initStetho() {
@@ -41,5 +47,28 @@ public class BaseApplication extends Application {
 
     private void initDatabase() {
         DatabaseManager.getInstance().init(this);
+    }
+
+    private void initJPush() {
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        CallbackManager.getInstance()
+                .addCallbacks(CallbackType.TAG_OPEN_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(Object args) {
+                        if (JPushInterface.isPushStopped(Latte.getApplication())) {
+                            JPushInterface.setDebugMode(true);
+                            JPushInterface.init(Latte.getApplication());
+                        }
+                    }
+                })
+                .addCallbacks(CallbackType.TAG_STOP_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(Object args) {
+                        if (!JPushInterface.isPushStopped(Latte.getApplication())) {
+                            JPushInterface.stopPush(Latte.getApplication());
+                        }
+                    }
+                });
     }
 }

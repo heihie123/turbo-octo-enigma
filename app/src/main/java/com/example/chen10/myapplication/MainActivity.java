@@ -10,11 +10,15 @@ import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.launcher.LauncherDelegate;
 import com.example.latte_ec.main.EcBottomDelegate;
+import com.example.latte_ec.main.index.IndexDelagate;
+import com.example.latte_ec.main.personal.address.AddressDelegate;
+import com.example.latte_ec.main.personal.profile.UserProfileDelegate;
 import com.example.latte_ec.sign.ISignListener;
 import com.example.latte_ec.sign.SignInDelegate;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
 public class MainActivity extends ProxyActivity implements ISignListener, ILaucherListener {
@@ -32,8 +36,20 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
+    @Override
     public LatteDelegate setRootDelegate() {
-        return new LauncherDelegate();
+        return new AddressDelegate();
     }
 
     @Override

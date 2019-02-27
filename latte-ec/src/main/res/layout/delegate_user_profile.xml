@@ -7,7 +7,7 @@
     <include layout="@layout/base_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_settings"
+        android:id="@+id/list_user_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_toolbar_height">

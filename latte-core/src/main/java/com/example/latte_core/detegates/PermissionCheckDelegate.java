@@ -1,6 +1,7 @@
 package com.example.latte_core.detegates;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,10 +23,12 @@ import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * 安卓6.0以后动态权限配置的Fragment基类
  */
+@RuntimePermissions
 public abstract class PermissionCheckDelegate extends BaseDelegate {
 
     @NeedsPermission(Manifest.permission.CAMERA)
@@ -34,7 +37,7 @@ public abstract class PermissionCheckDelegate extends BaseDelegate {
     }
 
     public void startCameraWithCheck() {
-//        PermissionCheckerDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
+        PermissionCheckDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
     }
 
     @NeedsPermission(Manifest.permission.CAMERA)
@@ -43,7 +46,7 @@ public abstract class PermissionCheckDelegate extends BaseDelegate {
     }
 
     public void startScanWithCheck(BaseDelegate delegate) {
-//        PermissionCheckerDelegatePermissionsDispatcher.startScanWithPermissionCheck(this, delegate);
+        PermissionCheckDelegatePermissionsDispatcher.startScanWithPermissionCheck(this, delegate);
     }
 
     @OnPermissionDenied(Manifest.permission.CAMERA)
@@ -82,10 +85,11 @@ public abstract class PermissionCheckDelegate extends BaseDelegate {
         }
     }
 
+    @SuppressLint("NeedOnRequestPermissionsResult")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        PermissionCheckerDelegatePermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        PermissionCheckDelegatePermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @Override

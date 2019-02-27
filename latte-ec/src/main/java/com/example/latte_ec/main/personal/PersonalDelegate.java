@@ -77,15 +77,19 @@ public class PersonalDelegate extends BottomItemDelegate implements View.OnClick
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.txt_all_account) {
-            onClickAllOrder();
-        }
         if (id == R.id.img_user_avatar) {
             onClickAvatar();
+        }
+        if (id == R.id.txt_all_account) {
+            onClickAllOrder();
         }
     }
 
     private void onClickAvatar() {
+        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
+    }
+
+    private void onClickAllOrder() {
         mArgs.putString(ORDER_TYPE, "all");
         startOrderListByType();
     }
@@ -94,9 +98,5 @@ public class PersonalDelegate extends BottomItemDelegate implements View.OnClick
         final OrderListDelegate orderListDelegate = new OrderListDelegate();
         orderListDelegate.setArguments(mArgs);
         getParentDelegate().getSupportDelegate().start(orderListDelegate);
-    }
-
-    private void onClickAllOrder() {
-        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
     }
 }
