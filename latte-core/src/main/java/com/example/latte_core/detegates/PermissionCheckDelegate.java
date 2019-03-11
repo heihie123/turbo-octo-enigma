@@ -95,7 +95,7 @@ public abstract class PermissionCheckDelegate extends BaseDelegate {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case RequestCodes.TAKE_PHOTO:
                     final Uri resultUri = CameraImageBean.getInstance().getPath();
@@ -125,6 +125,8 @@ public abstract class PermissionCheckDelegate extends BaseDelegate {
                     ToastUtils.showShotToast("裁剪出错");
                     break;
             }
+        } else {
+            ToastUtils.showShotToast("获取回调失败");
         }
     }
 }

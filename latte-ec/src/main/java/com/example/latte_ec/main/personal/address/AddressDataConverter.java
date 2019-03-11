@@ -12,7 +12,7 @@ public class AddressDataConverter extends BaseDataConverter {
 
     @Override
     public ArrayList<MultipleItemEntity> convert() {
-        final JSONArray array = JSON.parseObject(getJsonData()).getJSONArray("data");
+//        final JSONArray array = JSON.parseObject(getJsonData()).getJSONArray("data");
         final int size = 5;
         for (int i = 0; i < size; i++) {
             final MultipleItemEntity entity = MultipleItemEntity.builder()

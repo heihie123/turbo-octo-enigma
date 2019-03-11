@@ -8,11 +8,7 @@ import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_core.util.ToastUtils;
-import com.example.latte_ec.launcher.LauncherDelegate;
 import com.example.latte_ec.main.EcBottomDelegate;
-import com.example.latte_ec.main.index.IndexDelagate;
-import com.example.latte_ec.main.personal.address.AddressDelegate;
-import com.example.latte_ec.main.personal.profile.UserProfileDelegate;
 import com.example.latte_ec.sign.ISignListener;
 import com.example.latte_ec.sign.SignInDelegate;
 
@@ -49,7 +45,7 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new AddressDelegate();
+        return new EcBottomDelegate();
     }
 
     @Override

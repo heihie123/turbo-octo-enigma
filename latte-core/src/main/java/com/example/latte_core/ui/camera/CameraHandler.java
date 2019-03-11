@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.FileUtils;
 import com.example.latte_core.R;
 import com.example.latte_core.detegates.PermissionCheckDelegate;
 import com.example.latte_core.util.file.FileUtil;
@@ -71,9 +72,15 @@ public class CameraHandler implements View.OnClickListener {
         final Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         final File tempFile = new File(FileUtil.CAMERA_PHOTO_DIR, currentPhotoname);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            // 选取几张图片
+            // 选取几张图片,内容提供商
             final ContentValues contentValues = new ContentValues(1);
             contentValues.put(MediaStore.Images.Media.DATA, tempFile.getPath());
+            final Uri uri = DELEGATE.getContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            // 正式文件
+            final File realFile = FileUtils.getFileByPath(FileUtil.getRealFilePath(DELEGATE.getContext(), uri));
+            final Uri realUri = Uri.fromFile(realFile);
+            CameraImageBean.getInstance().setmPath(realUri);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         } else {
             final Uri fileUri = Uri.fromFile(tempFile);
             CameraImageBean.getInstance().setmPath(fileUri);

@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.net.rx.RxRestClient;
+import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.ui.picker.DataDialogPicker;
 import com.example.latte_core.util.ToastUtils;
 import com.example.latte_core.util.callback.CallbackManager;
@@ -111,12 +112,12 @@ public class UserProfileClickListener extends SimpleClickListener {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LatteLoader.stopLoading();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        LatteLoader.stopLoading();
                     }
                 });
     }
@@ -143,12 +144,12 @@ public class UserProfileClickListener extends SimpleClickListener {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LatteLoader.stopLoading();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        LatteLoader.stopLoading();
                     }
                 });
     }
