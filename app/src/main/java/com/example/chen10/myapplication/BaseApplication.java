@@ -2,6 +2,7 @@ package com.example.chen10.myapplication;
 
 import android.app.Application;
 
+import com.example.chen10.myapplication.event.ShareEvent;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.net.Interceptor.DebugInterceptor;
 import com.example.latte_core.util.callback.CallbackManager;
@@ -27,8 +28,7 @@ public class BaseApplication extends Application {
                 .withWeChatAppId("wxfb12312312312312")
                 .withWeChatAppSecret("1231239b9b4657123123f52957123123")
                 .withJavascriptInterface("latte")
-//                .withWebEvent("test", new W())
-//                .withWebEvent("share", new ShareEvent())
+                .withWebEvent("share", new ShareEvent())
                 .withWebHost("https://www.baidu.com/")
                 .configure();
         initStetho();

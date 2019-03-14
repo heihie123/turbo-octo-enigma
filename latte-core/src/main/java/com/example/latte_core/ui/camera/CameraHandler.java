@@ -79,11 +79,11 @@ public class CameraHandler implements View.OnClickListener {
             // 正式文件
             final File realFile = FileUtils.getFileByPath(FileUtil.getRealFilePath(DELEGATE.getContext(), uri));
             final Uri realUri = Uri.fromFile(realFile);
-            CameraImageBean.getInstance().setmPath(realUri);
+            CameraImageBean.getInstance().setPath(realUri);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         } else {
             final Uri fileUri = Uri.fromFile(tempFile);
-            CameraImageBean.getInstance().setmPath(fileUri);
+            CameraImageBean.getInstance().setPath(fileUri);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
         }
         DELEGATE.startActivityForResult(intent, RequestCodes.TAKE_PHOTO);

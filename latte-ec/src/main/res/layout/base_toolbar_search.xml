@@ -37,6 +37,7 @@
             android:background="@color/APP_WHITE"
             android:gravity="center_vertical"
             android:hint="@string/edit_index_search"
+            android:textColor="@color/TEXT_COLOR_DARK"
             android:padding="@dimen/_20dp" />
 
         <com.joanzapata.iconify.widget.IconTextView

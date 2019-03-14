@@ -22,7 +22,9 @@ public class ScannerDelegate extends LatteDelegate implements ZBarScannerView.Re
         if (mScanView == null) {
             mScanView = new ScanView(mContext);
         }
+        // 自动对焦
         mScanView.setAutoFocus(true);
+        // 回调监听
         mScanView.setResultHandler(this);
     }
 

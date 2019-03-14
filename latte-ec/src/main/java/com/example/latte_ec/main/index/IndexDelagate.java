@@ -7,6 +7,10 @@ import android.view.View;
 import com.example.latte_core.detegates.bottom.BottomItemDelegate;
 import com.example.latte_core.ui.recycler.BaseDescription;
 import com.example.latte_core.ui.refresh.RefreshHandler;
+import com.example.latte_core.util.ToastUtils;
+import com.example.latte_core.util.callback.CallbackManager;
+import com.example.latte_core.util.callback.CallbackType;
+import com.example.latte_core.util.callback.IGlobalCallback;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.EcBottomDelegate;
 
@@ -44,6 +48,12 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
     public void onBindView(@Nullable Bundle savedInstanceState, @Nullable View rootView) {
         initView();
         mRefreshHandler = RefreshHandler.create(getActivityContext(), mSwipeRefreshLayout, mIndexList, new IndexDataConverter());
+        CallbackManager.getInstance().addCallbacks(CallbackType.ON_SCAN, new IGlobalCallback() {
+            @Override
+            public void executeCallback(Object args) {
+                ToastUtils.showShotToast("得到的二维码是" + args);
+            }
+        });
     }
 
     private void initView() {
@@ -88,7 +98,7 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.icon_index_scan) {
-
+            startScanWithCheck(getParentDelegate());
         }
         if (id == R.id.icon_index_message) {
 

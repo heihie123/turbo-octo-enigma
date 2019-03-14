@@ -18,6 +18,6 @@ public class ScanView extends ZBarScannerView {
 
     @Override
     protected IViewFinder createViewFinderView(Context context) {
-        return super.createViewFinderView(context);
+        return new LatteViewFinderView(context);
     }
 }

@@ -19,7 +19,7 @@ public final class CameraImageBean {
         return mPath;
     }
 
-    public void setmPath(Uri path) {
+    public void setPath(Uri path) {
         this.mPath = path;
     }
 }

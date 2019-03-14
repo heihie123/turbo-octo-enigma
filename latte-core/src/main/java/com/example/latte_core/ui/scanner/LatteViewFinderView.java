@@ -14,8 +14,11 @@ public class LatteViewFinderView extends ViewFinderView {
 
     public LatteViewFinderView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        // 正方形
         mSquareViewFinder = true;
+        // 边框颜色
         mBorderPaint.setColor(Color.YELLOW);
-        mLaserPaint.setColor(Color.YELLOW);
+        // 主题色
+        mLaserPaint.setColor(Color.GREEN);
     }
 }

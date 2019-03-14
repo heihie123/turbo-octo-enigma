@@ -57,11 +57,12 @@ public class DataDialogPicker {
 
                     }
                 })
-                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
-                });
+                })
+                .show();
     }
 }

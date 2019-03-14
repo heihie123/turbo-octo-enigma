@@ -31,18 +31,20 @@ import permissions.dispatcher.RuntimePermissions;
 @RuntimePermissions
 public abstract class PermissionCheckDelegate extends BaseDelegate {
 
-    @NeedsPermission(Manifest.permission.CAMERA)
+    @NeedsPermission({Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE})
     void startCamera() {
         LatteCamera.start(this);
-    }
-
-    public void startCameraWithCheck() {
-        PermissionCheckDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
     }
 
     @NeedsPermission(Manifest.permission.CAMERA)
     void startScan(BaseDelegate delegate) {
         delegate.getSupportDelegate().startForResult(new ScannerDelegate(), RequestCodes.SCAN);
+    }
+
+    public void startCameraWithCheck() {
+        PermissionCheckDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
     }
 
     public void startScanWithCheck(BaseDelegate delegate) {

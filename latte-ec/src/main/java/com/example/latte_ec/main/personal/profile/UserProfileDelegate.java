@@ -1,9 +1,11 @@
 package com.example.latte_ec.main.personal.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.latte_core.detegates.LatteDelegate;
+import com.example.latte_core.util.ToastUtils;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.personal.list.ListAdapter;
 import com.example.latte_ec.main.personal.list.ListBean;
@@ -75,5 +77,20 @@ public class UserProfileDelegate extends LatteDelegate {
         data.add(gender);
         data.add(birth);
         return data;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 1000:
+                    Bundle bundle = data.getExtras();
+                    if (bundle != null) {
+                        ToastUtils.showShotToast(bundle.getString("nameStr", ""));
+                    }
+                    break;
+            }
+        }
     }
 }
