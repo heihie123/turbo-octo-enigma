@@ -13,6 +13,7 @@ import com.example.latte_core.util.callback.CallbackType;
 import com.example.latte_core.util.callback.IGlobalCallback;
 import com.example.latte_ec.R;
 import com.example.latte_ec.main.EcBottomDelegate;
+import com.example.latte_ec.main.index.search.SearchDelegate;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -107,6 +108,8 @@ public class IndexDelagate extends BottomItemDelegate implements View.OnClickLis
 
     @Override
     public void onFocusChange(View view, boolean b) {
-
+        if(b){
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+        }
     }
 }
