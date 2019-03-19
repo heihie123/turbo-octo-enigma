@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/ablayout_bar_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 可折叠的状态栏,参1：子view伴随模式，参2：设置折叠时状态栏的颜色 -->
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/ctlayout_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@color/APP_TRANSPARENT">
+
+                <!-- 商品 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- 商品轮播图 -->
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/banner_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_260dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 商品详情 -->
+                    <FrameLayout
+                        android:id="@+id/flayout_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/banner_detail" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- bar -->
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_toolbar_height">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:id="@+id/icon_goods_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="{fa-chevron-left}"
+                            android:textColor="@color/APP_BLACK"
+                            android:textSize="@dimen/_26sp"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="商品详情"
+                            android:textColor="@color/APP_BLACK"
+                            android:textSize="@dimen/_20sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <!-- 标签 -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout_goods"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60dp" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpage_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <include layout="@layout/item_goods_detail_bottom" />
+</androidx.constraintlayout.widget.ConstraintLayout>

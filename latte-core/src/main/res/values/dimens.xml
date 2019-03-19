@@ -16,6 +16,7 @@
     <dimen name="_24dp">24dp</dimen>
     <dimen name="_25dp">25dp</dimen>
     <dimen name="_30dp">30dp</dimen>
+    <dimen name="_36dp">36dp</dimen>
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_44dp">44dp</dimen>
     <dimen name="_46dp">46dp</dimen>
@@ -36,12 +37,14 @@
     <dimen name="_260dp">260dp</dimen>
 
     <!-- 字体尺码 -->
+    <dimen name="_12sp">12sp</dimen>
     <dimen name="_13sp">13sp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_18sp">18sp</dimen>
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_24sp">24sp</dimen>
     <dimen name="_25sp">25sp</dimen>
+    <dimen name="_26sp">26sp</dimen>
     <dimen name="_40sp">40sp</dimen>
     <dimen name="_50sp">50sp</dimen>
 

@@ -29,9 +29,23 @@ public class GlideUtils {
                 .into(imageView);
     }
 
+    public static void loadNormalImgWithOption(Context context, String url, ImageView imageView, RequestOptions options) {
+        Glide.with(context)
+                .load(url)
+                .apply(options)
+                .into(imageView);
+    }
+
     public static void loadNoCacheImg(Context context, Uri uri, ImageView imageView) {
         Glide.with(context)
                 .load(uri)
+                .apply(NO_CACHE_OPPTIONS)
+                .into(imageView);
+    }
+
+    public static void loadNoCacheImg(Context context, String url, ImageView imageView) {
+        Glide.with(context)
+                .load(url)
                 .apply(NO_CACHE_OPPTIONS)
                 .into(imageView);
     }

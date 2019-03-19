@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llayout_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50dp"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_favor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|bottom"
+        android:paddingBottom="@dimen/_25dp"
+        android:text="{fa-heart-o}"
+        android:textSize="@dimen/_20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/icon_shop_car"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30dp"
+        android:text="喜欢"
+        android:textSize="@dimen/_12sp"
+        app:layout_constraintEnd_toEndOf="@id/icon_favor"
+        app:layout_constraintStart_toStartOf="@id/icon_favor"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_shop_car"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|bottom"
+        android:paddingBottom="@dimen/_25dp"
+        android:text="{fa-shopping-cart}"
+        android:textSize="@dimen/_20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txt_add_shop_car"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/icon_favor"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30dp"
+        android:text="购物车"
+        android:textSize="@dimen/_12sp"
+        app:layout_constraintEnd_toEndOf="@id/icon_shop_car"
+        app:layout_constraintStart_toStartOf="@id/icon_shop_car"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.latte_core.ui.widget.CircleTextView
+        android:id="@+id/txt_circle_amount"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:layout_marginStart="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:gravity="center"
+        android:textColor="@color/APP_WHITE"
+        android:textSize="@dimen/_12sp"
+        app:layout_constraintEnd_toEndOf="@id/icon_shop_car"
+        app:layout_constraintStart_toStartOf="@id/icon_shop_car"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_add_shop_car"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/APPBG_DARK"
+        android:gravity="center"
+        android:text="加入购物车"
+        android:textColor="@color/APP_WHITE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/icon_shop_car"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
