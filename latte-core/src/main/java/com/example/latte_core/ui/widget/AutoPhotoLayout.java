@@ -60,8 +60,8 @@ public class AutoPhotoLayout extends LinearLayoutCompat {
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.camera_flow_layout);
         mMaxNum = typedArray.getInt(R.styleable.camera_flow_layout_max_count, 1);
         mMaxLineNum = typedArray.getInt(R.styleable.camera_flow_layout_line_count, 3);
-        mIconSize = typedArray.getInt(R.styleable.camera_flow_layout_item_margin, 0);
-        mImageMargin = typedArray.getInt(R.styleable.camera_flow_layout_icon_size, 20);
+        mImageMargin = typedArray.getInt(R.styleable.camera_flow_layout_item_margin, 0);
+        mIconSize = typedArray.getDimension(R.styleable.camera_flow_layout_icon_size, 20);
         typedArray.recycle();
     }
 
@@ -114,13 +114,66 @@ public class AutoPhotoLayout extends LinearLayoutCompat {
         super.onLayout(changed, l, t, r, b);
         ALL_VIEWS.clear();
         LINE_HEIGHTS.clear();
+        // 当前viewgroup的宽度
         final int width = getWidth();
         int lineWidth = 0;
         int lineHeight = 0;
+        // 只初始化一次
         if (!mHasInitOnLayout) {
             mLineViews = new ArrayList<>();
             mHasInitOnLayout = true;
         }
+        final int cCount = getChildCount();
+        for (int i = 0; i < cCount; i++) {
+            final View child = getChildAt(i);
+            final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+            final int childWidth = child.getMeasuredWidth();
+            final int childHeight = child.getMeasuredHeight();
+            // 判断是否需要换行
+            if (childWidth + lineWidth + lp.leftMargin + lp.rightMargin > width - getPaddingStart() - getPaddingEnd()) {
+                // 记录lineHeight和当前一行的views
+                LINE_HEIGHTS.add(lineHeight);
+                ALL_VIEWS.add(mLineViews);
+                // 重置
+                lineWidth = 0;
+                lineHeight = childHeight + lp.topMargin + lp.bottomMargin;
+                mLineViews.clear();
+            }
+            lineWidth += childWidth + lp.leftMargin + lp.rightMargin;
+            lineHeight = Math.max(lineHeight, lineHeight + lp.topMargin + lp.bottomMargin);
+            mLineViews.add(child);
+        }
+        // 处理最后一行
+        LINE_HEIGHTS.add(lineHeight);
+        ALL_VIEWS.add(mLineViews);
+        int left = getPaddingLeft();
+        int top = getPaddingTop();
+        final int lineNum = ALL_VIEWS.size();
+        for (int j = 0; j < lineNum; j++) {
+            mLineViews = ALL_VIEWS.get(j);
+            lineHeight = LINE_HEIGHTS.get(j);
+            final int size = mLineViews.size();
+            for (int k = 0; k < size; k++) {
+                final View child = mLineViews.get(k);
+                // 过滤gone的组件
+                if (child.getVisibility() == GONE) {
+                    continue;
+                }
+                // 设置子view的边距
+                final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+                final int lc = left + lp.leftMargin;
+                final int tc = top + lp.topMargin;
+                final int rc = lc + child.getMeasuredWidth() - mImageMargin;
+                final int bc = tc + child.getMeasuredHeight();
+                // 子view布局
+                child.layout(lc, tc, rc, bc);
+                left += child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+            }
+            left += getPaddingStart();
+            top += lineHeight;
+        }
+        mAddIcon.setLayoutParams(mParams);
+        mHasInitOnLayout = false;
     }
 
     public void setDelegate(LatteDelegate delegate) {

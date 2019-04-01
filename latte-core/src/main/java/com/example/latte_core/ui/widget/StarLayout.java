@@ -23,11 +23,11 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
     private static final ArrayList<IconTextView> STARS = new ArrayList<>();
 
     public StarLayout(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public StarLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public StarLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -56,41 +56,38 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
     public void onClick(View view) {
         final IconTextView star = (IconTextView) view;
         final int count = (int) star.getTag(R.id.star_count);
-        final boolean isSelect = (boolean) star.getTag(R.id.star_is_select);
-        if (!isSelect) {
-            selectStar(count);
-        } else {
-            unSelectStar(count);
-        }
+        setselect(count);
     }
 
-    private void selectStar(int count) {
-        for (int i = 0; i < count; i++) {
-            if (i <= count) {
-                final IconTextView star = STARS.get(i);
-                star.setText(ICON_SELECT);
-                star.setTextColor(Color.RED);
-                star.setTag(R.id.star_is_select, true);
-            }
-        }
-    }
-
-    private void unSelectStar(int count) {
+    private void setselect(int count) {
         for (int i = 0; i < START_TOTAL_COUNT; i++) {
-            if (i >= count) {
-                final IconTextView star = STARS.get(i);
-                star.setText(ICON_UN_SELECT);
-                star.setTextColor(Color.GRAY);
-                star.setTag(R.id.star_is_select, false);
+            if (i <= count) {
+                selectStar(i);
+            } else {
+                unSelectStar(i);
             }
         }
+    }
+
+    private void selectStar(int i) {
+        final IconTextView star = STARS.get(i);
+        star.setText(ICON_SELECT);
+        star.setTextColor(Color.RED);
+        star.setTag(R.id.star_is_select, true);
+    }
+
+    private void unSelectStar(int i) {
+        final IconTextView star = STARS.get(i);
+        star.setText(ICON_UN_SELECT);
+        star.setTextColor(Color.GRAY);
+        star.setTag(R.id.star_is_select, false);
     }
 
     public int getStarCount() {
         int count = 0;
         for (int i = 0; i < START_TOTAL_COUNT; i++) {
             final IconTextView star = STARS.get(i);
-            final boolean isSelect = (boolean) star.getTag();
+            final boolean isSelect = (boolean) star.getTag(R.id.star_is_select);
             if (isSelect) {
                 count++;
             }

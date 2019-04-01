@@ -47,6 +47,10 @@ public class PersonalDelegate extends BottomItemDelegate implements View.OnClick
     private void initView() {
         $(R.id.txt_all_account).setOnClickListener(this);
         $(R.id.img_user_avatar).setOnClickListener(this);
+        $(R.id.llayout_pay).setOnClickListener(this);
+        $(R.id.llayout_receive).setOnClickListener(this);
+        $(R.id.llayout_evaluate).setOnClickListener(this);
+        $(R.id.llayout_after_market).setOnClickListener(this);
         final RecyclerView settingList = $(R.id.rv_personal_setting);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         settingList.setLayoutManager(linearLayoutManager);
@@ -81,6 +85,18 @@ public class PersonalDelegate extends BottomItemDelegate implements View.OnClick
             onClickAvatar();
         }
         if (id == R.id.txt_all_account) {
+            onClickAllOrder();
+        }
+        if (id == R.id.llayout_pay) {
+            onClickAllOrder();
+        }
+        if (id == R.id.llayout_receive) {
+            onClickAllOrder();
+        }
+        if (id == R.id.llayout_evaluate) {
+            onClickAllOrder();
+        }
+        if (id == R.id.llayout_after_market) {
             onClickAllOrder();
         }
     }
