@@ -36,11 +36,13 @@ public final class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void
     }
 
     private void generateJavaCode(TypeMirror typeMirror) {
+        // 创建一个类
         final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity")
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(typeMirror))
                 .build();
+        // 创捷类的包名
         final JavaFile javaFile = JavaFile.builder(mPackageName + ".wxapi", targetActivity)
                 .addFileComment("微信入口文件")
                 .build();

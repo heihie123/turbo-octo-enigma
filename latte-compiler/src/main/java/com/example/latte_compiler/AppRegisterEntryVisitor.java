@@ -36,11 +36,13 @@ public final class AppRegisterEntryVisitor extends SimpleAnnotationValueVisitor7
     }
 
     private void generateJavaCode(TypeMirror typeMirror) {
+        // 创建一个类
         final TypeSpec targetActivity = TypeSpec.classBuilder("AppRegister")
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(typeMirror))
                 .build();
+        // 创捷类的包名
         final JavaFile javaFile = JavaFile.builder(mPackageName + ".wxapi", targetActivity)
                 .addFileComment("微信广播接收器")
                 .build();

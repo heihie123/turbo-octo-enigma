@@ -21,6 +21,9 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 
+/**
+ * 注册注解
+ */
 @AutoService(Processor.class)
 public class LatteProcessor extends AbstractProcessor {
 
@@ -29,12 +32,13 @@ public class LatteProcessor extends AbstractProcessor {
         final Set<String> types = new LinkedHashSet<>();
         final Set<Class<? extends Annotation>> supportAnnotations = getSupportedAnnotations();
         for (Class<? extends Annotation> annotation : supportAnnotations) {
-            types.add(annotation.getCanonicalName());
+            types.add(annotation.getCanonicalName()); // 获取所传类从java语言规范定义的格式输出
         }
         return types;
     }
 
     private Set<Class<? extends Annotation>> getSupportedAnnotations() {
+        // 添加需要注册的注解
         final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
         annotations.add(EntryGenerator.class);
         annotations.add(PayEntryGenerator.class);
@@ -65,6 +69,9 @@ public class LatteProcessor extends AbstractProcessor {
         scan(env, AppRegisterEntryGenerator.class, appRegisterEntryVisitor);
     }
 
+    /**
+     * annotation和visitor相结合
+     */
     private void scan(RoundEnvironment env, Class<? extends Annotation> annotation, AnnotationValueVisitor visitor) {
         for (Element typeElement : env.getElementsAnnotatedWith(annotation)) {
 
