@@ -42,10 +42,13 @@ public class LatteWeChat {
         return this;
     }
 
-    public IWeChatSignInCallback getSignInCallback(){
+    public IWeChatSignInCallback getSignInCallback() {
         return mIWeChatSignInCallback;
     }
 
+    /**
+     * 微信登录api
+     */
     public final void signIn() {
         final SendAuth.Req req = new SendAuth.Req();
         req.scope = "snsapi_userinfo";

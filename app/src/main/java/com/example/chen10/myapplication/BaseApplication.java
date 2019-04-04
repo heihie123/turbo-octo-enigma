@@ -31,9 +31,9 @@ public class BaseApplication extends Application {
                 .withWebEvent("share", new ShareEvent())
                 .withWebHost("https://www.baidu.com/")
                 .configure();
-        initStetho();
-        initDatabase();
-        initJPush();
+        initStetho();   // 初始化安卓web调试工具
+        initDatabase(); // 初始化greendao
+        initJPush();    // 初始化极光推送
     }
 
     private void initStetho() {
@@ -52,7 +52,7 @@ public class BaseApplication extends Application {
     private void initJPush() {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-        CallbackManager.getInstance()
+        CallbackManager.getInstance()       // 设置推送开关回调
                 .addCallbacks(CallbackType.TAG_OPEN_PUSH, new IGlobalCallback() {
                     @Override
                     public void executeCallback(Object args) {

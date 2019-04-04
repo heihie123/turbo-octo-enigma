@@ -25,8 +25,8 @@ public class Configurator {
     // WeakHashMap:key不使用的时候回收的非常快，节省内存
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
     private static final Handler HANDLER = new Handler();
-    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
-    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();   // icon
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();   // 拦截器
 
     private Configurator() {
         // .name枚举以字符串方式输出，未初始化完成

@@ -17,6 +17,7 @@ public class WXEntryTemplate extends BaseWXEntryActivity {
 
     @Override
     protected void onSignInSuccess(String userInfo) {
+        // 接口回调
         LatteWeChat.getInstance().getSignInCallback().onSignInSuccess(userInfo);
     }
 }

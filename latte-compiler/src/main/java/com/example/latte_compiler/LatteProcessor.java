@@ -37,8 +37,10 @@ public class LatteProcessor extends AbstractProcessor {
         return types;
     }
 
+    /**
+     * 添加需要注册的注解
+     */
     private Set<Class<? extends Annotation>> getSupportedAnnotations() {
-        // 添加需要注册的注解
         final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
         annotations.add(EntryGenerator.class);
         annotations.add(PayEntryGenerator.class);

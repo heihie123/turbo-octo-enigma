@@ -2,6 +2,9 @@ package com.example.latte_core.detegates.bottom;
 
 import java.util.LinkedHashMap;
 
+/**
+ * BottomItem建造者
+ */
 public class ItemBuilder {
 
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();

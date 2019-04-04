@@ -3,11 +3,6 @@ package com.example.latte_core.detegates;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +10,11 @@ import android.view.animation.Animation;
 
 import com.example.latte_core.activitys.ProxyActivity;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
@@ -77,6 +77,9 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return rootView;
     }
 
+    /**
+     * fragment进出动画
+     */
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
         return DELEGATE.onCreateAnimation(transit, enter, nextAnim);
@@ -132,6 +135,9 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return DELEGATE;
     }
 
+    /**
+     * 切换fragment的切换器
+     */
     @Override
     public ExtraTransaction extraTransaction() {
         return DELEGATE.extraTransaction();
@@ -147,12 +153,17 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         DELEGATE.post(runnable);
     }
 
-    // 可以再动画结束后处理复杂的业务逻辑，防止卡顿
+    /**
+     * 可以再动画结束后处理复杂的业务逻辑，防止卡顿
+     */
     @Override
     public void onEnterAnimationEnd(@Nullable Bundle savedInstanceState) {
         DELEGATE.onEnterAnimationEnd(savedInstanceState);
     }
 
+    /**
+     * 懒加载
+     */
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         DELEGATE.onLazyInitView(savedInstanceState);
@@ -180,13 +191,13 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     }
 
     @Override
-    public FragmentAnimator getFragmentAnimator() {
-        return DELEGATE.getFragmentAnimator();
+    public void setFragmentAnimator(FragmentAnimator fragmentAnimator) {
+        DELEGATE.setFragmentAnimator(fragmentAnimator);
     }
 
     @Override
-    public void setFragmentAnimator(FragmentAnimator fragmentAnimator) {
-        DELEGATE.setFragmentAnimator(fragmentAnimator);
+    public FragmentAnimator getFragmentAnimator() {
+        return DELEGATE.getFragmentAnimator();
     }
 
     @Override
@@ -194,10 +205,17 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         DELEGATE.setFragmentResult(resultCode, bundle);
     }
 
-    // startForResul
+    /**
+     * startForResul
+     */
     @Override
     public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
         DELEGATE.onFragmentResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void putNewBundle(Bundle newBundle) {
+        DELEGATE.putNewBundle(newBundle);
     }
 
     @Override
@@ -206,21 +224,15 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     }
 
     @Override
-    public void putNewBundle(Bundle newBundle) {
-        DELEGATE.putNewBundle(newBundle);
-    }
-
-    // 返回键要实现的功能
-    @Override
     public boolean onBackPressedSupport() {
         return DELEGATE.onBackPressedSupport();
     }
 
-//    public void start(ISupportFragment toFragment){
-//        DELEGATE.start(toFragment);
-//    }
+    public void start(ISupportFragment toFragment) {
+        DELEGATE.start(toFragment);
+    }
 
-//    public void start(final ISupportFragment toFragment, @LanchMOde int lanchMode){
-//        DELEGATE.start(toFragment, lanchMode);
-//    }
+    public void start(final ISupportFragment toFragment, @LaunchMode int lanchMode) {
+        DELEGATE.start(toFragment, lanchMode);
+    }
 }

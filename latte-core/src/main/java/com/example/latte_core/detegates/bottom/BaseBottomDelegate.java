@@ -21,24 +21,27 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import me.yokeyword.fragmentation.ISupportFragment;
 
+/**
+ * 首页基类
+ */
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener {
 
     private LinearLayoutCompat mBottomBar = null;
     private LayoutInflater inflate = null;
 
-    private final List<BottomTabBean> TAB_BEAN = new ArrayList<>();
-    private final ArrayList<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();
-    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
-    private int mIndexDelegate = 0;
-    private int mCurrentDelegate = 0;
+    private final List<BottomTabBean> TAB_BEANS = new ArrayList<>();                        // 底部标题iocn集合
+    private final ArrayList<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();          // 底部fragment集合
+    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();   // 底部集合
+    private int mIndexDelegate = 0;     // 初始化时候下标
+    private int mCurrentDelegate = 0;   // 当前位置下标
     private int mClickedColor = Color.RED;
 
-    public abstract int setIndexDelegate();
+    public abstract int setIndexDelegate(); // 设置初始按钮的position
 
     @ColorInt
     public abstract int setClickedColor();
 
-    public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
+    public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder); // 设置ITEMS
 
     public ArrayList<BottomItemDelegate> getItemDelegates() {
         return ITEM_DELEGATE;
@@ -51,11 +54,12 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         if (setClickedColor() != 0) {
             mClickedColor = setClickedColor();
         }
+        // 初始化底部数据
         final ItemBuilder builder = ItemBuilder.builder();
         final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = setItems(builder);
         ITEMS.putAll(items);
         for (Map.Entry<BottomTabBean, BottomItemDelegate> item : items.entrySet()) {
-            TAB_BEAN.add(item.getKey());
+            TAB_BEANS.add(item.getKey());
             ITEM_DELEGATE.add(item.getValue());
         }
     }
@@ -85,7 +89,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
             item.setOnClickListener(this);
             final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
             final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
-            final BottomTabBean tabBean = TAB_BEAN.get(i);
+            final BottomTabBean tabBean = TAB_BEANS.get(i);
             itemIcon.setText(tabBean.getICON());
             itemTitle.setText(tabBean.getTITLE());
             if (i == mIndexDelegate) {

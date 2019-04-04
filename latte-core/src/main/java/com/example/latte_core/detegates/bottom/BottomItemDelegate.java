@@ -7,6 +7,9 @@ import com.example.latte_core.R;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.util.ToastUtils;
 
+/**
+ * 首页四个底部Delegate的基类
+ */
 public abstract class BottomItemDelegate extends LatteDelegate implements View.OnKeyListener {
 
     private long mExitTime = 0;
@@ -17,7 +20,7 @@ public abstract class BottomItemDelegate extends LatteDelegate implements View.O
         super.onResume();
         final View rootView = getView();
         if (rootView != null) {
-            rootView.setFocusableInTouchMode(true);
+            rootView.setFocusableInTouchMode(true);     // 获取焦点
             rootView.requestFocus();
             rootView.setOnKeyListener(this);
         }
@@ -26,7 +29,7 @@ public abstract class BottomItemDelegate extends LatteDelegate implements View.O
     @Override
     public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
         if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - mExitTime > mExitTime) {
+            if (System.currentTimeMillis() - mExitTime > EXIT_TIME) {
                 ToastUtils.showShotToast("双击退出" + getString(R.string.app_name));
                 mExitTime = System.currentTimeMillis();
             } else {

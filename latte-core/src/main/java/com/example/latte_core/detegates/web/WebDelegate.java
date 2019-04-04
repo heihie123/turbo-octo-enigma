@@ -21,9 +21,9 @@ import androidx.annotation.Nullable;
 public abstract class WebDelegate extends LatteDelegate implements IWebviewInitializer {
 
     private WebView mWebView = null;
-    private final ReferenceQueue<WebView> WEB_VIEW_QUENE = new ReferenceQueue<>();
+    private final ReferenceQueue<WebView> WEB_VIEW_QUENE = new ReferenceQueue<>();  // 管理回收的webview
     private String mUrl = null;
-    private boolean mIsWebViewAvailable = false;
+    private boolean mIsWebViewAvailable = false;    // webview是否可用
     private LatteDelegate mTopDelegate = null;
 
     public WebDelegate() {
@@ -52,9 +52,10 @@ public abstract class WebDelegate extends LatteDelegate implements IWebviewIniti
                 final WeakReference<WebView> webViewWeakReference =
                         new WeakReference<>(new WebView(getActivityContext()), WEB_VIEW_QUENE);
                 mWebView = webViewWeakReference.get();
-                mWebView = initializer.initWebView(mWebView);
+                mWebView = initializer.initWebView(mWebView);   // 配置webview的一些属性后返回
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());
+                // 处理js交互
                 final String name = Latte.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);
                 mWebView.addJavascriptInterface(LatteWebInterface.create(this), name);
                 mIsWebViewAvailable = true;
