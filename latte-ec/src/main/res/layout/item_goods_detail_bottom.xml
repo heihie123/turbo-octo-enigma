@@ -4,6 +4,7 @@
     android:id="@+id/llayout_bottom"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_50dp"
+    android:background="@color/APP_WHITE"
     app:layout_constraintBottom_toBottomOf="parent">
 
     <com.joanzapata.iconify.widget.IconTextView

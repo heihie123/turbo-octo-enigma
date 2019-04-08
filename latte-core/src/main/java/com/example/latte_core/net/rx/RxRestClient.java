@@ -21,6 +21,7 @@ import okhttp3.ResponseBody;
  * 使用什么返回什么，采用建造者模式
  */
 public class RxRestClient {
+
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final RequestBody BODY;
@@ -40,6 +41,40 @@ public class RxRestClient {
 
     public static RxRestClientBuilder builder() {
         return new RxRestClientBuilder();
+    }
+
+    public final Observable<String> get() {
+        return request(HttpMethod.GET);
+    }
+
+    public final Observable<String> post() {
+        if (BODY == null) {
+            return request(HttpMethod.POST);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null!");
+            }
+            return request(HttpMethod.POST_RAW);
+        }
+    }
+
+    public final Observable<String> put() {
+        if (BODY == null) {
+            return request(HttpMethod.PUT);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null!");
+            }
+            return request(HttpMethod.POST_RAW);
+        }
+    }
+
+    public final Observable<String> delete() {
+        return request(HttpMethod.DELETE);
+    }
+
+    public final Observable<ResponseBody> download() {
+        return RestCreator.getRxRestService().download(URL, PARAMS);
     }
 
     private Observable<String> request(HttpMethod method) {
@@ -76,39 +111,5 @@ public class RxRestClient {
                 break;
         }
         return observable;
-    }
-
-    public final Observable<String> get() {
-        return request(HttpMethod.GET);
-    }
-
-    public final Observable<String> post() {
-        if (BODY == null) {
-            return request(HttpMethod.POST);
-        } else {
-            if (!PARAMS.isEmpty()) {
-                throw new RuntimeException("params must be null!");
-            }
-            return request(HttpMethod.POST_RAW);
-        }
-    }
-
-    public final Observable<String> put() {
-        if (BODY == null) {
-            return request(HttpMethod.PUT);
-        } else {
-            if (!PARAMS.isEmpty()) {
-                throw new RuntimeException("params must be null!");
-            }
-            return request(HttpMethod.POST_RAW);
-        }
-    }
-
-    public final Observable<String> delete() {
-        return request(HttpMethod.DELETE);
-    }
-
-    public final Observable<ResponseBody> download(){
-        return RestCreator.getRxRestService().download(URL, PARAMS);
     }
 }

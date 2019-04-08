@@ -10,11 +10,15 @@ import com.example.latte_core.net.callback.ISuccess;
 
 import java.util.WeakHashMap;
 
+import androidx.annotation.NonNull;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * 下载工具
+ */
 public class DownloadHandler {
 
     private final String URL;
@@ -46,7 +50,7 @@ public class DownloadHandler {
         RestCreator.getRestService().download(URL, PARAMS)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
                             final SaveFileTask task = new SaveFileTask(REQUEST, SUCCESS);
                             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, DOWNLOAD_DIR, EXTENSION, response, NAME);
@@ -64,7 +68,7 @@ public class DownloadHandler {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                         if (FAILURE != null) {
                             FAILURE.onFailure();
                         }

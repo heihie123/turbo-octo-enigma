@@ -27,6 +27,7 @@ public interface RestService {
     @GET
     Call<String> get(@Url String url, @QueryMap Map<String, Object> params);
 
+    // FormUrlEncoded post、put请求的时候传递参数需要加上
     @FormUrlEncoded
     @POST
     Call<String> post(@Url String url, @FieldMap Map<String, Object> params);
@@ -34,6 +35,7 @@ public interface RestService {
     @POST
     Call<String> postRaw(@Url String url, @Body RequestBody requestBody);
 
+    // FormUrlEncoded post、put请求的时候传递参数需要加上
     @FormUrlEncoded
     @PUT
     Call<String> put(@Url String url, @FieldMap Map<String, Object> params);

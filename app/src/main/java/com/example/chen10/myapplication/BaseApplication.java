@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.chen10.myapplication.event.ShareEvent;
 import com.example.latte_core.app.Latte;
+import com.example.latte_core.net.Interceptor.AddCookieInterceptor;
 import com.example.latte_core.net.Interceptor.DebugInterceptor;
 import com.example.latte_core.util.callback.CallbackManager;
 import com.example.latte_core.util.callback.CallbackType;
@@ -25,6 +26,7 @@ public class BaseApplication extends Application {
                 .withIcon(new FontEcModule())
                 .withApiHost("http://127.0.1/")
                 .withInterceptor(new DebugInterceptor("14717", R.raw.text))
+                .withInterceptor(new AddCookieInterceptor())
                 .withWeChatAppId("wxfb12312312312312")
                 .withWeChatAppSecret("1231239b9b4657123123f52957123123")
                 .withJavascriptInterface("latte")

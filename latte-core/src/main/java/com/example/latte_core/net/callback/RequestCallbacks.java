@@ -5,6 +5,7 @@ import com.example.latte_core.app.Latte;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.ui.loader.LoaderStyle;
 
+import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +29,7 @@ public class RequestCallbacks implements Callback<String> {
     }
 
     @Override
-    public void onResponse(Call<String> call, Response<String> response) {
+    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
         if (response.isSuccessful()) {
             if (call.isExecuted()) {
                 if (SUCCESS != null) {
@@ -44,7 +45,7 @@ public class RequestCallbacks implements Callback<String> {
     }
 
     @Override
-    public void onFailure(Call<String> call, Throwable t) {
+    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
         if (FAILURE != null) {
             FAILURE.onFailure();
         }

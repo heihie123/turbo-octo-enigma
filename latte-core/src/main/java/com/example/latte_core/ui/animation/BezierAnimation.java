@@ -21,6 +21,7 @@ public final class BezierAnimation {
         final int fx = startXY[0];
         final int fy = startXY[1];
 
+        // view布局
         final ViewGroup anim_mask_layout = BezierUtil.createAnimLayout(delegate.getProxyActivity());
         anim_mask_layout.addView(target);
         final View view = BezierUtil.addViewToAnimLayout(delegate.getContext(), target, startXY, true);

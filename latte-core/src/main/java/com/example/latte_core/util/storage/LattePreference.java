@@ -7,6 +7,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.latte_core.app.Latte;
 
+/**
+ * 缓存工具类
+ */
 public final class LattePreference {
 
     /**

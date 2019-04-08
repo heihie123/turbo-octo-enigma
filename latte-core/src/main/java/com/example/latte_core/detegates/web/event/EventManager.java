@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 
+/**
+ * event管理类
+ */
 public class EventManager {
 
     private static final HashMap<String, Event> EVENTS = new HashMap<>();

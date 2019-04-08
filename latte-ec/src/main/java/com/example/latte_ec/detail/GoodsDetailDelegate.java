@@ -114,6 +114,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
     }
 
     private void initData() {
+        mGoodsThumbUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554719480217&di=58bb0f13fd60693c2a30dcb7e4f95ded&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F018c195912da8bb5b3086ed48c1a64.jpg";
         // banner
         List<String> images = new ArrayList<>();
         images.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1933002625,436410812&fm=26&gp=0.jpg");

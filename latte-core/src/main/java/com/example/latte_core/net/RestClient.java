@@ -25,6 +25,7 @@ import retrofit2.Callback;
  * 使用什么返回什么，采用建造者模式
  */
 public class RestClient {
+
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IRequest REQUEST;
@@ -59,6 +60,45 @@ public class RestClient {
 
     public static RestClientBuilder builder() {
         return new RestClientBuilder();
+    }
+
+    public final void get() {
+        request(HttpMethod.GET);
+    }
+
+    public final void post() {
+        if (BODY == null) {
+            request(HttpMethod.POST);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null!");
+            }
+            request(HttpMethod.POST_RAW);
+        }
+    }
+
+    public final void put() {
+        if (BODY == null) {
+            request(HttpMethod.PUT);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null!");
+            }
+            request(HttpMethod.POST_RAW);
+        }
+    }
+
+    public final void delete() {
+        request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, SUCCESS, FAILURE, ERROR, DOWNLOAD_DIR, EXTENSION, NAME)
+                .handleDownload();
     }
 
     private void request(HttpMethod method) {
@@ -105,39 +145,5 @@ public class RestClient {
 
     private Callback<String> getRequestCallback() {
         return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR, LOADER_STYLE);
-    }
-
-    public final void get() {
-        request(HttpMethod.GET);
-    }
-
-    public final void post() {
-        if (BODY == null) {
-            request(HttpMethod.POST);
-        } else {
-            if (!PARAMS.isEmpty()) {
-                throw new RuntimeException("params must be null!");
-            }
-            request(HttpMethod.POST_RAW);
-        }
-    }
-
-    public final void put() {
-        if (BODY == null) {
-            request(HttpMethod.PUT);
-        } else {
-            if (!PARAMS.isEmpty()) {
-                throw new RuntimeException("params must be null!");
-            }
-            request(HttpMethod.POST_RAW);
-        }
-    }
-
-    public final void delete() {
-        request(HttpMethod.DELETE);
-    }
-
-    public final void download(){
-        new DownloadHandler(URL, REQUEST, SUCCESS, FAILURE, ERROR, DOWNLOAD_DIR, EXTENSION, NAME).handleDownload();
     }
 }

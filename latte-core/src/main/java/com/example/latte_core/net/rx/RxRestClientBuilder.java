@@ -12,7 +12,11 @@ import java.util.WeakHashMap;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
+/**
+ * RxRestClient建造者
+ */
 public class RxRestClientBuilder {
+
     private String mUrl = null;
     private static final Map<String, Object> PARAMS = RestCreator.getParams();
     private RequestBody mBody = null;

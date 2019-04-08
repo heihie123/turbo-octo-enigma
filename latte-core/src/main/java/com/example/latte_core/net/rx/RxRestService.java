@@ -24,6 +24,7 @@ public interface RxRestService {
     @GET
     Observable<String> get(@Url String url, @QueryMap Map<String, Object> params);
 
+    // FormUrlEncoded post、put请求的时候传递参数需要加上
     @FormUrlEncoded
     @POST
     Observable<String> post(@Url String url, @FieldMap Map<String, Object> params);
@@ -31,6 +32,7 @@ public interface RxRestService {
     @POST
     Observable<String> postRaw(@Url String url, @Body RequestBody requestBody);
 
+    // FormUrlEncoded post、put请求的时候传递参数需要加上
     @FormUrlEncoded
     @PUT
     Observable<String> put(@Url String url, @FieldMap Map<String, Object> params);

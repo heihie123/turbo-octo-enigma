@@ -1,5 +1,7 @@
 package com.example.latte_core.detegates.web;
 
+import android.webkit.JavascriptInterface;
+
 import com.alibaba.fastjson.JSON;
 import com.example.latte_core.detegates.web.event.Event;
 import com.example.latte_core.detegates.web.event.EventManager;
@@ -19,6 +21,7 @@ public class LatteWebInterface {
         return new LatteWebInterface(delegate);
     }
 
+    @JavascriptInterface
     public String event(String params) {
         final String action = JSON.parseObject(params).getString("action");
         final Event event = EventManager.getInstance().createEvent(action);

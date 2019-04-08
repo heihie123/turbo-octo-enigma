@@ -82,6 +82,7 @@ public final class BezierUtil {
         translateAnimation1.setRepeatCount(0);
         translateAnimation1.setFillAfter(false);
         set.addAnimation(translateAnimation1);
+
         // 从中心点到尾点的动画
         final TranslateAnimation translateAnimation2 = new TranslateAnimation(fromXDelta, tx - mx,
                 fromYDelta, ty - my);

@@ -46,7 +46,9 @@ public class RestCreator {
         private static final RxRestService RX_REST_SERVICE = RetrofitHolder.RETROFIT_CLIENT.create(RxRestService.class);
     }
 
+    // 获取retrofit
     private static final class RetrofitHolder {
+
         private static final String BASE_URL = Latte.getConfiguration(ConfigKeys.API_HOST);
 
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
@@ -57,11 +59,18 @@ public class RestCreator {
                 .build();
     }
 
+    // 获取okhttp
     private static final class OKHttpHolder {
+
         private static final int TIME_OUT = 60;
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
         private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);
 
+        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .build();
+
+        // 添加拦截器
         private static OkHttpClient.Builder addInterceptor() {
             if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
                 for (Interceptor interceptor : INTERCEPTORS) {
@@ -70,9 +79,5 @@ public class RestCreator {
             }
             return BUILDER;
         }
-
-        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()
-                .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-                .build();
     }
 }
