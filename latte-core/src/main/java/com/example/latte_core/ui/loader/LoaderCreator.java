@@ -24,10 +24,14 @@ public class LoaderCreator {
         return avLoadingIndicatorView;
     }
 
+    /**
+     * 通过反射获取Indicator
+     */
     private static Indicator getIndicator(String name) {
         if (name == null || name.isEmpty()) {
             return null;
         }
+        // 拼接包名类名
         final StringBuilder drawableClassName = new StringBuilder();
         if (!name.contains(".")) {
             final String defaultPackageName = AVLoadingIndicatorView.class.getPackage().getName();

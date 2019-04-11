@@ -36,18 +36,18 @@ import java.util.Locale;
  */
 public final class FileUtil {
 
-    //格式化的模板
+    // 时间格式化的模板
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";
     private static final String SDCARD_DIR = Environment.getExternalStorageDirectory().getPath();
-    //默认本地上传图片目录
+    // 默认本地上传图片目录
     public static final String UPLOAD_PHOTO_DIR = Environment.getExternalStorageDirectory().getPath() + "/a_upload_photos/";
-    //网页缓存地址
+    // 网页缓存地址
     public static final String WEB_CACHE_DIR = Environment.getExternalStorageDirectory().getPath() + "/app_web_cache/";
-    //系统相机目录
+    // 系统相机目录
     public static final String CAMERA_PHOTO_DIR = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
             .getPath() + "/Camera/";
 
-    //获取文件的MIME
+    // 通过文件后缀名获取文件的MIME
     public static String getMimeType(String filePath) {
         final String extension = getExtension(filePath);
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
@@ -80,9 +80,9 @@ public final class FileUtil {
         }
         FileOutputStream fos = null;
         BufferedOutputStream bos = null;
-        File fileName = createFileByTime(dir, "DOWN_LOAD", "jpg");
+        File file = createFileByTime(dir, "DOWN_LOAD", "jpg");
         try {
-            fos = new FileOutputStream(fileName);
+            fos = new FileOutputStream(file);
             bos = new BufferedOutputStream(fos);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, compress, bos);// 把数据写入文件
         } catch (FileNotFoundException e) {
@@ -107,12 +107,10 @@ public final class FileUtil {
             }
         }
         refreshDCIM();
-        return fileName;
+        return file;
     }
 
-    /**
-     * 通知系统刷新系统相册，使照片展现出来
-     */
+    // 通知系统刷新系统相册，使照片展现出来
     @SuppressLint("ObsoleteSdkInt")
     private static void refreshDCIM() {
         if (Build.VERSION.SDK_INT >= 19) {
@@ -205,6 +203,14 @@ public final class FileUtil {
         return file;
     }
 
+    /**
+     * 创建文件
+     *
+     * @param sdcardDirName    文件夹名字
+     * @param timeFormatHeader 文件名
+     * @param extension        后缀名
+     * @return 返回生成的文件
+     */
     private static File createFileByTime(String sdcardDirName, String timeFormatHeader, String extension) {
         final String fileName = getFileNameByTime(timeFormatHeader, extension);
         return createFile(sdcardDirName, fileName);
@@ -230,11 +236,13 @@ public final class FileUtil {
         return dateFormat.format(date);
     }
 
+    // 创建文件
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public static File createFile(String sdcardDirName, String fileName) {
         return new File(createDir(sdcardDirName), fileName);
     }
 
+    // 创建文件路径
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private static File createDir(String sdcardDirName) {
         //拼接成SD卡中完整的dir
@@ -325,6 +333,7 @@ public final class FileUtil {
         textView.setTypeface(typeface);
     }
 
+    // 从uri中获取文件路径
     public static String getRealFilePath(final Context context, final Uri uri) {
         if (null == uri) return null;
         final String scheme = uri.getScheme();
@@ -334,6 +343,7 @@ public final class FileUtil {
         } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             data = uri.getPath();
         } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            // 从内容接受者数据库中查询文件路径
             final Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
             if (null != cursor) {
                 if (cursor.moveToFirst()) {

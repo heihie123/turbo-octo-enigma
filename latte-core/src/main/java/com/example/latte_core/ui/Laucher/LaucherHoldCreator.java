@@ -7,7 +7,7 @@ import com.bigkoo.convenientbanner.holder.Holder;
 import com.example.latte_core.R;
 
 /**
- * banner的构造器
+ * 欢迎页Holder的构造器
  */
 public class LaucherHoldCreator implements CBViewHolderCreator {
 

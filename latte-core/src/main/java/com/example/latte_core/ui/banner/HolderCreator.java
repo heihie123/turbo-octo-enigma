@@ -7,6 +7,9 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.example.latte_core.R;
 
+/**
+ * banner Holder的构造器
+ */
 public class HolderCreator implements CBViewHolderCreator {
 
     private Context mContext;

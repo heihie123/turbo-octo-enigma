@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.bigkoo.convenientbanner.holder.Holder;
 
+/**
+ * 欢迎页轮播Holder
+ */
 public class LaucherHold extends Holder<Integer> {
 
     private AppCompatImageView mAppCompatImageView;

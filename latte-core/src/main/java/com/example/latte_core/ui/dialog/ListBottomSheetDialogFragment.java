@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * 仿抖音评论列表
  */
 public class ListBottomSheetDialogFragment extends BottomSheetDialogFragment {
+    
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

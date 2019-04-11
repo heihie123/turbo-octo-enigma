@@ -8,6 +8,9 @@ import com.example.latte_core.util.image.GlideUtils;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
+/**
+ * banner的Holder
+ */
 public class BannerImageHolder extends Holder<String> {
 
     private Context mContext;
