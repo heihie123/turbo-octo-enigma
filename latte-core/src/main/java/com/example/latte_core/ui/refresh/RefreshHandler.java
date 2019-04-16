@@ -8,6 +8,7 @@ import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_core.ui.loader.LoaderStyle;
 import com.example.latte_core.ui.recycler.BaseDataConverter;
 import com.example.latte_core.ui.recycler.MultipleRecyclerAdapter;
+import com.example.latte_core.util.ToastUtils;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -25,9 +26,9 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener, Bas
     private BaseDataConverter CONVERTER;
     private Context mContext;
 
-    private RefreshHandler(Context context, final SwipeRefreshLayout REFRESH_LAYOUT, RecyclerView indexList,
+    private RefreshHandler(Context context, final SwipeRefreshLayout refreshLayout, RecyclerView indexList,
                            BaseDataConverter converter, IndexPageBean bean) {
-        this.REFRESH_LAYOUT = REFRESH_LAYOUT;
+        this.REFRESH_LAYOUT = refreshLayout;
         this.INDEX_LIST = indexList;
         this.CONVERTER = converter;
         this.BEAN = bean;
@@ -43,61 +44,73 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener, Bas
     @Override
     public void onRefresh() {
         REFRESH_LAYOUT.setRefreshing(true);
-        Latte.getHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                REFRESH_LAYOUT.setRefreshing(false);
-                requestPage();
-            }
-        }, 1000);
+        requestPage(true);
     }
 
     @Override
     public void onLoadMoreRequested() {
-        requestPage();
+        requestPage(false);
     }
 
+    // 首次加载
     public void requestFirst() {
-        BEAN.setDelayed(1000);
-        // 模拟网络请求
         LatteLoader.showLoading(mContext, LoaderStyle.BallScaleRippleMultipleIndicator);
         Latte.getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                BEAN.setTotal(5).setPageSize(30);
-                String dataJson = "request_first";
-                CONVERTER.setJsonData(dataJson);
-                mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(dataJson));
+                initData();
+                // 设置适配器
+                mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData("request_first"));
                 mAdapter.setOnLoadMoreListener(RefreshHandler.this, INDEX_LIST);
                 INDEX_LIST.setAdapter(mAdapter);
+                // 处理bean数据
+                BEAN.setCurrentCount(mAdapter.getData().size());
                 BEAN.addIndex();
                 LatteLoader.stopLoading();
             }
         }, 1000);
     }
 
-    private void requestPage() {
-        final int pageSize = BEAN.getPageSize();
-        final int currentCount = BEAN.getCurrentCount();
-        final int total = BEAN.getTotal();
-        final int index = BEAN.getPageIndex();
-        if (mAdapter.getData().size() < pageSize || currentCount >= total) {
-            mAdapter.loadMoreEnd(true);
-        } else {
-            // 模拟网络请求
-            LatteLoader.showLoading(mContext, LoaderStyle.PacmanIndicator);
-            Latte.getHandler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    String dataJson = "request_first";
-                    CONVERTER.clearData();
-                    mAdapter.addData(CONVERTER.setJsonData(dataJson).convert());
+    // 加载数据
+    private void requestPage(final boolean isInit) {
+        // 模拟网络请求
+        LatteLoader.showLoading(mContext, LoaderStyle.BallScaleRippleMultipleIndicator);
+        Latte.getHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isInit) {
+                    initData();
+                    // 设置适配器
+                    mAdapter.refresh(CONVERTER.setJsonData("request_first").convert());
+                    // 处理bean数据
                     BEAN.setCurrentCount(mAdapter.getData().size());
                     BEAN.addIndex();
-                    mAdapter.loadMoreComplete();
-                    LatteLoader.stopLoading();
+                    REFRESH_LAYOUT.setRefreshing(false);
+                } else {
+                    final int index = BEAN.getPageIndex();
+                    final int currentCount = BEAN.getCurrentCount();
+                    final int pageSize = BEAN.getPageSize();
+                    final int total = BEAN.getTotal();
+                    // 判断是否还有更多
+                    if (index > pageSize || currentCount > total) {
+                        ToastUtils.showShotToast("已经没有更多了");
+                        mAdapter.loadMoreEnd(true); // 已经没有更多了
+                    } else {
+//                        mAdapter.addData(CONVERTER.setJsonData("request_page").convert());
+                        mAdapter.refresh(CONVERTER.setJsonData("request_page").convert());
+                        BEAN.setCurrentCount(mAdapter.getData().size());
+                        BEAN.addIndex();
+                        mAdapter.loadMoreComplete(); // 加载成功
+                    }
                 }
-            }, 1000);
-        }
+                LatteLoader.stopLoading();
+            }
+        }, 1000);
+    }
+
+    // 初始化bean
+    private void initData() {
+        CONVERTER.clearData();
+        BEAN.setTotal(30).setPageSize(5).setCurrentCount(0).setPageIndex(0).setDelayed(1000);
     }
 }

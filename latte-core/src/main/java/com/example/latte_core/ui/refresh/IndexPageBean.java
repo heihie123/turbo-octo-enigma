@@ -1,11 +1,14 @@
 package com.example.latte_core.ui.refresh;
 
+/**
+ * 分页bean
+ */
 public class IndexPageBean {
 
-    private int mPageIndex = 0;
-    private int mTotal = 0;
-    private int mPageSize = 0;
-    private int mCurrentCount = 0;
+    private int mPageIndex = 0;     // 当前页数
+    private int mCurrentCount = 0;  // 当前条数
+    private int mPageSize = 0;      // 总页数
+    private int mTotal = 0;         // 总条数
     private int mDelayed = 0;
 
     public int getPageIndex() {

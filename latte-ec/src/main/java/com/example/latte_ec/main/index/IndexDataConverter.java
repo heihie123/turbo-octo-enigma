@@ -73,13 +73,13 @@ public class IndexDataConverter extends BaseDataConverter {
             "            \"item\": {\n" +
             "                \"banners\": [\n" +
             "                    {\n" +
-            "                        \"imageUrl\": \"http://bpic.ooopic.com/15/64/42/15644277-b06a3fbd7745a392fab1ac9a21dcbe50.jpg\"\n" +
+            "                        \"imageUrl\": \"http://img4.imgtn.bdimg.com/it/u=353149760,1085730566&fm=26&gp=0.jpg\",\n" +
             "                    },\n" +
             "                    {\n" +
-            "                        \"imageUrl\": \"http://bpic.ooopic.com/16/54/92/16549228-3396654f265c6b942170b216f7c2a753.jpg\"\n" +
+            "                        \"imageUrl\": \"http://img0.imgtn.bdimg.com/it/u=1255494658,2944247972&fm=11&gp=0.jpg\",\n" +
             "                    },\n" +
             "                    {\n" +
-            "                        \"imageUrl\": \"http://bpic.ooopic.com/16/37/91/16379119-59336ecc6904333c3d1d880ed6e461dd-4.jpg\"\n" +
+            "                        \"imageUrl\": \"http://img5.imgtn.bdimg.com/it/u=3163600373,1878398212&fm=26&gp=0.jpg\",\n" +
             "                    }\n" +
             "                ],\n" +
             "                \"imageUrl\": \"\",\n" +
@@ -93,8 +93,8 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.ooopic.com/16/81/22/16812205-afe75bedf7e5c3eee4fa0e2c6eaf11f7-1.jpg\",\n" +
-            "                \"text\": \"特购特购\",\n" +
+            "                \"imageUrl\": \"http://img.zcool.cn/community/011ccd5ba08e18a801213dea4b1952.jpg@2o.jpg\",\n" +
+            "                \"text\": \"每秒秒冲\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"2\"\n" +
             "            }\n" +
@@ -105,7 +105,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                    \n" +
             "                ],\n" +
             "                \"imageUrl\": \"\",\n" +
-            "                \"text\": \"降价秒杀\",\n" +
+            "                \"text\": \"我是存文本-首页模块\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"3\"\n" +
             "            }\n" +
@@ -115,7 +115,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.ooopic.com/16/74/43/16744375-3ad20b5875c6786ddeebf01a39dbfc78.jpg\",\n" +
+            "                \"imageUrl\": \"http://img.zcool.cn/community/0179925ba08e18a8012099c8ddd938.jpg@1280w_1l_2o_100sh.jpg\",\n" +
             "                \"text\": \"\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"4\"\n" +
@@ -126,8 +126,8 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.ooopic.com/16/81/22/16812205-afe75bedf7e5c3eee4fa0e2c6eaf11f7-1.jpg\",\n" +
-            "                \"text\": \"特购特购\",\n" +
+            "                \"imageUrl\": \"http://img.zcool.cn/community/01c0645ba08e18a801213dea78903c.jpg@2o.jpg\",\n" +
+            "                \"text\": \"添加银行卡\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"2\"\n" +
             "            }\n" +
@@ -138,7 +138,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                    \n" +
             "                ],\n" +
             "                \"imageUrl\": \"\",\n" +
-            "                \"text\": \"降价秒杀\",\n" +
+            "                \"text\": \"我是存文本-以下内容更精彩\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"3\"\n" +
             "            }\n" +
@@ -153,8 +153,8 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.wotucdn.com/15/80/92/15809238-b364f6f73498d3a562937247f8a9db60.jpg\",\n" +
-            "                \"text\": \"特购特购\",\n" +
+            "                \"imageUrl\": \"http://img.zcool.cn/community/0191255ab10aa5a80120be1441683b.png@2o.png\",\n" +
+            "                \"text\": \"幻想全明星\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"2\"\n" +
             "            }\n" +
@@ -165,7 +165,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                    \n" +
             "                ],\n" +
             "                \"imageUrl\": \"\",\n" +
-            "                \"text\": \"降价秒杀\",\n" +
+            "                \"text\": \"我是存文本-学院崩坏\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"3\"\n" +
             "            }\n" +
@@ -175,7 +175,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.ooopic.com/15/86/63/15866358-068952855554356e62d92685ac4d1e4f-1.jpg\",\n" +
+            "                \"imageUrl\": \"http://tv05.tgbusdata.cn/v3/thumb/jpg/YTI2NSw3MDAsMTAwLDQsMywxLC0xLDEs/u/shouji.tgbus.com/uploads/1302/21/14-130221100Z0N3.jpg\",\n" +
             "                \"text\": \"\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"4\"\n" +
@@ -186,8 +186,8 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.wotucdn.com/15/80/92/15809238-b364f6f73498d3a562937247f8a9db60.jpg\",\n" +
-            "                \"text\": \"特购特购\",\n" +
+            "                \"imageUrl\": \"http://cdn2.ettoday.net/images/1039/d1039421.jpg\",\n" +
+            "                \"text\": \"fate/night\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"2\"\n" +
             "            }\n" +
@@ -198,7 +198,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                    \n" +
             "                ],\n" +
             "                \"imageUrl\": \"\",\n" +
-            "                \"text\": \"降价秒杀\",\n" +
+            "                \"text\": \"我是存文本-马里奥\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"3\"\n" +
             "            }\n" +
@@ -208,7 +208,7 @@ public class IndexDataConverter extends BaseDataConverter {
             "                \"banners\": [\n" +
             "                    \n" +
             "                ],\n" +
-            "                \"imageUrl\": \"http://bpic.ooopic.com/15/86/63/15866358-068952855554356e62d92685ac4d1e4f-1.jpg\",\n" +
+            "                \"imageUrl\": \"http://qny.smzdm.com/201804/23/5add99b0783ef6313.jpg_e600.jpg\",\n" +
             "                \"text\": \"\",\n" +
             "                \"spanSize\": 4,\n" +
             "                \"goodsId\": \"4\"\n" +

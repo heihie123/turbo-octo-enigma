@@ -15,12 +15,15 @@ import java.util.ArrayList;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
 
+/**
+ * 自定义评价星星View
+ */
 public class StarLayout extends LinearLayoutCompat implements OnClickListener {
 
-    private static final CharSequence ICON_UN_SELECT = "{fa-star-o}";
-    private static final CharSequence ICON_SELECT = "{fa-star}";
-    private static final int START_TOTAL_COUNT = 5;
-    private static final ArrayList<IconTextView> STARS = new ArrayList<>();
+    private static final CharSequence ICON_UN_SELECT = "{fa-star-o}";   // 非选中的icon
+    private static final CharSequence ICON_SELECT = "{fa-star}";        // 选中的icon
+    private static final int START_TOTAL_COUNT = 5;                     // 总数
+    private static final ArrayList<IconTextView> STARS = new ArrayList<>(); //icon的集合
 
     public StarLayout(Context context) {
         this(context, null);
@@ -35,6 +38,7 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
         initStarIcon();
     }
 
+    // 添加5个icon
     private void initStarIcon() {
         for (int i = 0; i < START_TOTAL_COUNT; i++) {
             final IconTextView star = new IconTextView(getContext());
@@ -59,6 +63,7 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
         setselect(count);
     }
 
+    // 循环遍历icon，设置样式
     private void setselect(int count) {
         for (int i = 0; i < START_TOTAL_COUNT; i++) {
             if (i <= count) {
@@ -69,6 +74,7 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
         }
     }
 
+    // 设置选中样式
     private void selectStar(int i) {
         final IconTextView star = STARS.get(i);
         star.setText(ICON_SELECT);
@@ -76,6 +82,7 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
         star.setTag(R.id.star_is_select, true);
     }
 
+    // 设置非选中样式
     private void unSelectStar(int i) {
         final IconTextView star = STARS.get(i);
         star.setText(ICON_UN_SELECT);
@@ -83,6 +90,7 @@ public class StarLayout extends LinearLayoutCompat implements OnClickListener {
         star.setTag(R.id.star_is_select, false);
     }
 
+    // 获取选中的星星数
     public int getStarCount() {
         int count = 0;
         for (int i = 0; i < START_TOTAL_COUNT; i++) {

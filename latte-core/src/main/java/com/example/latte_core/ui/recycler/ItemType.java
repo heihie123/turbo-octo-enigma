@@ -1,5 +1,8 @@
 package com.example.latte_core.ui.recycler;
 
+/**
+ * recycle item的类型
+ */
 public class ItemType {
     public static final int TEXT = 1;
     public static final int IMAGE = 2;

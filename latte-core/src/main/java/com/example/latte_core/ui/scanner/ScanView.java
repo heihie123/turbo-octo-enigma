@@ -6,6 +6,9 @@ import android.util.AttributeSet;
 import me.dm7.barcodescanner.core.IViewFinder;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
+/**
+ * 扫描view
+ */
 public class ScanView extends ZBarScannerView {
 
     public ScanView(Context context) {

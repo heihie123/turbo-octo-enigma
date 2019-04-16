@@ -97,7 +97,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
     }
 
     public void refresh(List<MultipleItemEntity> data) {
-        getData().clear();
+//        getData().clear();
         setNewData(data);
         notifyDataSetChanged();
     }

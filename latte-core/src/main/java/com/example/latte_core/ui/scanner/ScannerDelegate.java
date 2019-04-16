@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
+/**
+ * 扫描的delegate
+ */
 public class ScannerDelegate extends LatteDelegate implements ZBarScannerView.ResultHandler {
 
     private ScanView mScanView = null;
@@ -61,6 +64,6 @@ public class ScannerDelegate extends LatteDelegate implements ZBarScannerView.Re
         if (callback != null) {
             callback.executeCallback(result.getContents());
         }
-        getSupportDelegate().pop();
+        getSupportDelegate().pop(); // 退出该页面
     }
 }
