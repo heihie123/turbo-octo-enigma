@@ -2,6 +2,9 @@ package com.example.latte_core.util.callback;
 
 import java.util.WeakHashMap;
 
+/**
+ * 回调的管理类
+ */
 public class CallbackManager {
 
     private static final WeakHashMap<Object, IGlobalCallback> CALLBACKS = new WeakHashMap<>();

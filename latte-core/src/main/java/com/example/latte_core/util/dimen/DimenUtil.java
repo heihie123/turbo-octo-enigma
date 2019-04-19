@@ -5,15 +5,20 @@ import android.util.DisplayMetrics;
 
 import com.example.latte_core.app.Latte;
 
+/**
+ * 跟dimen相关的工具类
+ */
 public class DimenUtil {
 
-    public static int getScreenWidth(){
+    // 获取屏幕宽
+    public static int getScreenWidth() {
         final Resources resources = Latte.getApplication().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    public static int getScreenHeight(){
+    // 获取屏幕高
+    public static int getScreenHeight() {
         final Resources resources = Latte.getApplication().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.heightPixels;

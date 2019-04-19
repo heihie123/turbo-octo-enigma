@@ -3,4 +3,6 @@
     <string name="btn_photo">拍照</string>
     <string name="btn_native">本地</string>
     <string name="btn_cancel">取消</string>
+    <string name="btn_delete">删除</string>
+    <string name="btn_wait">待定</string>
 </resources>

@@ -18,7 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:background="#454545"
         android:gravity="center"
-        android:text="假装这是输入框"
+        android:text=""
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_25dp" />
 </androidx.appcompat.widget.LinearLayoutCompat>

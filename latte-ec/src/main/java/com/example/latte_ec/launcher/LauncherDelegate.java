@@ -13,8 +13,8 @@ import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_core.ui.Laucher.ScrollLaucherTag;
 import com.example.latte_core.util.storage.LattePreference;
-import com.example.latte_core.util.timer.BaseTimerTask;
-import com.example.latte_core.util.timer.ITimerListener;
+import com.example.latte_core.util.toast.BaseTimerTask;
+import com.example.latte_core.util.toast.ITimerListener;
 import com.example.latte_ec.R;
 
 import java.text.MessageFormat;

@@ -53,8 +53,8 @@
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/icon_order_right"
-        android:layout_width="@dimen/_70dp"
-        android:layout_height="@dimen/_70dp"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
         android:layout_marginEnd="@dimen/_8dp"
         android:gravity="center"
         android:text="{fa-chevron-right}"
