@@ -136,12 +136,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
 
         // 购物车数量
         mShopCount = 0;
-        if (mShopCount == 0) {
-            mCircleAmountText.setVisibility(View.GONE);
-        } else {
-            mCircleAmountText.setVisibility(View.VISIBLE);
-            mCircleAmountText.setText(String.valueOf(mShopCount));
-        }
+        setShopCountUi();
     }
 
     private ArrayList<String> createTitles() {
@@ -209,7 +204,15 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
                 .duration(500)
                 .playOn(mShopCarIcon);
         mShopCount++;
-        mCircleAmountText.setVisibility(View.VISIBLE);
-        mCircleAmountText.setText(String.valueOf(mShopCount));
+        setShopCountUi();
+    }
+
+    private void setShopCountUi(){
+        if (mShopCount == 0) {
+            mCircleAmountText.setVisibility(View.GONE);
+        } else {
+            mCircleAmountText.setVisibility(View.VISIBLE);
+            mCircleAmountText.setText(String.valueOf(mShopCount));
+        }
     }
 }
