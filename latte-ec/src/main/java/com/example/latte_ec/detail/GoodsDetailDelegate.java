@@ -15,9 +15,9 @@ import com.example.latte_core.ui.animation.BezierUtil;
 import com.example.latte_core.ui.banner.HolderCreator;
 import com.example.latte_core.ui.widget.CircleTextView;
 import com.example.latte_core.util.image.GlideUtils;
+import com.example.latte_core.util.log.LatteLogger;
 import com.example.latte_ec.R;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.joanzapata.iconify.widget.IconTextView;
 
@@ -37,9 +37,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.AnimationListener,
         AppBarLayout.OnOffsetChangedListener, View.OnClickListener {
 
+    private ConvenientBanner<String> mDetailBanner = null;
+
     private TabLayout mGoodsTabLaout = null;
     private ViewPager mGoodsViewPager = null;
-    private ConvenientBanner<String> mDetailBanner = null;
 
     private AppCompatTextView mAddCarText;
     private IconTextView mShopCarIcon = null;
@@ -85,20 +86,17 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
     }
 
     private void initView() {
-        final AppBarLayout mBarLayout = $(R.id.ablayout_bar_detail);
-        final CollapsingToolbarLayout mCollectionAndSequence = $(R.id.ctlayout_bar);
         mDetailBanner = $(R.id.banner_detail);
         mGoodsTabLaout = $(R.id.tablayout_goods);
         mGoodsViewPager = $(R.id.vpage_goods);
-
         mShopCarIcon = $(R.id.icon_shop_car);
         mCircleAmountText = $(R.id.txt_circle_amount);
         mAddCarText = $(R.id.txt_add_shop_car);
-        // bar
-        mCollectionAndSequence.setContentScrimColor(Color.WHITE);
-        mBarLayout.addOnOffsetChangedListener(this);
         mCircleAmountText.setCircleBackgroud(Color.RED);
-        // tablayout
+
+        // 设置折叠滚动监听
+        ((AppBarLayout) $(R.id.ablayout_bar_detail)).addOnOffsetChangedListener(this);
+        // tab标签设置
         mGoodsTabLaout.setTabMode(TabLayout.MODE_FIXED);
         if (mContext != null) {
             mGoodsTabLaout.setSelectedTabIndicatorColor(ContextCompat.getColor(mContext, R.color.APPBG_DARK));
@@ -106,6 +104,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
         mGoodsTabLaout.setTabTextColors(ColorStateList.valueOf(Color.BLACK));
         mGoodsTabLaout.setBackgroundColor(Color.WHITE);
         mGoodsTabLaout.setupWithViewPager(mGoodsViewPager);
+
         // listener
         $(R.id.icon_goods_back).setOnClickListener(this);
         $(R.id.icon_favor).setOnClickListener(this);
@@ -159,9 +158,35 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
         return imageList;
     }
 
+    private CollapsingToolbarLayoutState state;
+
+    // 折叠滚动监听
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        // 可以在这里设置滚动到某个位置时候需要的操作
+        if (verticalOffset == 0) {
+            if (state != CollapsingToolbarLayoutState.EXPANDED) {
+                LatteLogger.e("EXPANDED");
+                //修改状态标记为展开
+                state = CollapsingToolbarLayoutState.EXPANDED;
+            }
+        } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
+            if (state != CollapsingToolbarLayoutState.COLLAPSED) {
+                //隐藏播放按钮
 
+                //修改状态标记为折叠
+                state = CollapsingToolbarLayoutState.COLLAPSED;
+            }
+        } else {
+            if (state != CollapsingToolbarLayoutState.INTERNEDIATE) {
+                if (state == CollapsingToolbarLayoutState.COLLAPSED) {
+                    //由折叠变为中间状态时隐藏播放按钮
+                }
+                LatteLogger.e("INTERNEDIATE");
+                //修改状态标记为中间
+                state = CollapsingToolbarLayoutState.INTERNEDIATE;
+            }
+        }
     }
 
     @Override
@@ -207,12 +232,18 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
         setShopCountUi();
     }
 
-    private void setShopCountUi(){
+    private void setShopCountUi() {
         if (mShopCount == 0) {
             mCircleAmountText.setVisibility(View.GONE);
         } else {
             mCircleAmountText.setVisibility(View.VISIBLE);
             mCircleAmountText.setText(String.valueOf(mShopCount));
         }
+    }
+
+    private enum CollapsingToolbarLayoutState {
+        EXPANDED,
+        COLLAPSED,
+        INTERNEDIATE
     }
 }
