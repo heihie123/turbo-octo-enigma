@@ -8,6 +8,7 @@ import android.view.View;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.animation.BezierAnimation;
@@ -225,9 +226,30 @@ public class GoodsDetailDelegate extends LatteDelegate implements BezierUtil.Ani
 
     @Override
     public void onAnimationEnd() {
-        YoYo.with(new ScaleUpAnimator())
+//        YoYo.with(new ScaleUpAnimator())
+        YoYo.with(Techniques.Tada)
                 .duration(500)
                 .playOn(mShopCarIcon);
+                /*  Attension
+            Flash, Pulse, RubberBand, Shake, Swing, Wobble, Bounce, Tada, StandUp, Wave
+            Special
+            Hinge, RollIn, RollOut,Landing,TakingOff,DropOut
+            Bounce
+            BounceIn, BounceInDown, BounceInLeft, BounceInRight, BounceInUp
+            Fade
+            FadeIn, FadeInUp, FadeInDown, FadeInLeft, FadeInRight
+            FadeOut, FadeOutDown, FadeOutLeft, FadeOutRight, FadeOutUp
+            Flip
+            FlipInX, FlipOutX, FlipOutY
+            Rotate
+            RotateIn, RotateInDownLeft, RotateInDownRight, RotateInUpLeft, RotateInUpRight
+            RotateOut, RotateOutDownLeft, RotateOutDownRight, RotateOutUpLeft, RotateOutUpRight
+            Slide
+            SlideInLeft, SlideInRight, SlideInUp, SlideInDown
+            SlideOutLeft, SlideOutRight, SlideOutUp, SlideOutDown
+            Zoom
+            ZoomIn, ZoomInDown, ZoomInLeft, ZoomInRight, ZoomInUp
+            ZoomOut, ZoomOutDown, ZoomOutLeft, ZoomOutRight, ZoomOutUp */
         mShopCount++;
         setShopCountUi();
     }

@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.daimajia.androidanimations.library.BaseViewAnimator;
 
+/**
+ * scale动画
+ */
 public class ScaleUpAnimator extends BaseViewAnimator {
     @Override
     protected void prepare(View target) {

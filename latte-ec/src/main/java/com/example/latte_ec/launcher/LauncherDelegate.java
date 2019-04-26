@@ -2,8 +2,6 @@ package com.example.latte_ec.launcher;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.view.View;
 
 import com.example.latte_core.app.AccountManager;
@@ -13,12 +11,15 @@ import com.example.latte_core.ui.Laucher.ILaucherListener;
 import com.example.latte_core.ui.Laucher.OnLauncherFinishTag;
 import com.example.latte_core.ui.Laucher.ScrollLaucherTag;
 import com.example.latte_core.util.storage.LattePreference;
-import com.example.latte_core.util.toast.BaseTimerTask;
-import com.example.latte_core.util.toast.ITimerListener;
+import com.example.latte_core.util.time.BaseTimerTask;
+import com.example.latte_core.util.time.ITimerListener;
 import com.example.latte_ec.R;
 
 import java.text.MessageFormat;
 import java.util.Timer;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 启动页Fragment
@@ -65,11 +66,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener, V
                     mLancherTimerTxt.setText(MessageFormat.format("跳过\n{0}s", mCount));
                     mCount--;
                     if (mCount < 0) {
-                        if (mTimer != null) {
-                            mTimer.cancel();
-                            mTimer = null;
-                            checkIsShowScroll();
-                        }
+                        onClickTimerView();
                     }
                 }
             }

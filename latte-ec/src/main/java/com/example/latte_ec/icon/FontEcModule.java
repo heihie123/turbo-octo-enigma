@@ -10,12 +10,11 @@ public class FontEcModule implements IconFontDescriptor {
 
     @Override
     public String ttfFileName() {
-        return "iconfont.ttf";
+        return "iconfont.ttf";  // asset下的icon文件名字
     }
 
     @Override
     public Icon[] characters() {
-        // 将枚举类转变为一个枚举类型的数组
-        return EcIcons.values();
+        return EcIcons.values(); // 将枚举类转变为一个枚举类型的数组
     }
 }
