@@ -7,8 +7,8 @@
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/icon_item_shop_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
         android:layout_marginStart="8dp"
         android:text="{fa-check-circle}"
         android:textColor="@color/TEXT_CART_DARK_GRAY"

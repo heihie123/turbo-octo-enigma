@@ -3,5 +3,4 @@
     android:id="@+id/img_single"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_150dp"
-    android:background="@android:color/white"
     android:gravity="center" />

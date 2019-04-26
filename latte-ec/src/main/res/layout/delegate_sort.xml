@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/base_toolbar" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/sort_list_container"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_toolbar_height"
-        android:background="@color/design_default_color_background"
-        android:baselineAligned="true"
-        android:orientation="horizontal">
+        app:layout_constraintEnd_toStartOf="@id/sort_content_container"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <FrameLayout
-            android:id="@+id/sort_list_container"
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <FrameLayout
-            android:id="@+id/sort_content_container"
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_8dp"
-            android:layout_marginEnd="@dimen/_8dp"
-            android:layout_weight="2.5" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <FrameLayout
+        android:id="@+id/sort_content_container"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginTop="@dimen/_toolbar_height"
+        android:layout_marginEnd="@dimen/_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2.5"
+        app:layout_constraintStart_toEndOf="@id/sort_list_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
