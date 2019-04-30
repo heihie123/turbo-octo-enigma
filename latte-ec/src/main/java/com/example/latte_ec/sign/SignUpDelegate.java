@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
 import com.example.latte_ec.R;
 import com.google.android.material.textfield.TextInputEditText;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 注册Fragment
@@ -94,39 +94,33 @@ public class SignUpDelegate extends LatteDelegate implements View.OnClickListene
         String phoneStr = mPhoneEdit.getText().toString();
         String pwdStr = mPwdEdit.getText().toString();
         String confirmPwdStr = mConfirmPwdEdit.getText().toString();
-        boolean isPass = true;
 
         if (nameStr.isEmpty()) {
             mNameEdit.setError("请输入姓名");
-            isPass = false;
-        } else {
-            mNameEdit.setError(null);
+            return false;
         }
         if (emailStr.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailStr).matches()) {
             mEmailEdit.setError("邮箱格式错误");
-            isPass = false;
-        } else {
-            mEmailEdit.setError(null);
+            return false;
         }
         if (phoneStr.isEmpty() || phoneStr.length() != 11) {
             mPhoneEdit.setError("手机号错误");
-            isPass = false;
-        } else {
-            mPhoneEdit.setError(null);
+            return false;
         }
         if (pwdStr.isEmpty() || pwdStr.length() < 6) {
             mPwdEdit.setError("请填写至少6位密码");
-            isPass = false;
-        } else {
-            mPwdEdit.setError(null);
+            return false;
         }
         if (confirmPwdStr.isEmpty() || confirmPwdStr.length() < 6 || !pwdStr.equals(confirmPwdStr)) {
             mConfirmPwdEdit.setError("密码验证错误");
-            isPass = false;
-        } else {
-            mConfirmPwdEdit.setError(null);
+            return false;
         }
-        return isPass;
+        mNameEdit.setError(null);
+        mEmailEdit.setError(null);
+        mPhoneEdit.setError(null);
+        mPwdEdit.setError(null);
+        mConfirmPwdEdit.setError(null);
+        return true;
     }
 
     private void onClickLink() {

@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
 import com.example.latte_core.ui.loader.LatteLoader;
@@ -12,10 +16,6 @@ import com.example.latte_core.wechat.LatteWeChat;
 import com.example.latte_core.wechat.callback.IWeChatSignInCallback;
 import com.example.latte_ec.R;
 import com.google.android.material.textfield.TextInputEditText;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 登录Fragment
@@ -95,21 +95,18 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     private boolean checkForm() {
         String phoneStr = mPhoneEdit.getText().toString();
         String pwdStr = mPwdEdit.getText().toString();
-        boolean isPass = true;
 
         if (phoneStr.isEmpty() || phoneStr.length() != 11) {
             mPhoneEdit.setError("手机号错误");
-            isPass = false;
-        } else {
-            mPhoneEdit.setError(null);
+            return false;
         }
         if (pwdStr.isEmpty() || pwdStr.length() < 6) {
             mPwdEdit.setError("请填写至少6位密码");
-            isPass = false;
-        } else {
-            mPwdEdit.setError(null);
+            return false;
         }
-        return isPass;
+        mPhoneEdit.setError(null);
+        mPwdEdit.setError(null);
+        return true;
     }
 
     private void onClickLink() {
