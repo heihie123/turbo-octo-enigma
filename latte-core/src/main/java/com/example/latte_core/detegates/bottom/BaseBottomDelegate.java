@@ -32,14 +32,13 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     private final List<BottomTabBean> TAB_BEANS = new ArrayList<>();                        // 底部标题iocn集合
     private final ArrayList<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();          // 底部fragment集合
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();   // 底部集合
-    private int mIndexDelegate = 0;     // 初始化时候下标
     private int mCurrentDelegate = 0;   // 当前位置下标
     private int mClickedColor = Color.RED;
 
     public abstract int setIndexDelegate(); // 设置初始按钮的position
 
     @ColorInt
-    public abstract int setClickedColor();
+    public abstract int setClickedColor();  // 设置点击按钮颜色
 
     public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder); // 设置ITEMS
 
@@ -50,7 +49,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mIndexDelegate = setIndexDelegate();
+        mCurrentDelegate = setIndexDelegate();
         if (setClickedColor() != 0) {
             mClickedColor = setClickedColor();
         }
@@ -92,14 +91,14 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
             final BottomTabBean tabBean = TAB_BEANS.get(i);
             itemIcon.setText(tabBean.getICON());
             itemTitle.setText(tabBean.getTITLE());
-            if (i == mIndexDelegate) {
+            if (i == mCurrentDelegate) {
                 itemIcon.setTextColor(mClickedColor);
                 itemTitle.setTextColor(mClickedColor);
             }
         }
 
         final ISupportFragment[] delegateArray = ITEM_DELEGATE.toArray(new ISupportFragment[size]);
-        getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
+        getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mCurrentDelegate, delegateArray);
     }
 
     @Override

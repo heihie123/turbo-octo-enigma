@@ -29,6 +29,7 @@ public class PayResult {
         }
     }
 
+    // 截取括号之间的参数
     private String getValue(String content, String key) {
         String prefix = key + "={";
         return content.substring(content.indexOf(prefix) + prefix.length(),

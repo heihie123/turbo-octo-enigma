@@ -22,11 +22,13 @@ public class EcBottomDelegate extends BaseBottomDelegate {
 
     @Override
     public int setIndexDelegate() {
+        // 设置默认下标
         return 0;
     }
 
     @Override
     public int setClickedColor() {
+        // 设置下标选中颜色
         return Color.parseColor("#ffff8800");
     }
 
