@@ -1,7 +1,12 @@
 package com.example.chen10.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.chen10.myapplication.keep.KeepManager;
+import com.example.chen10.myapplication.service.ForegroundService;
+import com.example.chen10.myapplication.service.MyJobService;
+import com.example.chen10.myapplication.service.account.AccountHelper;
 import com.example.latte_core.activitys.ProxyActivity;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
@@ -14,6 +19,7 @@ import com.example.latte_ec.sign.SignInDelegate;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+
 import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
@@ -29,6 +35,15 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
         Latte.getConfigurator().withActivity(this);
         // 状态栏透明
         StatusBarCompat.translucentStatusBar(this, true);
+        // activity保活
+        KeepManager.getInstance().registerKeepReceiver(getApplicationContext());
+        // service保活
+        startService(new Intent(this, ForegroundService.class));
+        //账户同步拉活
+        AccountHelper.addAccount(this);
+        AccountHelper.autoSync();
+        //JobScheduler拉活
+        MyJobService.startJob(this);
     }
 
     @Override
@@ -84,5 +99,11 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
                 getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        KeepManager.getInstance().unRegisterKeepReceiver(getApplicationContext());
     }
 }

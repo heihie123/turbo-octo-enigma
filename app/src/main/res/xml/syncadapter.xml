@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accountType="com.example.chen10.myapplication..account"
+    android:allowParallelSyncs="false"
+    android:contentAuthority="com.example.chen10.myapplication..provider"
+    android:isAlwaysSyncable="true"
+    android:supportsUploading="false"
+    android:userVisible="false" />
+
+    <!--accountType表示账户类型，与authenticator.xml里要一致-->
+    <!-- allowParallelSyncs 允许多个账户同时同步-->
+    <!--contentAuthority 系统在进行账户同步的时候会查找 此auth的ContentProvider-->
+    <!--isAlwaysSyncable 设置所有账号的isSyncable为1-->
+    <!-- supportsUploading 是否必须notifyChange通知才能同步-->
+    <!-- userVisible 是否在“设置”中显示-->
+
+
