@@ -259,6 +259,19 @@
         <service android:name=".service.ForegroundService" />
         <service android:name=".service.ForegroundService$InnerService" />
 
+        <service android:name=".service.douleProcess.LocalService"
+            android:exported="true"
+            android:process=":local"/>
+        <service android:name=".service.douleProcess.LocalService$InnerService"
+            android:exported="true"
+            android:process=":local"/>
+        <service android:name=".service.douleProcess.RemoteService"
+            android:exported="true"
+            android:process=":remote"/>
+        <service android:name=".service.douleProcess.RemoteService$InnerService"
+            android:exported="true"
+            android:process=":remote"/>
+
         <!-- 账户同步 -->
         <provider
             android:name=".service.account.SyncProvider"

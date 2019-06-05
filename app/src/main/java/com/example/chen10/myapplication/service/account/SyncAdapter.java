@@ -8,6 +8,9 @@ import android.content.SyncResult;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * 账户同步适配器
+ */
 public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     public SyncAdapter(Context context, boolean autoInitialize) {

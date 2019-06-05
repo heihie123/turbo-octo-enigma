@@ -7,6 +7,8 @@ import com.example.chen10.myapplication.keep.KeepManager;
 import com.example.chen10.myapplication.service.ForegroundService;
 import com.example.chen10.myapplication.service.MyJobService;
 import com.example.chen10.myapplication.service.account.AccountHelper;
+import com.example.chen10.myapplication.service.douleProcess.LocalService;
+import com.example.chen10.myapplication.service.douleProcess.RemoteService;
 import com.example.latte_core.activitys.ProxyActivity;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.detegates.LatteDelegate;
@@ -39,6 +41,9 @@ public class MainActivity extends ProxyActivity implements ISignListener, ILauch
         KeepManager.getInstance().registerKeepReceiver(getApplicationContext());
         // service保活
         startService(new Intent(this, ForegroundService.class));
+        // 双进程保活
+        startService(new Intent(this, LocalService.class));
+        startService(new Intent(this, RemoteService.class));
         //账户同步拉活
         AccountHelper.addAccount(this);
         AccountHelper.autoSync();
